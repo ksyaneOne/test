@@ -10,6 +10,8 @@ import App from './App';
 
 Modal.setAppElement(`#${routes.ROOT}`);
 
+
+
 const Loading = props => <div>Loading...</div>;
 
 ReactDOM.render(
