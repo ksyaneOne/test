@@ -18,8 +18,7 @@ import Header from './components/Header';
 export default class App extends Component {
 
   render() {
-
-      return (
+    return (
         <Router history={history}>
           <Header/>
           <Switch>
@@ -34,8 +33,8 @@ export default class App extends Component {
             <LayoutDefault exact path={routes.HOME} component={Home} />
             <LayoutDefault component={NotFound} />
           </Switch>
-          <Footer/>
-          <Notice/>
+          <Footer />
+          <Notice />
       </Router>
   );
   }
