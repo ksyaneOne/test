@@ -2,7 +2,7 @@ import React ,{Component} from 'react';
 import history from './utils/history'
 import LayoutDefault from './components/layouts/LayoutDefault'
 import * as routes from './config/routes'
-import Notice from './components/Notice'
+import Notice from './components/Notice/Notice'
 import { Router, Switch,Route } from "react-router-dom";
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
