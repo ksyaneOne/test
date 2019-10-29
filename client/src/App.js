@@ -15,13 +15,12 @@ import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
-
 export default class App extends Component {
 
   render() {
-    return (
-        <Router history={history}>
 
+      return (
+        <Router history={history}>
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -33,12 +32,11 @@ export default class App extends Component {
             <Route exact path="/products" component={ProductList} />
             <Route exact path="*" component={NotFound} />
             <LayoutDefault exact path={routes.HOME} component={Home} />
-
             <LayoutDefault component={NotFound} />
           </Switch>
-          <Footer />
-          <Notice />
+          <Footer/>
+          <Notice/>
       </Router>
-    );
+  );
   }
 }
