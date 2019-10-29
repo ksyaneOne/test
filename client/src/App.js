@@ -14,17 +14,13 @@ import ProductDetails from './pages/ProductDetails';
 import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import 'semantic-ui-css/semantic.min.css';
-import { Button } from "semantic-ui-react";
 
  export  default class App extends Component {
-  //
   render() {
     return (
       <Router history={history}>
         <>
           <Header/>
-            <Button>sdfsdfsdf</Button>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/cart" component={Cart} />
