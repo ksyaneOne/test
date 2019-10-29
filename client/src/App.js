@@ -14,8 +14,8 @@ import ProductDetails from './pages/ProductDetails';
 import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import "semantic-ui-css";
-import {Button} from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
+import { Button } from "semantic-ui-react";
 
  export  default class App extends Component {
   //
