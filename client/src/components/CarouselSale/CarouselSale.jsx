@@ -8,27 +8,21 @@ const  CarouselSale  = () => {
 		{
 			render:()=>{
 				return (
-                    <>
                         <Image src="https://motokvartal.com.ua/content/images/10/79953593975151.webp"/>
-                    </>
                 );
 			}
 		},
 		{
 			render:()=>{
 				return (
-                    <>
                         <Image src="https://motokvartal.com.ua/content/images/50/72104498619834.webp"/>
-                    </>
                 );
 			}
 	    },
 		{
 			render:()=>{
 				return (
-                    <>
                         <Image src="https://motokvartal.com.ua/content/images/41/12681968534177.jpg"/>
-                    </>
                 );
 			}
 	    }
@@ -38,12 +32,13 @@ const  CarouselSale  = () => {
 			<Carousel
 				elements  =  {  elements  }
 				duration  ={5000}
-				animation  ='zoom'
+				animation  ='fly right'
 				showNextPrev  =  {false}
-				showIndicators  = {true}
+				showIndicators  = {false}
 			/>
 		</div>
 	)
 
 }
 export  default  CarouselSale;
+
