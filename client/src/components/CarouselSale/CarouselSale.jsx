@@ -1,49 +1,18 @@
-import  React  from  'react';
-import  Carousel  from  'semantic-ui-carousel-react';
+import React from 'react';
+import Carousel from './../Carousel'
+import carouselSettings from './carouselSettings'
 import { Image } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
-const  CarouselSale  = () => {
-	let  elements  = [
-		{
-			render:()=>{
-				return (
-                    <>
-                        <Image src="https://motokvartal.com.ua/content/images/10/79953593975151.webp"/>
-                    </>
-                );
-			}
-		},
-		{
-			render:()=>{
-				return (
-                    <>
-                        <Image src="https://motokvartal.com.ua/content/images/50/72104498619834.webp"/>
-                    </>
-                );
-			}
-	    },
-		{
-			render:()=>{
-				return (
-                    <>
-                        <Image src="https://motokvartal.com.ua/content/images/41/12681968534177.jpg"/>
-                    </>
-                );
-			}
-	    }
+const CarouselSale = () => {
+	const elements = [
+		<Image key={111} src="https://motokvartal.com.ua/content/images/10/79953593975151.webp" />,
+		<Image key={211} src="https://motokvartal.com.ua/content/images/50/72104498619834.webp" />,
+		<Image key={311} src="https://motokvartal.com.ua/content/images/41/12681968534177.jpg" />
 	]
 	return (
-		<div style={{wight:500}}>
-			<Carousel
-				elements  =  {  elements  }
-				duration  ={5000}
-				animation  ='zoom'
-				showNextPrev  =  {false}
-				showIndicators  = {true}
-			/>
-		</div>
+		<Carousel elements={elements} carouselSettings={carouselSettings}/>
 	)
 
 }
-export  default  CarouselSale;
+export default CarouselSale;
