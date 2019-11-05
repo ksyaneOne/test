@@ -1,60 +1,62 @@
 import React, { Component } from "react";
+import Topline from "./Topline";
+import Search from "./Search/Search";
+import HeaderMenu from "./Menu";
+import HeaderCart from "./Cart";
 import { Link } from "react-router-dom";
-import { Icon } from "semantic-ui-react";
+import { Menu, Container, Icon } from "semantic-ui-react";
 import styled from "@emotion/styled";
 import "reset-css";
 
-const HeaderSearchInput = styled.input`
-  display: none;
+const HeaderWrapper = styled.div`
+  width: 100% !important;
+  background-color: #b0bec5;
 `;
-class Header extends Component {
-  state = {
-    onMouse: false
-  };
-  openSearchInput = () => {
-    document.getElementById("HeaderSearchInput").style.display = "inline-block";
-  };
 
+class Header extends Component {
+  state = { activeItem: "home", isLoading: false, results: [], value: "" };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   render() {
+    const { activeItem } = this.state;
     return (
       <div>
-        <div>
-          <Link to="/">Logotype</Link>
-          <HeaderSearchInput
-            type="text"
-            id="HeaderSearchInput"
-            display="none"
-          />
-          <Icon name="search" onMouseEnter={this.openSearchInput} /> Search
-          <Link to="/account">
-            <Icon name="user" /> My account
-          </Link>
-          <Link to="/cart">
-            <Icon name="shopping cart" /> My cart
-          </Link>
-        </div>
-        <div>
-          <ul>
-            <li>
-              <Link to="/products">Moto Helmets</Link>
-            </li>
-            <li>
-              <Link to="/products">Moto Jackets</Link>
-            </li>
-            <li>
-              <Link to="/products">Moto Pants</Link>
-            </li>
-            <li>
-              <Link to="/products">Moto Gloves</Link>
-            </li>
-            <li>
-              <Link to="/products">Moto boots</Link>
-            </li>
-            <li>
-              <Link to="/products">Accessories</Link>
-            </li>
-          </ul>
-        </div>
+        <Topline />
+        <HeaderWrapper>
+          <Container>
+            <Menu secondary>
+              <Menu.Item as={Link} to="/" name="home">
+                SUPER &nbsp;
+                <Icon name="motorcycle" size="big" />
+                MOTO
+              </Menu.Item>
+
+              <Menu.Menu position="right">
+                <Menu.Item
+                  as={Link}
+                  to="/account"
+                  name="account"
+                  active={activeItem === "account"}
+                  onClick={this.handleItemClick}
+                >
+                  <Icon name="user" size="large" title="My account" />
+                  Account
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to="/cart"
+                  name="cart"
+                  active={activeItem === "cart"}
+                  onClick={this.handleItemClick}
+                >
+                  <HeaderCart />
+                  Cart
+                </Menu.Item>
+              </Menu.Menu>
+            </Menu>
+          </Container>
+          <HeaderMenu />
+        </HeaderWrapper>
       </div>
     );
   }

@@ -1,0 +1,15 @@
+.ToplineItem {
+    color: #b0bec5 !important;
+    display: inline-block !important;
+    font-size: 12px !important;
+    cursor: pointer;
+    transition: all .5s ease !important;
+}
+
+.ToplineItem:hover {
+    color: rgb(255, 152, 0) !important;
+}
+
+.ToplineItem i {
+    margin: 0 .5em !important;
+}
