@@ -14,6 +14,7 @@ import ProductDetails from './pages/ProductDetails';
 import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import ScrollToTop from "./components/ScrollButton";
 
  export  default class App extends Component {
 
@@ -35,6 +36,7 @@ import Header from './components/Header';
 
             <LayoutDefault component={NotFound} />
           </Switch>
+          <ScrollToTop/>
           <Footer/>
           <Notice />
         </>
