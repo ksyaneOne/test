@@ -15,7 +15,7 @@ const apiServiceCreator = url => {
   );
 
   return api;
-}
+};
 
 
 export default apiServiceCreator;
