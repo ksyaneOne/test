@@ -1,11 +1,11 @@
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 
 const history = createBrowserHistory({ });
 
 history.listen((location, action) => {
-	const state = location.state || {};
+  const state = location.state || {};
 
-	state.scrollToTop !== false && window.scrollTo(0, 0);
+  state.scrollToTop !== false && window.scrollTo(0, 0);
 });
 
 export default history;

@@ -1,1 +1,1 @@
-{  "extends": "airbnb/hooks",  "rules": {    "func-names": ["error", "never"]  }}
+{  "extends": ["airbnb","airbnb/hooks"],  "rules": {    "func-names": ["error", "never"]  }}

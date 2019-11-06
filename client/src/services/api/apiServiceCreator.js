@@ -2,16 +2,16 @@ import axios from 'axios';
 import config, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
 
 
-const apiServiceCreator = url => {
+const apiServiceCreator = (url) => {
   const api = axios.create({
     ...config,
     timeout: false,
-    baseURL: url
+    baseURL: url,
   });
 
   api.interceptors.response.use(
     handleInterceptorsResponse,
-    handleInterceptorsError
+    handleInterceptorsError,
   );
 
   return api;
