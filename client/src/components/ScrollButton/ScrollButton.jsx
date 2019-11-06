@@ -5,15 +5,15 @@ class ScrollToTop extends Component {
 
     render() {
         return (
-            <ScrollButton 
+            <ScrollButton
 				targetId={'root'}
-                behavior={'smooth'} 
+                behavior={'smooth'}
                 buttonBackgroundColor={'black'}
                 iconType={'angle-up'}
                 scrollSpeed={'2s'}
             />
         );
     }
-};
+}
 
 export default ScrollToTop;

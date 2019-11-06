@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import initialConfig, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
 
@@ -7,5 +8,4 @@ apiService.interceptors.response.use(
   handleInterceptorsResponse,
   handleInterceptorsError
 );
-
 export default apiService;
