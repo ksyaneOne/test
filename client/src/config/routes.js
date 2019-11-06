@@ -1,3 +1,3 @@
-export const ROOT = "root";
+export const ROOT = 'root';
 
-export const HOME = "/";
+export const HOME = '/';

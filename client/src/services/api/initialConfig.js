@@ -1,6 +1,7 @@
 import { success as noticeSuccess, error as noticeError } from 'react-notification-system-redux';
 import logger from 'utils/logger';
 import * as store from '../../store';
+
 import history from '../../utils/history';
 import * as ROUTES from '../../config/routes';
 
@@ -27,11 +28,14 @@ function handleInterceptorsResponse(response) {
   return response;
 }
 
-const handleInterceptorsError = (error) => {
-  store.store.dispatch(noticeError({ message: error.message }));
+
+const handleInterceptorsError = error => {
+    store.store.dispatch(noticeError({ message: error.message }));
 
   ({ error, data: {} });
 };
+
+
 export {
   initialConfig as default,
   handleInterceptorsResponse,
