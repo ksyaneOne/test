@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ScrollButton from 'react-scroll-button';
 
-class ScrollToTop extends Component {
+export default class ScrollToTop extends Component {
   render() {
     return (
       <ScrollButton
