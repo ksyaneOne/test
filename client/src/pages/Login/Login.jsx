@@ -17,5 +17,4 @@ export default function Login() {
       <LoginForm />
     </Div>
   );
-
 }
