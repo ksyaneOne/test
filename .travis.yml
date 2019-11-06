@@ -6,7 +6,3 @@ cache:
 
 before_script:
     - npm install --prefix client
-
-script:
-    - npm run test --prefix client
-

@@ -13,33 +13,32 @@ import MyAccount from './pages/MyAccount';
 import ProductDetails from './pages/ProductDetails';
 import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
-import Header from './components/Header'
+import Header from './components/Header';
+import ScrollToTop from "./components/ScrollButton";
 
  export  default class App extends Component {
-  //
+
   render() {
     return (
       <Router history={history}>
         <>
           <Header/>
           <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/cart" component={Cart} />
-              <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/account" component={MyAccount} />
-              <Route exact path="/product/:id" component={ProductDetails} />
-              <Route exact path="/products" component={ProductList} />
-              <Route exact path="*" component={NotFound} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/account" component={MyAccount} />
+            <Route exact path="/product/:id" component={ProductDetails} />
+            <Route exact path="/products" component={ProductList} />
+            <Route exact path="*" component={NotFound} />
             <LayoutDefault exact path={routes.HOME} component={Home} />
-
             <LayoutDefault component={NotFound} />
           </Switch>
+          <ScrollToTop/>
           <Footer/>
           <Notice />
-        </>
       </Router>
-    );
+  );
   }
 }
-
