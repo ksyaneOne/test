@@ -1,16 +1,16 @@
 export default {
-  additionalTransfrom:0,
-  autoPlaySpeed:3000,
-  centerMode:false,
-  className:"",
-  containerClass:"container",
-  dotListClass:"",
-  focusOnSelect:false,
-  itemClass:"",
-  minimumTouchDrag:80,
-  renderButtonGroupOutside:false,
-  renderDotsOutside:false,
-  responsive:{
+  additionalTransfrom: -15,
+  autoPlaySpeed: 4000,
+  centerMode: false,
+  className: '',
+  containerClass: 'container',
+  dotListClass: '',
+  focusOnSelect: false,
+  itemClass: 'image',
+  minimumTouchDrag: 80,
+  renderButtonGroupOutside: false,
+  renderDotsOutside: false,
+  responsive: {
     desktop: {
       breakpoint: {
         max: 3000,
@@ -33,12 +33,13 @@ export default {
       items: 1
     }
   },
-  sliderClass:"",
-  slidesToSlide:1,
-  showDots:true,
-  arrows:false,
-  draggable:true,
-  infinite:true,
-  keyBoardControl:true,
-  swipeable:true
-}
+  sliderClass: '',
+  slidesToSlide: 1,
+  showDots: true,
+  arrows: false,
+  draggable: true,
+  infinite: true,
+  keyBoardControl: false,
+  swipeable: true,
+  autoPlay: true
+};
