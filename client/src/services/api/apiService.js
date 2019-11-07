@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import initialConfig, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
 
@@ -5,7 +6,6 @@ const apiService = axios.create({ ...initialConfig, baseURL: process.env.REACT_A
 
 apiService.interceptors.response.use(
   handleInterceptorsResponse,
-  handleInterceptorsError
+  handleInterceptorsError,
 );
-
 export default apiService;
