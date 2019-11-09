@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const cors = require('cors')
 require("dotenv").config();
 
 const customers = require("./routes/customers");
@@ -22,7 +23,7 @@ const comments = require("./routes/comments");
 const mainRoute = require("./routes/index");
 
 const app = express();
-
+app.use(cors());
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
