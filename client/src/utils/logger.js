@@ -1,3 +1,3 @@
 export default function logger() {
-	console.error("logger:", ...arguments);
+  console.error('logger:', ...arguments);
 }

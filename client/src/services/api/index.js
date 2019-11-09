@@ -3,5 +3,5 @@ import apiServiceCreator from './apiServiceCreator';
 
 export {
   apiService as default,
-  apiServiceCreator
-}
+  apiServiceCreator,
+};
