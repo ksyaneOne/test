@@ -9,6 +9,7 @@
     "emotion": "^10.0.17",
     "history": "^4.9.0",
     "object-fit-images": "^3.2.4",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-jss": "^10.0.0",
