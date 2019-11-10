@@ -51,7 +51,6 @@ class WithScrollbar extends React.Component {
           <input
             type="range"
             value={Math.round(Math.abs(transform) / value)}
-            defaultValue={0}
             max={
               (carouselItemWidth * (carouselState.totalItems - carouselState.slidesToShow) +
                 (this.state.additionalTransfrom === 150 ? 0 : 150)) /
