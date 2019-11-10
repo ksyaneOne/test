@@ -1,18 +1,30 @@
 import React from 'react';
+import { Dimmer, Loader, Segment, Header } from 'semantic-ui-react';
 import ProductCart from '../ProductCard';
-import products from './products';
+import useFetch from '../../../utils/useFetch';
 import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
 
 export default function ProductList() {
-  const productElements = products.map((item, index) => (
-    <li key={item.id}>
-      <ProductCart product={item} defaultOpen={index === 0} />
-    </li>
+  const { loading, data } = useFetch('http://localhost:5000/products', []);
+
+  const productElements = data.map(item => (
+    <div key={item._id}>
+      <ProductCart product={item} />
+    </div>
   ));
+  if (loading)
+    return (
+      <Dimmer active>
+        <Loader />
+      </Dimmer>
+    );
   return (
     <div className="container">
-      <WithScroll elements={productElements} carouselSettings={carouselSettings} />
+      <Segment>
+        <Header>Горячие новинки и хиты продаж</Header>
+        <WithScroll elements={productElements} carouselSettings={carouselSettings} />
+      </Segment>
     </div>
   );
 }
