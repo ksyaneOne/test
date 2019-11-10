@@ -1,6 +1,7 @@
 {
-  "extends": ["airbnb","airbnb/hooks"],
-  "rules": {
-    "func-names": ["error", "never"]
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+      "prettier/prettier": ["error"]
+    }
   }
-}
