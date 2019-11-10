@@ -10,10 +10,6 @@ const CarouselSale = () => {
     <Image key={211} src="https://motokvartal.com.ua/content/images/50/72104498619834.webp" />,
     <Image key={311} src="https://motokvartal.com.ua/content/images/41/12681968534177.jpg" />
   ];
-  return (
-    <div>
-      <Carousel elements={elements} carouselSettings={carouselSettings} />
-    </div>
-  );
+  return <Carousel elements={elements} carouselSettings={carouselSettings} />;
 };
 export default CarouselSale;
