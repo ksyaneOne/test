@@ -6,7 +6,7 @@ import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
 
 export default function ProductList() {
-  const { loading, data } = useFetch('http://localhost:5000/products', []);
+  const { loading, data } = useFetch('/products', []);
 
   const productElements = data.map(item => (
     <div key={item._id}>

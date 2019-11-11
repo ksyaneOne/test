@@ -6,7 +6,7 @@ import useFetch from '../../../utils/useFetch';
 import carouselSettings from './carouselSettings';
 
 export default function CategoryList() {
-  const { loading, data } = useFetch('http://localhost:5000/catalog', []);
+  const { loading, data } = useFetch('/catalog', []);
   const productElements = data.map(item => (
     <div key={item._id}>
       <CategoryCard category={item} />
