@@ -1,16 +1,24 @@
 import React from 'react';
 
-import useFetch from '../../../utils/useFetch';
+import { Menu, Grid } from 'semantic-ui-react';
 
-import HeaderNavStyle from './style.js';
+import HeaderNavStyle from './style';
+
+import { Link } from 'react-router-dom';
+
+import useFetch from '../../../utils/useFetch';
 
 export default function HeaderNav(props) {
   const { loading, data } = useFetch('http://localhost:5000/catalog', []);
   const NavElements = data.map(item => (
-    <div key={item._id}>
-      <li>{item.name}</li>
-    </div>
+    <Menu.Item key={item._id} as={Link} to={`/products/${item.id}`}>
+      {item.name}
+    </Menu.Item>
   ));
 
-  return <HeaderNavStyle>{NavElements}</HeaderNavStyle>;
+  return (
+    <Menu className="HeaderNavStyle" fluid horisontal="true" inverted fluid widths={6}>
+      {NavElements}
+    </Menu>
+  );
 }

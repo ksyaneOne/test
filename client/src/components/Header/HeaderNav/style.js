@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const HeaderNavStyle = styled.div`
-  cursor: pointer;
+  background-color: pink !important;
 `;
 
 export default HeaderNavStyle;
