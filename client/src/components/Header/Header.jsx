@@ -4,7 +4,6 @@ import { Grid, Segment, Button, GridColumn, Sticky, Menu, Transition } from 'sem
 
 import HeaderLogo from './HeaderLogo';
 import HeaderSearch from './HeaderSearch';
-
 import HeaderCategories from './HeaderCategories';
 import HeaderCart from './HeaderCart';
 import HeaderAccount from './HeaderAccount';

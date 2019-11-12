@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Icon, Input } from 'semantic-ui-react';
 
 import HeaderSearchStyle from './style';

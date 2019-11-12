@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-
-import HeaderCartTitle from './style';
-
 import { Icon } from 'semantic-ui-react';
-import HeaderCartStyle from './style';
+
+import { HeaderCartCount, HeaderCartTitle, HeaderCartIcon } from './style';
 
 function HeaderCart(props) {
+  const [count, setCount] = useState(1);
   return (
     <Link to="cart">
-      <Icon name="shopping basket" size="large" title="Cart" />
+      <Icon name="shopping basket" size="large" title="Cart" className="HeaderCartIcon" />
       <HeaderCartTitle>Cart</HeaderCartTitle>
+      <HeaderCartCount>{count}</HeaderCartCount>
     </Link>
   );
 }

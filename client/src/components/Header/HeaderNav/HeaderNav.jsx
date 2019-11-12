@@ -1,9 +1,5 @@
 import React from 'react';
-
 import { Menu, Grid } from 'semantic-ui-react';
-
-import HeaderNavStyle from './style';
-
 import { Link } from 'react-router-dom';
 
 import useFetch from '../../../utils/useFetch';
@@ -17,7 +13,7 @@ export default function HeaderNav(props) {
   ));
 
   return (
-    <Menu className="HeaderNavStyle" fluid horisontal="true" inverted fluid widths={6}>
+    <Menu fluid horisontal="true" inverted fluid widths={6}>
       {NavElements}
     </Menu>
   );
