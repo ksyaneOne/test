@@ -23,8 +23,8 @@ const LoginForm = () => {
   const onAuth = e => {
     e.preventDefault();
     console.log(inputLoginRef);
-    // setState({...state,login })
   };
+
 
   return (
     <Div>
