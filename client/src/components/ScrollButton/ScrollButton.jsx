@@ -14,5 +14,3 @@ export default class ScrollToTop extends Component {
     );
   }
 }
-
-

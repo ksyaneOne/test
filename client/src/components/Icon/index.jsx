@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 import './style.scss';
 import * as iconsNames from './iconsNames';
 
-
-const IconTemplate = (props) => {
-  const {
-    children, width, height, className, strictSize,
-  } = props;
+const IconTemplate = props => {
+  const { children, width, height, className, strictSize } = props;
 
   return (
     <svg
@@ -18,7 +15,7 @@ const IconTemplate = (props) => {
       className={`icon ${className}`}
       style={{
         width: strictSize ? `${width}px` : '1em',
-        height: strictSize ? `${height}px` : `${height / width}em`,
+        height: strictSize ? `${height}px` : `${height / width}em`
       }}
     >
       {children}
@@ -27,10 +24,10 @@ const IconTemplate = (props) => {
 };
 
 IconTemplate.defaultProps = {
-  className: '',
+  className: ''
 };
 
-const Icon = (props) => {
+const Icon = props => {
   const { name } = props;
 
   switch (name) {
@@ -62,14 +59,9 @@ const Icon = (props) => {
   }
 };
 
-
 Icon.propTypes = {
   name: PropTypes.string,
-  strictSize: PropTypes.bool,
+  strictSize: PropTypes.bool
 };
 
-
-export {
-  Icon as default,
-  iconsNames,
-};
+export { Icon as default, iconsNames };

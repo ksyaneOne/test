@@ -10,7 +10,7 @@ import App from './App';
 
 Modal.setAppElement(`#${routes.ROOT}`);
 
-const Loading = (props) => <div>Loading...</div>;
+const Loading = () => <div>Loading...</div>;
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,5 +18,5 @@ ReactDOM.render(
       <App />
     </PersistGate>
   </Provider>,
-  document.getElementById(routes.ROOT),
+  document.getElementById(routes.ROOT)
 );

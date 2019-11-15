@@ -8,7 +8,7 @@ const WINDOW_SCROLL = 'COMMON/WINDOW_SCROLL';
 const initialState = {
   windowWidth: window.innerWidth,
   windowHeight: window.innerHeight,
-  windowScrollTop: window.scrollY,
+  windowScrollTop: window.scrollY
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,12 +29,12 @@ const reducer = (state = initialState, action) => {
 // Actions
 const windowResize = (windowWidth, windowHeight) => ({
   type: WINDOW_RESIZE,
-  payload: { windowWidth, windowHeight },
+  payload: { windowWidth, windowHeight }
 });
 
-const windowScroll = (scrollTop) => ({
+const windowScroll = scrollTop => ({
   type: WINDOW_SCROLL,
-  payload: { scrollTop },
+  payload: { scrollTop }
 });
 
 // Common handlers

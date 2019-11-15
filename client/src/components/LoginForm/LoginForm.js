@@ -1,68 +1,43 @@
-
 import React, { useEffect, useState, useRef } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
+import { Button, Checkbox } from 'semantic-ui-react';
+
+import Input from '../CustomComponents/Input';
 
 import { setCookie } from '../../utils/setCookies';
-// import {apiService} from '../../services/api/apiService';
 
-export default function LoginForm() {
+import { Form, Div, Label, Span } from './StyleLoginForm';
+
+const LoginForm = () => {
   const initialState = {
-    login: '',
-    password: '',
-    isRemember: false,
+    login: 'qwdwqd',
+    password: 'wqdqwd',
+    isRemember: false
   };
-
   const [state, setState] = useState(initialState);
   const inputLoginRef = useRef(null);
   const inputPasswordRef = useRef(null);
   const checkBoxRemember = useRef(null);
-  const { login, password } = state;
+  const { login, password, isRemember } = state;
+  useEffect(() => {});
 
-  useEffect(() => {
-    if (checkBoxRemember.current.state.checked) {
-      setCookie('login', login.toString(), { expires: 1 });
-      setCookie('password', password.toString(), { expires: 1 });
-    }
-  }, [login, password]);
-
-  const onAuth = () => {
-    setState({ ...state, login: inputLoginRef.current.value, password: inputPasswordRef.current.value });
-
-    // apiService()({
-    //     method: 'post',
-    //     url: '/customers/login',
-    //     data: {
-    //         loginOrEmail: inputLoginRef.current.value,
-    //         password: +inputPasswordRef.current.value
-    //     }.then(loginResult => {
-    //     })
-    //         .catch(err => {
-    //         })
-    // })
+  const onAuth = e => {
+    e.preventDefault();
+    console.log(inputLoginRef);
+    // setState({...state,login })
   };
 
   return (
-
-    <Form onSubmit={onAuth} className="input-form">
-      <Form.Field>
-        <label>Login:</label>
-        <input ref={inputLoginRef} placeholder="Login" />
-      </Form.Field>
-      <Form.Field>
-        <label>Password:</label>
-        <input ref={inputPasswordRef} placeholder="Password" />
-      </Form.Field>
-      <Form.Field>
-        <Checkbox ref={checkBoxRemember} label="Remember me" />
-      </Form.Field>
-      <Button color="olive" type="submit">Sign In</Button>
-    </Form>
-
+    <Div>
+      <Form onSubmit={onAuth}>
+        <Input ref={inputLoginRef} type="text" placeholder="E-mail" />
+        <Input ref={inputPasswordRef} type="password" placeholder="Password" />
+        <Label>
+          <Checkbox ref={checkBoxRemember} id="check" />
+          <Span>Keep me signed in</Span>
+        </Label>
+        <Button type="submit" color="white" content="LOG IN" />
+      </Form>
+    </Div>
   );
-}
-
-
-
-
-          
+};
+export default LoginForm;

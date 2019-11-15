@@ -7,5 +7,5 @@ import { reducer as common } from '../modules/common';
 export default combineReducers({
   form,
   notifications,
-  common,
+  common
 });

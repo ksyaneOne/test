@@ -15,7 +15,9 @@ function CardExampleCard(props) {
       </ImgWrapper>
       <Card.Content>
         <Card.Header>{product.name}</Card.Header>
-        <div>{product.previousPrice}$</div>
+        <div>{product.previousPrice}
+$
+</div>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
