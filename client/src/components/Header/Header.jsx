@@ -35,11 +35,7 @@ export default class Header extends Component {
             <GridColumn width="6">
               <Segment color="black" inverted>
                 <Menu horisontal="true" inverted borderless>
-                  <Menu.Item
-                    position="right"
-                    content={visible ? 'Hide' : 'Show'}
-                    onClick={this.toggleVisibility}
-                  >
+                  <Menu.Item position="right" onClick={this.toggleVisibility}>
                     <HeaderCategories />
                   </Menu.Item>
                   <Menu.Item position="right">
