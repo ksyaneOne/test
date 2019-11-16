@@ -1,10 +1,7 @@
 import styled from '@emotion/styled';
 
-const HeaderSearchStyle = styled.div`
-  cursor: pointer;
-  @media (max-width: 762px) {
-    display: none;
-  }
+const searchInput = styled.div`
+  background-color: red !important;
 `;
 
-export default HeaderSearchStyle;
+export default searchInput;

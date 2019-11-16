@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Segment, Button, GridColumn, Sticky, Menu, Transition } from 'semantic-ui-react';
+import { Grid, Segment, GridColumn, Menu, Transition } from 'semantic-ui-react';
 
 import HeaderLogo from './HeaderLogo';
 import HeaderSearch from './HeaderSearch';
@@ -8,6 +8,8 @@ import HeaderCategories from './HeaderCategories';
 import HeaderCart from './HeaderCart';
 import HeaderAccount from './HeaderAccount';
 import HeaderNav from './HeaderNav';
+
+import HeaderWrapper from './style';
 
 export default class Header extends Component {
   state = { visible: false };
@@ -17,7 +19,7 @@ export default class Header extends Component {
   render() {
     const { visible } = this.state;
     return (
-      <Sticky>
+      <HeaderWrapper>
         <Grid columns="equal" inverted textAlign="center" verticalAlign="middle">
           <Grid.Row color="black" textAlign="center">
             <Grid.Column width="2">
@@ -33,11 +35,7 @@ export default class Header extends Component {
             <GridColumn width="6">
               <Segment color="black" inverted>
                 <Menu horisontal="true" inverted borderless>
-                  <Menu.Item
-                    position="right"
-                    content={visible ? 'Hide' : 'Show'}
-                    onClick={this.toggleVisibility}
-                  >
+                  <Menu.Item position="right" onClick={this.toggleVisibility}>
                     <HeaderCategories />
                   </Menu.Item>
                   <Menu.Item position="right">
@@ -50,13 +48,13 @@ export default class Header extends Component {
               </Segment>
             </GridColumn>
           </Grid.Row>
-          <Transition visible={visible} animation="fade down" duration={300}>
-            <Grid.Row color="black">
-              <HeaderNav />
-            </Grid.Row>
-          </Transition>
         </Grid>
-      </Sticky>
+        <Transition visible={visible} animation="fade down" duration={300}>
+          <Grid.Row color="black">
+            <HeaderNav />
+          </Grid.Row>
+        </Transition>
+      </HeaderWrapper>
     );
   }
 }
