@@ -1,20 +1,18 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Search, Grid, Label } from 'semantic-ui-react';
+import { Search, Grid } from 'semantic-ui-react';
 import axios from 'axios';
 
 const initialState = { isLoading: false, results: [], value: '' };
 
 const source = [];
 
-// const state = [];
-
 axios.get('/products').then(res => {
   const newData = res.data;
   newData.map(product => {
     source.push({
       title: product.name,
-      description: `Код: ${product.itemNo}`,
+      description: product.itemNo,
       image: product.imageUrls[0],
       price: `${product.currentPrice} $`
     });
@@ -24,7 +22,7 @@ axios.get('/products').then(res => {
 export default class SearchExampleStandard extends Component {
   state = initialState;
 
-  handleResultSelect = (e, { result }) => this.setState({ value: result.title });
+  handleResultSelect = (e, { result }) => (window.location = `/products/${result.description}`);
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value });
@@ -44,7 +42,6 @@ export default class SearchExampleStandard extends Component {
 
   render() {
     const { isLoading, value, results } = this.state;
-
     return (
       <Grid>
         <Grid.Row centered>
