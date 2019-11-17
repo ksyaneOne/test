@@ -10,10 +10,8 @@ const initialState = {
   desctiption: '',
   price: 25,
   category: 'category where product is shown',
-  images: [],
+  images: []
 };
 const [state, setState] = useState(initialState);
 
-const ProductDetails = () => (
-  <div className="container" />
-);
+const ProductDetails = () => <div className="container" />;

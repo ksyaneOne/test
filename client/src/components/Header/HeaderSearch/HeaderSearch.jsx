@@ -22,7 +22,7 @@ axios.get('/products').then(res => {
 export default class SearchExampleStandard extends Component {
   state = initialState;
 
-  handleResultSelect = (e, { result }) => (window.location = `/products/${result.description}`);
+  handleResultSelect = (e, { result }) => (window.location = `/product/${result.description}`);
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value });
