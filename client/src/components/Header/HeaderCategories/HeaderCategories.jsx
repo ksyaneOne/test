@@ -1,15 +1,16 @@
 import React from 'react';
 
 import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import HeaderCategoriesTitle from './style';
 
 function HeaderCategories(props) {
   return (
-    <div>
+    <Link to="/products">
       <Icon name="list layout" size="large" title="Categories" />
-      <HeaderCategoriesTitle>Categories</HeaderCategoriesTitle>
-    </div>
+      <HeaderCategoriesTitle>Products</HeaderCategoriesTitle>
+    </Link>
   );
 }
 
