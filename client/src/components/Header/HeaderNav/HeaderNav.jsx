@@ -33,7 +33,7 @@ export default function HeaderNav(props) {
                 size="large"
                 onClick={() => setMenuVisible(!menuVisible)}
               />
-              Menu
+              Categories
             </HeaderMenuItem>
           </Menu.Item>
           {menuVisible && <div>{NavElements}</div>}
