@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Segment, GridColumn, Menu } from 'semantic-ui-react';
+import { Grid, Segment, GridColumn, Menu, Transition, Responsive } from 'semantic-ui-react';
 
 import HeaderLogo from './HeaderLogo';
 import HeaderSearch from './HeaderSearch';
@@ -15,7 +15,7 @@ export default class Header extends Component {
   render() {
     return (
       <HeaderWrapper>
-        <Grid columns="equal" inverted textAlign="center" verticalAlign="middle">
+        <Grid columns="equal" inverted verticalAlign="middle">
           <Grid.Row color="black" textAlign="center">
             <Grid.Column width="2">
               <Segment color="black" inverted>
@@ -23,9 +23,11 @@ export default class Header extends Component {
               </Segment>
             </Grid.Column>
             <Grid.Column width="6">
-              <Segment color="black" inverted>
-                <HeaderSearch />
-              </Segment>
+              <Responsive minWidth={568}>
+                <Segment color="black" inverted>
+                  <HeaderSearch />
+                </Segment>
+              </Responsive>
             </Grid.Column>
             <GridColumn width="6">
               <Segment color="black" inverted>
