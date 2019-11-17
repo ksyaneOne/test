@@ -21,7 +21,7 @@ axios.get('/products').then(res => {
   });
 });
 
-export default class SearchExampleStandard extends Component {
+export default class HeaderSearch extends Component {
   state = initialState;
 
   handleOpen = () => this.setState({ modalOpen: true });
