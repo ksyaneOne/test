@@ -15,15 +15,12 @@ import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollButton';
-import { Sticky } from 'semantic-ui-react';
 
 export default class App extends Component {
   render() {
     return (
       <Router history={history}>
-        {/* <Sticky> */}
         <Header />
-        {/* </Sticky> */}
 
         <Switch>
           <Route exact path="/" component={Home} />

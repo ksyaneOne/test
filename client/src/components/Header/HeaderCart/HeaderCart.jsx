@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
+
 import { Icon } from 'semantic-ui-react';
 
-import { HeaderCartCount, HeaderCartTitle, HeaderCartIcon } from './style';
+import { HeaderCartCount, HeaderCartTitle } from './style';
 
-function HeaderCart(props) {
+export default function HeaderCart(props) {
   const [count, setCount] = useState(1);
   return (
     <Link to="cart">
@@ -15,5 +15,3 @@ function HeaderCart(props) {
     </Link>
   );
 }
-
-export default HeaderCart;

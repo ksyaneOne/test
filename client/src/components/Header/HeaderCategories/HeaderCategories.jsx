@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 import HeaderCategoriesTitle from './style';
 
-function HeaderCategories(props) {
+export default function HeaderCategories(props) {
   return (
     <Link to="/products">
       <Icon name="list layout" size="large" title="Categories" />
@@ -13,5 +13,3 @@ function HeaderCategories(props) {
     </Link>
   );
 }
-
-export default HeaderCategories;

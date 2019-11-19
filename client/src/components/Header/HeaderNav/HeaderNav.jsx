@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, Responsive, Icon, Transition } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-
 import useFetch from '../../../utils/useFetch';
+
+import { Menu, Responsive, Icon } from 'semantic-ui-react';
 import { HeaderNavStyle, HeaderMenuItem } from './style';
 
 export default function HeaderNav(props) {
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const { loading, data } = useFetch('/catalog', []);
+  const { data } = useFetch('/catalog', []);
 
   const NavElements = data.map(item => (
     <Menu.Item

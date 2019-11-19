@@ -1,11 +1,11 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+
 import { Icon } from 'semantic-ui-react';
 
 import HeaderAccountTitle from './style';
 
-function HeaderAccount(props) {
+export default function HeaderAccount(props) {
   return (
     <Link to="account">
       <Icon name="user" size="large" title="Account" />
@@ -13,5 +13,3 @@ function HeaderAccount(props) {
     </Link>
   );
 }
-
-export default HeaderAccount;
