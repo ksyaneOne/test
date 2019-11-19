@@ -9,3 +9,4 @@ export const HeaderNavStyle = styled.div`
 export const HeaderMenuItem = styled.div`
   text-transform: capitalize !important;
 `;
+

@@ -3,7 +3,14 @@ import React, { Component } from 'react';
 import { Search, Grid, Modal, Header, Image, Button, Icon } from 'semantic-ui-react';
 import axios from 'axios';
 
-const initialState = { isLoading: false, results: [], value: '', modalInfo: {}, modalOpen: false };
+const initialState = {
+  isLoading: false,
+  results: [],
+  value: '',
+  modalInfo: {},
+  modalOpen: false,
+  source: []
+};
 
 const source = [];
 
