@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dimmer, Loader, Segment, Header } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import ProductCart from '../ProductCard';
 import useFetch from '../../../utils/useFetch';
 import WithScroll from '../../CarouselWithScrollbar';
@@ -10,7 +11,9 @@ export default function ProductList() {
 
   const productElements = data.map(item => (
     <div key={item._id}>
-      <ProductCart product={item} />
+      <Link to={`/products/${item.itemNo}`}>
+        <ProductCart product={item} />
+      </Link>
     </div>
   ));
   if (loading)
