@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Label, Segment } from 'semantic-ui-react';
+import { Card, Button, Label, Segment, Icon } from 'semantic-ui-react';
 import 'react-multi-carousel/lib/styles.css';
 import ImgWrapper from './imgWrapper';
 import CardWrapper from './cardWrapper';
@@ -20,12 +20,14 @@ function CardExampleCard(props) {
             <Card.Header>{product.name}</Card.Header>
             <div>{product.previousPrice}$</div>
           </Card.Content>
-          <Card.Content extra>
-            <div className="ui two buttons">
-              <Button basic color="black">
-                Add to Card
+          <Card.Content>
+            <div>
+              <Button>
+                <Icon name="like"></Icon>
               </Button>
-              <Button secondary>Buy</Button>
+              <Button>
+                <Icon name="shopping cart"></Icon>
+              </Button>
             </div>
           </Card.Content>
         </Card>
