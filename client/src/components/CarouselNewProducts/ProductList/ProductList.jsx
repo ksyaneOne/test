@@ -6,7 +6,7 @@ import useFetch from '../../../utils/useFetch';
 import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
 
-export default function ProductList() {
+const ProductList = () => {
   const { loading, data } = useFetch('/products', []);
 
   const productElements = data.map(item => (
@@ -30,4 +30,5 @@ export default function ProductList() {
       </Segment>
     </div>
   );
-}
+};
+export default ProductList;

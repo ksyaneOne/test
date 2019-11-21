@@ -6,7 +6,7 @@ import WithScroll from '../../CarouselWithScrollbar';
 import useFetch from '../../../utils/useFetch';
 import carouselSettings from './carouselSettings';
 
-export default function CategoryList() {
+const CategoryList = () => {
   const { loading, data } = useFetch('/catalog', []);
   const categoryElements = data.map(item => (
     <div key={item._id}>
@@ -29,4 +29,5 @@ export default function CategoryList() {
       </Segment>
     </div>
   );
-}
+};
+export default CategoryList;

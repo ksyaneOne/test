@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ImgWrapper from './imgWrapper';
 import CardWrapper from './cardWrapper';
 
-function CategoryCard(props) {
+const CategoryCard = props => {
   const { category } = props;
   return (
     <CardWrapper>
@@ -18,5 +18,5 @@ function CategoryCard(props) {
       </Card>
     </CardWrapper>
   );
-}
+};
 export default CategoryCard;
