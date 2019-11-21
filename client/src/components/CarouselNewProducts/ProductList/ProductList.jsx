@@ -11,7 +11,7 @@ export default function ProductList() {
 
   const productElements = data.map(item => (
     <div key={item._id}>
-      <Link to={`/products/${item.itemNo}`}>
+      <Link to={{ pathname: `/product/${item.itemNo}`, product: item }}>
         <ProductCart product={item} />
       </Link>
     </div>
