@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ImgWrapper from './imgWrapper';
 import CardWrapper from './cardWrapper';
 
-function CardExampleCard(props) {
+const NewProduct = props => {
   const { product } = props;
   return (
     <CardWrapper>
@@ -34,6 +34,6 @@ function CardExampleCard(props) {
       </Segment>
     </CardWrapper>
   );
-}
+};
 
-export default CardExampleCard;
+export default NewProduct;
