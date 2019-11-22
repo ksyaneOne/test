@@ -1,12 +1,17 @@
+import Cookies from 'js-cookie'
 import apiService from '../services/api/apiService';
 
+
 const onAuthorization = async data => {
-  apiService({
+  await apiService()({
     method: 'post',
     url: '/customers/login',
     data
   })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      if(!Cookies.get('token')) Cookies.set('token', res.data.token, { expires:1});
+    })
+    .catch(err => {
+      throw new Error(err)});
 };
 export default onAuthorization;
