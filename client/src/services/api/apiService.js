@@ -1,5 +1,10 @@
 
 import axios from 'axios';
+import Cookies from 'js-cookie'
+import jwtDecode from 'jwt-decode';
+
+const BASE_URL =  "http://localhost:5000";
+
 // import initialConfig, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
 
 // const apiService = axios.create({ ...initialConfig, baseURL: process.env.REACT_APP_API });
@@ -8,18 +13,15 @@ import axios from 'axios';
 //   handleInterceptorsResponse,
 //   handleInterceptorsError,
 // );
-const setAuthToken = token => {
-  if (token) {
-    // Apply to every request
-    axios.defaults.headers.common.Authorization = token;
-  } else {
-    // Delete auth header
-    delete axios.defaults.headers.common.Authorization;
+const apiService = () => {
+  let authorizationToken = null;
+  if (Cookies.get('token') && jwtDecode(Cookies.get('token')).exp) {
+    authorizationToken = Cookies.get('token');
   }
+
+  return  axios.create({
+    baseURL: BASE_URL,
+    headers: { 'Authorization': authorizationToken }
+  });
 };
-
-const BASE_URL =  "http://localhost:5000";
-
-const apiService = axios.create({ baseURL:BASE_URL  });
-
 export default apiService;
