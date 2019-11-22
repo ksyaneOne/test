@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
+import { Sticky } from 'semantic-ui-react';
 import history from './utils/history';
 import LayoutDefault from './components/layouts/LayoutDefault';
 import * as routes from './config/routes';
@@ -15,7 +16,6 @@ import ProductList from './pages/ProductList';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollButton';
-import { Sticky } from 'semantic-ui-react';
 
 export default class App extends Component {
   render() {
