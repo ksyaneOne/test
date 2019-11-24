@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 
-const HeaderNavStyle = styled.div`
+export const HeaderNavStyle = styled.div`
   z-index: 999;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
-
-export default HeaderNavStyle;
+export const HeaderMenuItem = styled.div`
+  text-transform: capitalize !important;
+`;
