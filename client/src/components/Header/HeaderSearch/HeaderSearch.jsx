@@ -42,7 +42,7 @@ const resultRenderer = ({ title, image, description, price }) => (
           <Image src={image} />
         </div>
         <div className="content">
-          <div className="title">{title}</div>
+          <div className="title" style={{textTransform: "capitalize"}}>{title}</div>
 
           <div className="description">{description}</div>
           <div className="price">{price}</div>
