@@ -27,7 +27,11 @@
     "redux-form": "^8.2.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+<<<<<<< HEAD
     "semantic-ui-carousel-react": "^1.0.3",
+=======
+    "reset-css": "^5.0.1",
+>>>>>>> 00b033179361d8f7ee49fa47184ee6cd76f362c1
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
     "throttle-debounce": "^2.1.0"
