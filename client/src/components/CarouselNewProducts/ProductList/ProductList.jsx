@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Dimmer, Loader, Segment, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ProductCart from '../ProductCard';
-import useFetch from '../../../utils/useFetch';
 import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
+import getProducts from '../../../actions/products';
 
-const ProductList = () => {
-  const { loading, data } = useFetch('/products', []);
+const ProductList = props => {
+  const { loading, products, onGetProducts } = props;
 
-  const productElements = data.map(item => (
+  useEffect(onGetProducts, [onGetProducts]);
+
+  const productElements = products.map(item => (
     <div key={item._id}>
-      <Link to={{ pathname: `/product/${item.itemNo}`, product: item }}>
-        <ProductCart product={item} />
-      </Link>
+      <ProductCart product={item} />
     </div>
   ));
-  if (loading)
+  if (!loading)
     return (
       <Dimmer active>
         <Loader />
@@ -31,4 +32,28 @@ const ProductList = () => {
     </div>
   );
 };
-export default ProductList;
+ProductList.propTypes = {
+  onGetProducts: PropTypes.func,
+  loading: PropTypes.bool.isRequired,
+  products: PropTypes.arrayOf(PropTypes.object)
+};
+
+ProductList.defaultProps = {
+  products: [],
+  onGetProducts: {}
+};
+const mapStateToProps = state => ({
+  products: state.products.products,
+  loading: state.products.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  onGetProducts: () => {
+    dispatch(getProducts());
+  }
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductList);
