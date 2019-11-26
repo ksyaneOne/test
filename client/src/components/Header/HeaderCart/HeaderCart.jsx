@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { Icon } from 'semantic-ui-react';
@@ -6,6 +7,7 @@ import { Icon } from 'semantic-ui-react';
 import { HeaderCartCount, HeaderCartTitle } from './style';
 
 export default function HeaderCart(props) {
+  
   const [count, setCount] = useState(1);
   return (
     <Link to="cart">
