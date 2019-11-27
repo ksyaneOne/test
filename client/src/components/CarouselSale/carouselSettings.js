@@ -6,7 +6,7 @@ export default {
   containerClass: 'container',
   dotListClass: '',
   focusOnSelect: false,
-  itemClass: 'image',
+  itemClass: '',
   minimumTouchDrag: 80,
   renderButtonGroupOutside: false,
   renderDotsOutside: false,

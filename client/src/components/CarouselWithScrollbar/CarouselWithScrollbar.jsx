@@ -88,7 +88,7 @@ class WithScrollbar extends React.Component {
         additionalTransfrom={-this.state.additionalTransfrom}
         beforeChange={nextSlide => {
           if (nextSlide !== 0 && this.state.additionalTransfrom !== 150) {
-            this.setState({ additionalTransfrom: 150 });
+            this.setState({ additionalTransfrom: 0 });
           }
           if (nextSlide === 0 && this.state.additionalTransfrom === 150) {
             this.setState({ additionalTransfrom: 0 });
