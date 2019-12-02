@@ -6,11 +6,11 @@ export default {
   className: '',
   containerClass: 'container',
   dotListClass: '',
-  draggable: true,
+  draggable: false,
   focusOnSelect: true,
   infinite: true,
   itemClass: '',
-  keyBoardControl: true,
+  keyBoardControl: false,
   minimumTouchDrag: 80,
   renderButtonGroupOutside: false,
   renderDotsOutside: false,
@@ -42,5 +42,5 @@ export default {
   },
   sliderClass: '',
   slidesToSlide: 1,
-  swipeable: true
+  swipeable: false
 };

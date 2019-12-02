@@ -82,7 +82,7 @@ class WithScrollbar extends React.Component {
         ref={el => (this.Carousel = el)}
         partialVisible={false}
         customButtonGroup={<CustomSlider />}
-        itemClass="image-item"
+        keyBoardControl={false}
         responsive={responsive}
         containerClass="carousel-container-with-scrollbar"
         additionalTransfrom={-this.state.additionalTransfrom}
