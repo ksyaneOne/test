@@ -24,6 +24,9 @@ const getProducts = () => {
         payload: { loading: false }
       });
       const products = await fetchProductsApi();
+      if (products.name === 'Error') {
+        throw new Error(products.message);
+      }
       dispatch({
         type: FETCH_PRODUCTS_SUCCESS,
         payload: { products, loading: true }
@@ -31,8 +34,7 @@ const getProducts = () => {
     } catch (err) {
       dispatch({
         type: FETCH_PRODUCTS_FAILURE,
-        payload: { err, loading: false },
-        error: true
+        payload: { error: err, loading: true }
       });
     }
   };

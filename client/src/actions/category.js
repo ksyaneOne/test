@@ -24,6 +24,9 @@ const getCategory = () => {
         payload: { loading: false }
       });
       const categories = await fetchCategoriesApi();
+      if (categories.name === 'Error') {
+        throw new Error(categories.message);
+      }
       dispatch({
         type: FETCH_CATEGORIES_SUCCESS,
         payload: { categories, loading: true }
@@ -31,8 +34,7 @@ const getCategory = () => {
     } catch (err) {
       dispatch({
         type: FETCH_CATEGORIES_FAILURE,
-        payload: err,
-        error: true
+        payload: { error: err, loading: true }
       });
     }
   };

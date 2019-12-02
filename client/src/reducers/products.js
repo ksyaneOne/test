@@ -13,7 +13,7 @@ const products = (state = initialState, action) => {
     case FETCH_PRODUCTS_SUCCESS:
       return { ...state, products: payload.products, loading: payload.loading };
     case FETCH_PRODUCTS_FAILURE:
-      return { ...state, error: payload.err, loading: payload.loading };
+      return { ...state, error: payload.err, products: [], loading: payload.loading };
     default:
       return { ...state };
   }
