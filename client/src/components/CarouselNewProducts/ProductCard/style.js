@@ -90,6 +90,7 @@ box-sizing: border-box;
     }
   }
 `;
+
 export const ButtonsGrop = styled.div`
    {
     .buttons-grop {
@@ -123,3 +124,4 @@ export const ImageWrapper = styled.div`
     transform: translate(-50%, -50%);
   }
 `;
+
