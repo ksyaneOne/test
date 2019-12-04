@@ -4,9 +4,9 @@ import 'react-multi-carousel/lib/styles.css';
 
 const MainCarousel = (props) => {
 	return (
-  <Carousel {...props.carouselSettings}>
-    {props.elements}
-  </Carousel>
+		<Carousel {...props.carouselSettings} >
+			{props.elements}
+		</Carousel>
 	)
 }
 

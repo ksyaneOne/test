@@ -62,7 +62,8 @@ class WithScrollbar extends React.Component {
               }
               const nextTransform = e.target.value * value;
               const nextSlide = Math.round(nextTransform / carouselItemWidth);
-              if (e.target.value == 0 && this.state.additionalTransfrom === 150) {
+              if (e.target.value === 0 && this.state.additionalTransfrom === 150) {
+
                 this.Carousel.isAnimationAllowed = true;
                 this.setState({ additionalTransfrom: 0 });
               }
@@ -82,13 +83,13 @@ class WithScrollbar extends React.Component {
         ref={el => (this.Carousel = el)}
         partialVisible={false}
         customButtonGroup={<CustomSlider />}
-        itemClass="image-item"
+        keyBoardControl={false}
         responsive={responsive}
         containerClass="carousel-container-with-scrollbar"
         additionalTransfrom={-this.state.additionalTransfrom}
         beforeChange={nextSlide => {
           if (nextSlide !== 0 && this.state.additionalTransfrom !== 150) {
-            this.setState({ additionalTransfrom: 150 });
+            this.setState({ additionalTransfrom: 0 });
           }
           if (nextSlide === 0 && this.state.additionalTransfrom === 150) {
             this.setState({ additionalTransfrom: 0 });
