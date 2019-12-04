@@ -12,12 +12,12 @@ const CarouselSale = () => {
     <Image
       style={style}
       key={111}
-      src="https://motokvartal.com.ua/content/images/10/79953593975151.webp"
+      src="https://motokvartal.com.ua/content/images/5/47726312021618.webp"
     />,
     <Image
       style={style}
       key={211}
-      src="https://motokvartal.com.ua/content/images/50/72104498619834.webp"
+      src="https://motokvartal.com.ua/content/images/10/14702012566196.webp"
     />,
     <Image
       style={style}
