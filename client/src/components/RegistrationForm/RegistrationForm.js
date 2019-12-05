@@ -60,7 +60,7 @@ const RegistrationForm = () => {
           type="text"
           placeholder="Your login"
         />
-        <Err error={errors.login}>LoginForm must be between 3 and 10 characters</Err>
+        <Err error={errors.login}>Login must be between 3 and 10 characters</Err>
       </Label>
       <Label>
         EMAIL ADRESS
