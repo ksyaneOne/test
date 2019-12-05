@@ -10,6 +10,7 @@ const onRegistered =  (data) => {
   })
     .then(savedCustomer => console.log(savedCustomer))
     .catch(err => {
+    console.log(err)
     return err;})
 };
 export default onRegistered;
