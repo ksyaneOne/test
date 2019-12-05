@@ -6,23 +6,26 @@ import { Input } from '../CustomComponents/Input';
 import { Label, ButtonIn, Div, Err } from './StyleRegistrationForm';
 
 const initialState = {
-  firstName: '',
-  lastName: '',
-  login: '',
-  email: '',
-  password: '',
-  Confirm: ''
+    userData:{
+        firstName: '',
+        lastName: '',
+        login: '',
+        email: '',
+        password: ''},
+    Confirm: '',
+    error: null,
 };
 
 const RegistrationForm = () => {
   const [state, setState] = useState(initialState);
   const { register, handleSubmit, watch, errors } = useForm();
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     setState(data);
-    const dataForDispatch = { ...data };
-    delete dataForDispatch.Confirm;
-    onRegistered(dataForDispatch);
+    const dataForDispatch = { ...state.userData , ...data };
+     delete dataForDispatch.Confirm;
+    await onRegistered(dataForDispatch).then( err => {
+         setState({...state, error : err})} );
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -31,11 +34,11 @@ const RegistrationForm = () => {
         <Input
           errors={errors}
           name="firstName"
-          ref={register({ required: true, minlength: 3, pattern: /^[a-zA-Z]+$/ })}
+          ref={register({ required: true, minlength: 3, pattern: /^[a-zA-Zа-яА-Я]+$/ })}
           type="text"
           placeholder="Your first name"
         />
-        {errors.firstName && <Err>This field is invalid</Err>}
+        <Err error={errors.firstName}>First Name is a-z, A-Z, а-я, А-Я between 2 and 25 characters</Err>
       </Label>
       <Label>
         LAST NAME
@@ -46,18 +49,18 @@ const RegistrationForm = () => {
           type="text"
           placeholder="Your last name"
         />
-        {errors.lastName && <Err>This field is invalid</Err>}
+        <Err error={errors.lastName}>Last Name is a-z, A-Z, а-я, А-Я, between 2 and 25 characters</Err>
       </Label>
       <Label>
         LOGIN
         <Input
           errors={errors}
           name="login"
-          ref={register({ required: true, minlength: 3, maxlength: 10 })}
+          ref={register({ required: true,pattern:/^[a-zA-Z0-9]+$/, minlength: 3, maxlength: 10 })}
           type="text"
           placeholder="Your login"
         />
-        {errors.login && <Err>This field is invalid</Err>}
+        <Err error={errors.login}>LoginForm must be between 3 and 10 characters</Err>
       </Label>
       <Label>
         EMAIL ADRESS
@@ -71,7 +74,7 @@ const RegistrationForm = () => {
           type="email"
           placeholder="Email"
         />
-        {errors.email && <Err>This field is invalid</Err>}
+        <Err error={errors.email}>This field is invalid</Err>
       </Label>
       <Label>
         PASSWORD
@@ -80,12 +83,14 @@ const RegistrationForm = () => {
           name="password"
           ref={register({
             required: true,
-            minlength: 8
+              pattern:/^[a-zA-Z0-9]+$/,
+            minlength: 8,
+              maxlength: 30
           })}
           type="password"
           placeholder="Password"
         />
-        {errors.password && <Err>This field is invalid</Err>}
+        <Err error={errors.password}>Allowed characters for password is a-z, A-Z, 0-9, between 7 and 30 characters</Err>
       </Label>
       <Input
         errors={errors}
@@ -98,7 +103,8 @@ const RegistrationForm = () => {
         })}
         placeholder="Confirm password"
       />
-      {errors.Confirm && <Err>This field is invalid</Err>}
+      <Err error={errors.Confirm}>Allowed characters for password is a-z, A-Z, 0-9, between 7 and 30 characters</Err>
+      {state.error && <Err error>This user is already exists.</Err>}
       <Div>
         <ButtonIn type="submit" content="REGISTER" />
       </Div>

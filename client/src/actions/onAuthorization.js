@@ -10,8 +10,7 @@ const onAuthorization = async data => {
   })
     .then(res => {
       if(!Cookies.get('token')) Cookies.set('token', res.data.token, { expires:1});
-    })
-    .catch(err => {
-      throw new Error(err)});
+    }).catch(err => console.log(err))
+
 };
 export default onAuthorization;
