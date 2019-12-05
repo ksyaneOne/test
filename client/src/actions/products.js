@@ -6,9 +6,9 @@ export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
 
 // Fetch  PRODUCT By Id
-export const FETCH_PRODUCTBYID_START = 'FETCH_PRODUCTBYID_START';
-export const FETCH_PRODUCTBYID_SUCCESS = 'FETCH_PRODUCTBYID_SUCCESS';
-export const FETCH_PRODUCTBYID_FAILURE = 'FETCH_PRODUCTBYID_FAILURE';
+export const FETCH_PRODUCTBYID_START = 'FETCH_PRODUCT_BY_ID_START';
+export const FETCH_PRODUCTBYID_SUCCESS = 'FETCH_PRODUCT_BY_ID_SUCCESS';
+export const FETCH_PRODUCTBYID_FAILURE = 'FETCH_PRODUCT_BY_ID_FAILURE';
 
 const fetchProductsApi = async () => {
   return axios
@@ -22,10 +22,10 @@ const fetchProductsApi = async () => {
 };
 
 const fetchProductByIdApi = async id => {
-  axios
-    .get(`/products/${id}`)
-    .then(product => {
-      return product.data;
+  return axios
+    .get(`/products/${id}/`)
+    .then(products => {
+      return products.data;
     })
     .catch(err => {
       return err;
@@ -64,9 +64,6 @@ export const getProductById = id => {
         payload: { loading: false }
       });
       const product = await fetchProductByIdApi(id);
-      if (product.name === 'Error') {
-        throw new Error(product.message);
-      }
       dispatch({
         type: FETCH_PRODUCTBYID_SUCCESS,
         payload: { product, loading: true }
