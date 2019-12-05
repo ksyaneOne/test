@@ -14,7 +14,7 @@ export const RegistrationBtn = styled(LoginBtn)`
 export const WrapperBtn = styled.div`
   display: flex;
   justify-content: space-around;
-  padding-top: 20vh;
+  padding-top: 10vh;
   margin-bottom: 20px;
 `;
 export const Div = styled.div`

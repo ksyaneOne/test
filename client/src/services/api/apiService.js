@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode';
@@ -17,7 +18,6 @@ const apiService = () => {
   if (Cookies.get('token') && jwtDecode(Cookies.get('token')).exp) {
     authorizationToken = Cookies.get('token');
   }
-
   return  axios.create({
     baseURL: BASE_URL,
     headers: { 'Authorization': authorizationToken }
