@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProductDetails = props => {
-  console.log(props, 'props PD');
+  console.log(props.location);
   return <h1>PD</h1>;
 }
 

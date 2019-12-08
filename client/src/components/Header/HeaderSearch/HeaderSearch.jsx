@@ -4,29 +4,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Search, Grid, Image} from 'semantic-ui-react';
 
-const resultRenderer = ({ title, image, description, price, color }) => (
-  <Link
-    to={{
-      pathname: `/product/${description}`,
-      searchResult: { productCode: `${description}` }
-    }}
-  >
-    <div className="results transition">
-      <div className="result" color="black" style={{textTransform: "capitalize"}}>
-        <div className="image">
-          <Image src={image} />
-        </div>
-        <div className="content">
-          <div className="title" style={{textTransform: "capitalize"}}>{title} <span className="price">{price}</span></div>
-          <div className="title" >{color}</div>
-          <div className="description">{description}</div>
-          
-        </div>
-      </div>
-    </div>
-  </Link>
-);
-const initialState = {isLoading: false, results: [], value: ''};
+
+
+const initialState = {isLoading: false, results: [], value: '', result:[]};
 const source = [];
 
 axios.get('/products').then(res => {
@@ -38,7 +18,8 @@ axios.get('/products').then(res => {
       size: product.size,
       color: product.color,
       image: product.imageUrls[0],
-      price: `${product.currentPrice} $`
+      price: `${product.currentPrice} $`,
+      images: product.imageUrls
     });
   });
 });
@@ -46,7 +27,7 @@ axios.get('/products').then(res => {
 const HeaderSearch = props =>{
 const [state, setState] = useState(initialState)
 
-const handleResultSelect = (event, { result }) => setState({ value: '' })
+const handleResultSelect = (event, { result }) => setState({ value: '', result })
 
 const handleSearchChange = (event, { value }) => {
   setState({ isLoading: true, value })
@@ -59,12 +40,30 @@ const handleSearchChange = (event, { value }) => {
 
     setState({
       isLoading: false,
-      results: _.filter(source, isMatch),
+      results: _.filter(source, isMatch)
     })
   }, 300)
 }
-  
-const {isLoading, results, value} = state;
+
+
+
+const {isLoading, results, value, result} = state;
+const resultRenderer = ({ title, image, description, price, color}) => (
+  <Link to={{ pathname: `/product/${description}`}}>
+    <div className="results transition">
+      <div className="result" color="black" style={{textTransform: "capitalize"}}>
+        <div className="image">
+          <Image src={image} />
+        </div>
+        <div className="content">
+          <div className="title" style={{textTransform: "capitalize"}}>{title} <span className="price">{price}</span></div>
+          <div className="title" >{color}</div>
+          <div className="description">{description}</div>
+        </div>
+      </div>
+    </div>
+  </Link>
+);
     return (
       <Grid>
         <Grid.Row centered>
