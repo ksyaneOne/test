@@ -63,7 +63,6 @@ class WithScrollbar extends React.Component {
               const nextTransform = e.target.value * value;
               const nextSlide = Math.round(nextTransform / carouselItemWidth);
               if (e.target.value === 0 && this.state.additionalTransfrom === 150) {
-
                 this.Carousel.isAnimationAllowed = true;
                 this.setState({ additionalTransfrom: 0 });
               }
