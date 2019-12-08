@@ -66,7 +66,8 @@ export const ProductPrices = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 300px;
   margin: 10px;
   transition all 0.3s ease; 
   &:hover {
