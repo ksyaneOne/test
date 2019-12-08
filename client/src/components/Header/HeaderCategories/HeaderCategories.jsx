@@ -5,7 +5,7 @@ import { Icon } from 'semantic-ui-react';
 
 import HeaderCategoriesTitle from './style';
 
-export default function HeaderCategories() {
+export default function HeaderCategories(props) {
   return (
     <Link to="/products">
       <Icon name="list layout" size="large" title="Categories" />
