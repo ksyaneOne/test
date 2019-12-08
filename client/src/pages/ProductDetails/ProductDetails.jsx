@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function ProductDetails(props) {
+const ProductDetails = props => {
   console.log(props, 'props PD');
   return <h1>PD</h1>;
 }
+
+export default ProductDetails
