@@ -10,7 +10,7 @@ import HeaderNav from './HeaderNav';
 import { Grid, Segment, GridColumn, Menu, Responsive } from 'semantic-ui-react';
 import HeaderWrapper from './style';
 
-export default function Header(props) {
+const Header = props => {
   return (
     <HeaderWrapper>
       <Grid columns="equal" inverted verticalAlign="middle">
@@ -50,3 +50,5 @@ export default function Header(props) {
     </HeaderWrapper>
   );
 }
+
+export default Header

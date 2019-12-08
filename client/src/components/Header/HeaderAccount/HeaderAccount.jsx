@@ -5,7 +5,7 @@ import { Icon } from 'semantic-ui-react';
 
 import HeaderAccountTitle from './style';
 
-export default function HeaderAccount(props) {
+const HeaderAccount = props => {
   return (
     <Link to="login">
       <Icon name="user" size="large" title="Account" />
@@ -13,3 +13,4 @@ export default function HeaderAccount(props) {
     </Link>
   );
 }
+export default HeaderAccount

@@ -43,7 +43,7 @@ axios.get('/products').then(res => {
   });
 });
 
-export default function HeaderSearch(props){
+const HeaderSearch = props =>{
 const [state, setState] = useState(initialState)
 
 const handleResultSelect = (event, { result }) => setState({ value: '' })
@@ -83,3 +83,5 @@ const {isLoading, results, value} = state;
       </Grid>
     );
 }
+
+export default HeaderSearch

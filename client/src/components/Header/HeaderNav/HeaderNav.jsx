@@ -5,7 +5,7 @@ import useFetch from '../../../utils/useFetch';
 import { Menu, Responsive, Icon } from 'semantic-ui-react';
 import { HeaderNavStyle, HeaderMenuItem } from './style';
 
-export default function HeaderNav(props) {
+const HeaderNav = props => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const { data } = useFetch('/catalog', []);
@@ -47,3 +47,5 @@ export default function HeaderNav(props) {
     </>
   );
 }
+
+export default HeaderNav

@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import Logo from './header_logo.png';
 import HeaderLogoStyle from './style.js';
 
-export default function HeaderLogo(props) {
+const HeaderLogo = props => {
   return (
     <Link to="/">
       <HeaderLogoStyle src={Logo} alt="Header logo" />
     </Link>
   );
 }
+
+export default HeaderLogo

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 import { Grid, List, Divider } from 'semantic-ui-react';
@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { FooterStyle, FooterTitle } from './FooterStyle';
 
-class Footer extends Component {
-  render() {
+const Footer = () => {
     return (
       <FooterStyle>
         <Grid textAlign="center" columns={3}>
@@ -82,7 +81,6 @@ class Footer extends Component {
         </Grid>
       </FooterStyle>
     );
-  }
 }
 
 export default Footer;
