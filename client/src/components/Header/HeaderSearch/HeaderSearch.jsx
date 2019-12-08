@@ -6,7 +6,7 @@ import { Search, Grid, Image} from 'semantic-ui-react';
 
 
 
-const initialState = {isLoading: false, results: [], value: '', result:[]};
+const initialState = {isLoading: false, results: [], value: '', result:{}};
 const source = [];
 
 axios.get('/products').then(res => {
@@ -25,9 +25,10 @@ axios.get('/products').then(res => {
 });
 
 const HeaderSearch = props =>{
+
 const [state, setState] = useState(initialState)
 
-const handleResultSelect = (event, { result }) => setState({ value: '', result })
+const handleResultSelect = (event, { result }) => setState({ value: '', result})
 
 const handleSearchChange = (event, { value }) => {
   setState({ isLoading: true, value })
@@ -46,10 +47,11 @@ const handleSearchChange = (event, { value }) => {
 }
 
 
-
 const {isLoading, results, value, result} = state;
-const resultRenderer = ({ title, image, description, price, color}) => (
-  <Link to={{ pathname: `/product/${description}`}}>
+
+
+const resultRenderer = ({ title, image, description, price, color, state}) => (
+  <Link to={{ pathname: `/product/${description}`, state}}>
     <div className="results transition">
       <div className="result" color="black" style={{textTransform: "capitalize"}}>
         <div className="image">
@@ -77,10 +79,10 @@ const resultRenderer = ({ title, image, description, price, color}) => (
             results={results}
             {...props}
             value={value}
+            state={result}
           />
         </Grid.Row>
       </Grid>
     );
 }
-
 export default HeaderSearch
