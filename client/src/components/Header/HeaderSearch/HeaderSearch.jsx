@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { Search, Grid, Image} from 'semantic-ui-react';
 
 
-
-const initialState = {isLoading: false, results: [], value: '', result:{}};
+const initialState = {isLoading: false, results: [], value: ''};
 const source = [];
 
 axios.get('/products').then(res => {
@@ -19,16 +18,20 @@ axios.get('/products').then(res => {
       color: product.color,
       image: product.imageUrls[0],
       price: `${product.currentPrice} $`,
-      images: product.imageUrls
+      prevprice: product.previousPrice,
+      images: product.imageUrls,
+      desc: product.description,
+      brand: product.brand
     });
   });
 });
 
 const HeaderSearch = props =>{
 
+
 const [state, setState] = useState(initialState)
 
-const handleResultSelect = (event, { result }) => setState({ value: '', result})
+const handleResultSelect = (event, { result }) => setState({ value: ''})
 
 const handleSearchChange = (event, { value }) => {
   setState({ isLoading: true, value })
@@ -47,11 +50,11 @@ const handleSearchChange = (event, { value }) => {
 }
 
 
-const {isLoading, results, value, result} = state;
+const {isLoading, results, value} = state;
 
 
-const resultRenderer = ({ title, image, description, price, color, state}) => (
-  <Link to={{ pathname: `/product/${description}`, state}}>
+const resultRenderer = ({ title, image, description, price, color, images, brand, desc, prevprice} ) => (
+  <Link to={{ pathname: `/product/${description}`, product:{name: title, brand, description: desc, previousPrice: prevprice, currentPrice: price, color, image, images}}}>
     <div className="results transition">
       <div className="result" color="black" style={{textTransform: "capitalize"}}>
         <div className="image">
@@ -66,6 +69,7 @@ const resultRenderer = ({ title, image, description, price, color, state}) => (
     </div>
   </Link>
 );
+
     return (
       <Grid>
         <Grid.Row centered>
@@ -79,7 +83,6 @@ const resultRenderer = ({ title, image, description, price, color, state}) => (
             results={results}
             {...props}
             value={value}
-            state={result}
           />
         </Grid.Row>
       </Grid>

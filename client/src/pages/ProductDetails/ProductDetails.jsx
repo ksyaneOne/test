@@ -1,8 +1,14 @@
 import React from 'react';
+import ProductDetail from '../../components/ProductDetail/ProductDetail'
 
 const ProductDetails = props => {
-  console.log(props);
-  return <h1>PD</h1>;
+  const product = props.location.product;
+
+  const { name, description, currentPrice, previousPrice, color, image} = product;
+return (
+<ProductDetail name={name} description={description}/>
+
+)
 }
 
 export default ProductDetails
