@@ -18,6 +18,7 @@ export const Div = styled.div`
 export const Label = styled.label`
    display:flex;
    aline-item:center;
+   margin-top:10px;
    width:100%
 }
 `;

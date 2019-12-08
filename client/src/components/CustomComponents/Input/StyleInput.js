@@ -7,5 +7,5 @@ import styled from '@emotion/styled';
   outline: none;
   color: #fff;
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: 5px;
 `;
