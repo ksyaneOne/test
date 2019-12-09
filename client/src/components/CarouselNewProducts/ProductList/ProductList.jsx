@@ -26,7 +26,7 @@ const ProductList = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>Горячие новинки и хиты продаж</Header>
+        <Header>NEW PRODUCTS</Header>
         <WithScroll elements={productElements} carouselSettings={carouselSettings} />
       </Segment>
     </div>
