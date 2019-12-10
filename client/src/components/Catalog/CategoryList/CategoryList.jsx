@@ -28,7 +28,7 @@ const CategoryList = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>Категории</Header>
+        <Header>CATEGORIES</Header>
         <WithScroll elements={categoryElements} carouselSettings={carouselSettings} />
       </Segment>
     </div>

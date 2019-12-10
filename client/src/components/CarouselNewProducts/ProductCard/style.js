@@ -66,7 +66,8 @@ export const ProductPrices = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 300px;
   margin: 10px;
   transition all 0.3s ease; 
   &:hover {
@@ -90,7 +91,6 @@ box-sizing: border-box;
     }
   }
 `;
-
 export const ButtonsGrop = styled.div`
    {
     .buttons-grop {
@@ -124,4 +124,3 @@ export const ImageWrapper = styled.div`
     transform: translate(-50%, -50%);
   }
 `;
-

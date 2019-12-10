@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProductCart from '../ProductCard';
 import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
-import getProducts from '../../../actions/products';
+import { getProducts } from '../../../actions/products';
 
 const ProductList = props => {
   const { loading, products, onGetProducts } = props;
@@ -26,7 +26,7 @@ const ProductList = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>Горячие новинки и хиты продаж</Header>
+        <Header>NEW PRODUCTS</Header>
         <WithScroll elements={productElements} carouselSettings={carouselSettings} />
       </Segment>
     </div>
