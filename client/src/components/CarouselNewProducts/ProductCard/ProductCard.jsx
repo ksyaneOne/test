@@ -11,7 +11,7 @@ const getSale = (old, current) => {
 };
 
 const NewProduct = props => {
-  const { product } = props;
+  const { product, isNew } = props;
   const [priceSale, setPriceSale] = useState(0);
   useEffect(() => {
     setPriceSale(getSale(product.previousPrice, product.currentPrice));
@@ -23,9 +23,11 @@ const NewProduct = props => {
           <Link to={`/product/${product.itemNo}`}>
             <ImageWrapper>
               <img alt={product.name} src={product.imageUrls[0]} />
-              <Label color="red" ribbon="right">
-                New
-              </Label>
+              {isNew && (
+                <Label color="red" ribbon="right">
+                  New
+                </Label>
+              )}
             </ImageWrapper>
             <Card.Content>
               <ProductName>{product.name}</ProductName>

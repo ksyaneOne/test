@@ -14,7 +14,7 @@ const ProductList = props => {
 
   const productElements = products.map(item => (
     <div key={item._id}>
-      <ProductCart product={item} />
+      <ProductCart product={item} isNew />
     </div>
   ));
   if (!loading)
