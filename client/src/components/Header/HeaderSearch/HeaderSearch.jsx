@@ -113,8 +113,7 @@ const HeaderSearch = props => {
 };
 
 const mapStateToProps = state => ({
-  products: state.products.products,
-  loading: state.products.loading
+  products: state.products.products
 });
 
 const mapDispatchToProps = dispatch => ({});
