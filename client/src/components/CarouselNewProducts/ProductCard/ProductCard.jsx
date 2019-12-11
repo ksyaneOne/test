@@ -20,7 +20,7 @@ const NewProduct = props => {
     <CardWrapper>
       <Segment raised>
         <Card>
-          <Link to={`/product/${product.itemNo}`}>
+          <Link to={{ pathname: `/product/${product.itemNo}`, product }}>
             <ImageWrapper>
               <img alt={product.name} src={product.imageUrls[0]} />
               <Label color="red" ribbon="right">
