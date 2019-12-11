@@ -3,7 +3,6 @@ import { reducer as form } from 'redux-form';
 import { reducer as notifications } from 'react-notification-system-redux';
 import catalog from './catalog';
 import products from './products';
-import product from './product';
 
 import { reducer as common } from '../modules/common';
 
@@ -12,6 +11,5 @@ export default combineReducers({
   notifications,
   common,
   catalog,
-  products,
-  product
+  products
 });
