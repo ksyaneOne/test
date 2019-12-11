@@ -10,6 +10,7 @@
     "history": "^4.9.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "mb": "^1.0.0",
     "object-fit-images": "^3.2.4",
     "passport-facebook": "^3.0.0",
     "prop-types": "^15.7.2",
