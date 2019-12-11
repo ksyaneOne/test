@@ -1,17 +1,20 @@
 import _ from 'lodash';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Search, Grid, Image } from 'semantic-ui-react';
 
 const initialState = { isLoading: false, results: [], value: '' };
 const source = [];
 
-axios.get('/products').then(res => {
-  const newData = res.data;
-  newData.map(product => {
+const HeaderSearch = props => {
+
+const {products} = props;
+
+useEffect(()=>{
+  products.map(product => {
     source.push({
+      id: product._id,
       title: product.name,
       description: product.itemNo,
       size: product.size,
@@ -24,10 +27,8 @@ axios.get('/products').then(res => {
       brand: product.brand
     });
   });
-});
+})
 
-const HeaderSearch = props => {
-  console.log(props, 'props');
   const [state, setState] = useState(initialState);
 
   const handleResultSelect = (event, { result }) => setState({ value: '' });
@@ -43,12 +44,14 @@ const HeaderSearch = props => {
 
       setState({
         isLoading: false,
-        results: _.filter(source, isMatch)
+        results: _.filter(source.slice(0, 5), isMatch)
       });
     }, 300);
   };
 
   const { isLoading, results, value } = state;
+
+  const defaultWindowLocation = window.location.href;
 
   const resultRenderer = ({
     title,
@@ -59,7 +62,8 @@ const HeaderSearch = props => {
     images,
     brand,
     desc,
-    prevprice
+    prevprice,
+    size
   }) => (
     <Link
       to={{
@@ -72,14 +76,16 @@ const HeaderSearch = props => {
           currentPrice: price,
           color,
           image,
-          images
+          size,
+          imageUrls: images
         }
       }}
     >
       <div className="results transition">
+      
         <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
           <div className="image">
-            <Image src={image} />
+            <Image src={defaultWindowLocation.includes('product') ? '../' + image  : image} />
           </div>
           <div className="content">
             <div className="title" style={{ textTransform: 'capitalize' }}>
