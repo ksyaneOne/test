@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
-const cors = require("cors");
+const cors = require('cors');
 require("dotenv").config();
 
 const customers = require("./routes/customers");
@@ -43,7 +43,24 @@ app.use(passport.initialize());
 // Passport Config
 require("./config/passport")(passport);
 
+
+
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
 // Use Routes
+
+app.use("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+app.use("/auth/facebook", passport.authenticate('facebook'));
 app.use("/customers", customers);
 app.use("/catalog", catalog);
 app.use("/products", products);
@@ -64,6 +81,8 @@ app.use("/", mainRoute);
 if (process.env.NODE_ENV === "production") {
   // Set static folder
   app.use(express.static("client/build"));
+
+
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
