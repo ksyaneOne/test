@@ -1,5 +1,5 @@
 import React from "react";
-import { Card , Image , Button } from 'semantic-ui-react';
+import { Card  , Button } from 'semantic-ui-react';
 import ImageConteiner from './productListStyle'
 
 const ProductCard = ( {props} ) => (
@@ -26,6 +26,6 @@ $
       </div>
     </Card.Content>
   </Card>
-)
+);
 
 export default ProductCard;

@@ -10,7 +10,7 @@ export default function ProductList() {
     <ProductCard props={p} />
   </div>
 		)
-	)
+	);
 	if (loading)
 		return (
   <Dimmer active>
@@ -18,7 +18,7 @@ export default function ProductList() {
   </Dimmer>
 		);
   return (
-    <div className="container">	
+    <div className="container">
       <Card.Group itemsPerRow={4}>
         {products}
       </Card.Group>

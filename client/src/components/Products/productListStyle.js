@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const ImageConteiner = styled.div`
   position: relative;
-  overflow: hiden;
+  overflow: hidden;
   height: 240px;
   img {
     position: absolute;
