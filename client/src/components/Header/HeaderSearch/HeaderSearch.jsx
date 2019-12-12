@@ -74,6 +74,7 @@ useEffect(()=>{
           description: desc,
           previousPrice: prevprice,
           currentPrice: price,
+          itemNo: description,
           color,
           image,
           size,

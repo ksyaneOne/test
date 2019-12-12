@@ -1,8 +1,23 @@
 import React from "react";
 
-import { Grid, Image, Button } from "semantic-ui-react";
+import { Grid, Image, Divider } from "semantic-ui-react";
 
-import ProductDetailStyles from "./style";
+import {
+  ProductHeaderName,
+  ProductArticle,
+  ProductColorHeader,
+  ProductColorCircle,
+  ProductColorName,
+  ProductColor,
+  ProductSizeHeader,
+  ProductOneSize,
+  ProductDetailsHeader,
+  ProductDetailsDesc,
+  ProductPrice,
+  ProductButton,
+  ProductDetailStyles
+} from "./style";
+
 // import { maxHeaderSize } from "http";
 
 const ProductDetails = props => {
@@ -13,11 +28,11 @@ const ProductDetails = props => {
 
   const mainImg = '../' + imageUrls[0];
 
-
   return (
     <ProductDetailStyles>
       <Grid doubling>
-        <Grid.Row columns={2}>
+        <Grid.Row columns={2} verticalAlign='middle'>
+          {/* Product gallery */}
           <Grid.Column>
             <Image src={mainImg} size='medium' />
           {imageUrls.map(oneimg => {
@@ -30,43 +45,63 @@ const ProductDetails = props => {
           <Grid.Column>
             <Grid>
               <Grid.Row columns={2}>
+                {/* Product name */}
                 <Grid.Column>
-                  {name}
-                  <p>Article: {itemNo}</p>
-                  {/* Color */}
-                  <Grid.Row>Color:</Grid.Row>
+                  <Grid><Grid.Row columns={2}>
+                    <Grid.Column>
+                    <ProductHeaderName>{name}</ProductHeaderName>
+                  <ProductArticle>Article: {itemNo}</ProductArticle>
+                    </Grid.Column>
+                    <Grid.Column>
+                  <ProductPrice>{currentPrice} $</ProductPrice>
+                  </Grid.Column>
+                  </Grid.Row>
+                  </Grid>
+                  {/* Product color */}
+                  <Divider />
                   <Grid>
                     <Grid.Row columns={4}>
                       <Grid.Column>
-                        O<p>{color}</p>
+                      <ProductColorHeader>Color</ProductColorHeader>
+                        <ProductColor>
+                        <ProductColorCircle style={{backgroundColor: `${color}`}}></ProductColorCircle>
+                        <ProductColorName>{color}</ProductColorName>
+                        </ProductColor>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
-                  {/* Size */}
-                  <Grid.Row>Size:</Grid.Row>
-
+                  
+                  {/* Product size */}
+                  <Grid.Row><ProductSizeHeader>Size</ProductSizeHeader></Grid.Row>
                   <Grid>
                     <Grid.Row columns={size.length}>
-                      {size.map(onesize => {
+                     <Grid.Column textAlign='center'>
+                     {size.map(onesize => {
                         return (
-                          <Grid.Column key={onesize}>{onesize}</Grid.Column>
+                            <ProductOneSize key={onesize}>{onesize}</ProductOneSize>
                         );
                       })}
+                     </Grid.Column>
                     </Grid.Row>
                   </Grid>
-                  {/* Details */}
-                  <Grid.Row>Details</Grid.Row>
-                  <Grid.Column>{description}</Grid.Column>
+                  <Divider />
+                  {/* Product details */}
+                  <Grid.Row>
+                    <ProductDetailsHeader>Details</ProductDetailsHeader>
+                  </Grid.Row>
+                  <Grid.Column>
+                    <ProductDetailsDesc>{description}</ProductDetailsDesc>
+                    </Grid.Column>
                 </Grid.Column>
-                <Grid.Column>{currentPrice}</Grid.Column>
-                {/* Buttons */}
+                
+                {/* Product buttons */}
               </Grid.Row>
               <Grid>
                 <Grid.Row>
-                  <Grid.Column>
-                    <Button primary>Add to cart</Button>
-                    <Button primary>Buy</Button>
-                  </Grid.Column>
+                    <Grid.Column>
+                    <ProductButton>Add to cart</ProductButton>
+                    <ProductButton>Buy</ProductButton>
+                    </Grid.Column>
                 </Grid.Row>
               </Grid>
             </Grid>

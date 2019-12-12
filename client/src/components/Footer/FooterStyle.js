@@ -10,7 +10,7 @@ export const FooterStyle = styled.div`
     transition: all 0.35s ease;
   }
   & a:hover {
-    color: rgba(255, 193, 7, 0.8) !important;
+    color: #f6731c !important;
   }
 `;
 
