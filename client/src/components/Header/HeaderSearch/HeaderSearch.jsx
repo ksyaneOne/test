@@ -86,7 +86,7 @@ useEffect(()=>{
       
         <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
           <div className="image">
-            <Image src={defaultWindowLocation.includes('product') ? '../' + image  : image} />
+            <Image src={window.location.href.includes('product') ? '../' + image  : image} />
           </div>
           <div className="content">
             <div className="title" style={{ textTransform: 'capitalize' }}>
@@ -99,9 +99,9 @@ useEffect(()=>{
       </div>
     </Link>
   );
-
+ 
   return (
-    <Grid>
+    <Grid >
       <Grid.Row centered>
         <Search
           resultRenderer={resultRenderer}

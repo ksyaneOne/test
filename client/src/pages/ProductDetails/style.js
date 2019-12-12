@@ -70,3 +70,28 @@ export const ProductButton = styled.button`
         background-color: #21ba45;
     }
 `;
+export const MainImageStyle = styled.div`
+    text-align: center;
+    margin: 0 auto;
+    height: 400px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    img{
+        margin: 0 auto !important;
+        height: 100%;
+        max-height: 100%;
+        cursor: pointer;
+        transition: all 1s ease !important;
+    }
+`;
+
+export const ImagesGroup = styled.div`
+    text-align: center;
+    img{
+        max-height: 80px;
+        width: auto;
+        cursor: pointer;
+    }
+`;
