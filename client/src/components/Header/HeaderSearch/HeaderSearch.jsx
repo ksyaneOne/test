@@ -1,51 +1,59 @@
 import _ from 'lodash';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Search, Grid, Image } from 'semantic-ui-react';
-
-const initialState = { isLoading: false, results: [], value: '' };
-const source = [];
-
-axios.get('/products').then(res => {
-  const newData = res.data;
-  newData.map(product => {
-    source.push({
-      title: product.name,
-      description: product.itemNo,
-      size: product.size,
-      color: product.color,
-      image: product.imageUrls[0],
-      price: `${product.currentPrice} $`,
-      prevprice: product.previousPrice,
-      images: product.imageUrls,
-      desc: product.description,
-      brand: product.brand
-    });
-  });
-});
+import { getProductsBySearchPhrases } from '../../../actions/products';
 
 const HeaderSearch = props => {
-  console.log(props, 'props');
-  const [state, setState] = useState(initialState);
+  const { onSearch, products } = props;
 
-  const handleResultSelect = (event, { result }) => setState({ value: '' });
+  const initialState = { isLoading: false, results: [], value: '' };
+  const [state, setState] = useState(initialState);
+  const [source, setSource] = useState([]);
+  const [phrase, setPhrase] = useState('');
+  const arrSearcher = () => {
+    const re = new RegExp(_.escapeRegExp(phrase), 'i');
+    const isMatch = result => re.test(result.title);
+    setState({ isLoading: false, results: _.filter(source, isMatch) });
+  };
+
+  useEffect(() => {
+    if (phrase) {
+      onSearch(phrase);
+    }
+  }, [onSearch, phrase]);
+
+  useEffect(() => {
+    const newData = products;
+    newData.map(product => {
+      source.push({
+        title: product.name,
+        description: product.itemNo,
+        size: product.size,
+        color: product.color,
+        image: product.imageUrls[0],
+        price: `${product.currentPrice} $`,
+        prevprice: product.previousPrice,
+        images: product.imageUrls,
+        desc: product.description,
+        brand: product.brand
+      });
+    });
+    setSource(newData);
+    arrSearcher();
+  }, [products]);
+
+  const handleResultSelect = () => {
+    setState({ value: '' });
+    setPhrase('');
+  };
 
   const handleSearchChange = (event, { value }) => {
     setState({ isLoading: true, value });
+    setPhrase(value);
 
-    setTimeout(() => {
-      if (value.length < 1) return setState(initialState);
-
-      const re = new RegExp(_.escapeRegExp(value), 'i');
-      const isMatch = result => re.test(result.title);
-
-      setState({
-        isLoading: false,
-        results: _.filter(source, isMatch)
-      });
-    }, 300);
+    if (value.length < 1) return setState(initialState);
   };
 
   const { isLoading, results, value } = state;
@@ -104,7 +112,7 @@ const HeaderSearch = props => {
             leading: true
           })}
           results={results}
-          {...props}
+          // {...props}
           value={value}
         />
       </Grid.Row>
@@ -113,10 +121,14 @@ const HeaderSearch = props => {
 };
 
 const mapStateToProps = state => ({
-  products: state.products.products
+  products: state.productsBySearch.products
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  onSearch: phrases => {
+    dispatch(getProductsBySearchPhrases(phrases));
+  }
+});
 
 export default connect(
   mapStateToProps,

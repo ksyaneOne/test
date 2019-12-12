@@ -39,11 +39,9 @@ const API = {
       const searchPhrases = {
         query: phrases
       };
-      console.log(searchPhrases, 'searchPhrases');
       return axios
         .post('/products/search', searchPhrases)
         .then(products => {
-          console.log(products);
           return products.data;
         })
         .catch(err => {

@@ -97,9 +97,6 @@ export const getProductsBySearchPhrases = phrases => {
         payload: { loading: false }
       });
       const products = await API.product.fetchProductsBySearchPhrases(phrases);
-      if (products.name === 'Error') {
-        throw new Error(products.message);
-      }
       dispatch({
         type: FETCH_PRODUCTS_BY_SEARCH_PHRASE_SUCCESS,
         payload: { products, loading: true }

@@ -11,12 +11,11 @@ const productsBySearch = (state = initialState, action) => {
     case FETCH_PRODUCTS_BY_SEARCH_PHRASE_START:
       return { ...state, loading: payload.loading };
     case FETCH_PRODUCTS_BY_SEARCH_PHRASE_SUCCESS:
-      return { ...state, productsBySearch: payload.products, loading: payload.loading };
+      return { ...state, products: payload.products, loading: payload.loading };
     case FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE:
       return {
         ...state,
         error: payload.err,
-        productsBySearch: ['error'],
         loading: payload.loading
       };
     default:
