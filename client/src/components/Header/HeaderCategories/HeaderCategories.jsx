@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Icon } from 'semantic-ui-react';
 
 import HeaderCategoriesTitle from './style';
 
-function HeaderCategories(props) {
+const HeaderCategories = props => {
   return (
-    <div>
+    <Link to="/products">
       <Icon name="list layout" size="large" title="Categories" />
-      <HeaderCategoriesTitle>Categories</HeaderCategoriesTitle>
-    </div>
+      <HeaderCategoriesTitle>Products</HeaderCategoriesTitle>
+    </Link>
   );
 }
-
-export default HeaderCategories;
+export default HeaderCategories
