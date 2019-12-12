@@ -20,14 +20,14 @@ useEffect(()=>{
       size: product.size,
       color: product.color,
       image: product.imageUrls[0],
-      price: `${product.currentPrice} $`,
+      price: product.currentPrice,
       prevprice: product.previousPrice,
       images: product.imageUrls,
       desc: product.description,
       brand: product.brand
     });
   });
-})
+});
 
   const [state, setState] = useState(initialState);
 

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { Grid, Image, Button } from "semantic-ui-react";
 
 import ProductDetailStyles from "./style";
-import { maxHeaderSize } from "http";
+// import { maxHeaderSize } from "http";
 
 const ProductDetails = props => {
 
   const product = props.location.product;
 
-  const { name, description,size, currentPrice, previousPrice,color, imageUrls, itemNo } = product;
+  const { name, description,size, currentPrice, color, imageUrls, itemNo } = product;
 
   const mainImg = '../' + imageUrls[0];
 

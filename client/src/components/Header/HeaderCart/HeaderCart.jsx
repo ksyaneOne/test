@@ -8,7 +8,7 @@ import { HeaderCartCount, HeaderCartTitle } from './style';
 
 const HeaderCart = props => {
   
-  const [count, setCount] = useState(1);
+  const [count ] = useState(1);
   return (
     <Link to="cart">
       <Icon name="shopping basket" size="large" title="Cart"/>

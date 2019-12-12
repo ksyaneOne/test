@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import { Grid, Image, Button} from 'semantic-ui-react';
 
 import ProductDetailStyles from './style';
-// static/img/products/shoes/AlpineStars_S-MX/002.png
 
-// {props.name}{props.description}
-const ProductDetail = props => {
+const ProductDetails = props => {
 return( 
 <ProductDetailStyles>
 <Grid doubling>
@@ -81,4 +79,4 @@ return(
     )
 };
 
-export default ProductDetail
+export default ProductDetails
