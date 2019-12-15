@@ -18,114 +18,119 @@ import {
   ProductButton,
   ProductDetailStyles,
   MainImageStyle,
-  ImagesGroup
+  ImagesGroup,
+  Images,
+  ProductButtons
 } from "./style";
 
 // import { maxHeaderSize } from "http";
 
 const ProductDetails = props => {
 
-  const product = props.location.product;
-
-  const { name, description,size, currentPrice, color, imageUrls, itemNo } = product;
- 
-  const mainImg = '../' + imageUrls[0];
-
+ const [oneProduct, setOneProduct] = useState(props.location.product);
+  
+  const { name, description, size, currentPrice, color, imageUrls, itemNo } = oneProduct;
+  const [mainImg, setMainImg] = useState('../' + imageUrls[0])
   const [imgUrl, setImgUrl] = useState({imageSrc: mainImg});
 
   const {imageSrc} = imgUrl;
-
-
-
-
+  
+  useEffect(()=>{setOneProduct(props.location.product)})
 
   return (
     <ProductDetailStyles>
-      <Grid doubling>
-        <Grid.Row columns={2} verticalAlign='middle'>
-          {/* Product gallery */}
-          <Grid.Column>
+  <Grid doubling columns={2}>
+    <Grid.Row verticalAlign="middle">
+      <Grid.Column>
+        <Images>
           <MainImageStyle>
-          <Image src={imageSrc} size='medium'/>
+            <Image src={imageSrc} draggable='false' size="medium" />
           </MainImageStyle>
-            <ImagesGroup>
-            <Image.Group size='tiny'>
-            {imageUrls.map(oneimg => {
-            const newOneImg = '../' + oneimg;
-                        return (
-                          <Image src={newOneImg} key={newOneImg} onMouseEnter={()=> setImgUrl({imageSrc: newOneImg})}/>
-                        );
-                      })}
+          <ImagesGroup >
+            <Image.Group size="tiny">
+              {/* Product gallery */}
+              {imageUrls.map(oneimg => {
+                const newOneImg = "../" + oneimg;
+                return (
+                  <Image draggable='false'
+                    src={newOneImg}
+                    key={newOneImg}
+                    onMouseEnter={() => setImgUrl({ imageSrc: newOneImg })}
+                  />
+                );
+              })}
             </Image.Group>
-            </ImagesGroup>
-          </Grid.Column>
-          <Grid.Column>
-            <Grid>
-              <Grid.Row columns={2}>
-                {/* Product name */}
-                <Grid.Column>
-                  <Grid><Grid.Row columns={2}>
-                    <Grid.Column>
-                    <ProductHeaderName>{name}</ProductHeaderName>
-                  <ProductArticle>Article: {itemNo}</ProductArticle>
-                    </Grid.Column>
-                    <Grid.Column>
-                  <ProductPrice>{currentPrice} $</ProductPrice>
-                  </Grid.Column>
-                  </Grid.Row>
-                  </Grid>
-                  {/* Product color */}
-                  <Divider />
-                  <Grid>
-                    <Grid.Row columns={4}>
-                      <Grid.Column>
-                      <ProductColorHeader>Color</ProductColorHeader>
-                        <ProductColor>
-                        <ProductColorCircle style={{backgroundColor: `${color}`}}></ProductColorCircle>
-                        <ProductColorName>{color}</ProductColorName>
-                        </ProductColor>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                  
-                  {/* Product size */}
-                  <Grid.Row><ProductSizeHeader>Size</ProductSizeHeader></Grid.Row>
-                  <Grid>
-                    <Grid.Row>
-                     <Grid.Column textAlign='center'>
-                     {size.map(onesize => {
-                        return (
-                            <ProductOneSize key={onesize}>{onesize}</ProductOneSize>
-                        );
-                      })}
-                     </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                  <Divider />
-                  {/* Product details */}
-                  <Grid.Row>
-                    <ProductDetailsHeader>Details</ProductDetailsHeader>
-                  </Grid.Row>
+          </ImagesGroup>
+        </Images>
+      </Grid.Column>
+      <Grid.Column>
+        <Grid >
+          <Grid.Row >
+            {/* Product name */}
+            <Grid.Column>
+              <Grid>
+                <Grid.Row columns={2}>
                   <Grid.Column>
-                    <ProductDetailsDesc>{description}</ProductDetailsDesc>
-                    </Grid.Column>
-                </Grid.Column>
-                
-                {/* Product buttons */}
+                    <ProductHeaderName>{name}</ProductHeaderName>
+                    <ProductArticle>Article: {itemNo}</ProductArticle>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <ProductPrice>{currentPrice}</ProductPrice>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              {/* Product color */}
+              <Divider />
+              <Grid>
+                <Grid.Row columns={4}>
+                  <Grid.Column>
+                    <ProductColorHeader>Color</ProductColorHeader>
+                    <ProductColor>
+                      <ProductColorCircle
+                        style={{ backgroundColor: `${color}` }}
+                      ></ProductColorCircle>
+                      <ProductColorName>{color}</ProductColorName>
+                    </ProductColor>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+              {/* Product size */}
+              <Grid.Row>
+                <ProductSizeHeader>Size</ProductSizeHeader>
               </Grid.Row>
               <Grid>
                 <Grid.Row>
-                    <Grid.Column>
-                    <ProductButton>Add to cart</ProductButton>
-                    <ProductButton>Buy</ProductButton>
-                    </Grid.Column>
+                  <Grid.Column >
+                    {size.map(onesize => {
+                      return (
+                        <ProductOneSize key={onesize}>{onesize}</ProductOneSize>
+                      );
+                    })}
+                  </Grid.Column>
                 </Grid.Row>
               </Grid>
-            </Grid>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </ProductDetailStyles>
+              <Divider />
+              {/* Product details */}
+              <Grid.Row>
+                <ProductDetailsHeader>Details</ProductDetailsHeader>
+              </Grid.Row>
+              <Grid.Column>
+                <ProductDetailsDesc>{description}</ProductDetailsDesc>
+              </Grid.Column>
+            </Grid.Column>
+            {/* Product buttons */}
+          </Grid.Row>
+            <Grid.Row>
+                <ProductButtons>
+                <ProductButton>Add to cart</ProductButton>
+                <ProductButton>Buy Now</ProductButton>
+                </ProductButtons>
+            </Grid.Row>
+        </Grid>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
+</ProductDetailStyles>
   );
 };
 

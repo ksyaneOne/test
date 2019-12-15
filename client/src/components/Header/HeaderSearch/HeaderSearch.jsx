@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Search, Grid, Image } from 'semantic-ui-react';
@@ -11,7 +11,8 @@ const HeaderSearch = props => {
 
 const {products} = props;
 
-useEffect(()=>{
+
+if(source.length === 0){
   products.map(product => {
     source.push({
       id: product._id,
@@ -20,18 +21,17 @@ useEffect(()=>{
       size: product.size,
       color: product.color,
       image: product.imageUrls[0],
-      price: product.currentPrice,
+      price: `${product.currentPrice}$`,
       prevprice: product.previousPrice,
       images: product.imageUrls,
       desc: product.description,
       brand: product.brand
     });
   });
-});
-
+}
   const [state, setState] = useState(initialState);
 
-  const handleResultSelect = (event, { result }) => setState({ value: '' });
+  const handleResultSelect = () => setState({ value: '' });
 
   const handleSearchChange = (event, { value }) => {
     setState({ isLoading: true, value });
@@ -44,14 +44,12 @@ useEffect(()=>{
 
       setState({
         isLoading: false,
-        results: _.filter(source.slice(0, 5), isMatch)
+        results: _.filter(source, isMatch)
       });
     }, 300);
   };
 
   const { isLoading, results, value } = state;
-
-  const defaultWindowLocation = window.location.href;
 
   const resultRenderer = ({
     title,
@@ -83,7 +81,6 @@ useEffect(()=>{
       }}
     >
       <div className="results transition">
-      
         <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
           <div className="image">
             <Image src={window.location.href.includes('product') ? '../' + image  : image} />
