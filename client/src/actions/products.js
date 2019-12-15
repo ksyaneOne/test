@@ -6,9 +6,9 @@ export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
 
 // Fetch  PRODUCT By Id
-export const FETCH_PRODUCTBYID_START = 'FETCH_PRODUCT_BY_ID_START';
-export const FETCH_PRODUCTBYID_SUCCESS = 'FETCH_PRODUCT_BY_ID_SUCCESS';
-export const FETCH_PRODUCTBYID_FAILURE = 'FETCH_PRODUCT_BY_ID_FAILURE';
+export const FETCH_PRODUCT_BY_ID_START = 'FETCH_PRODUCT_BY_ID_START';
+export const FETCH_PRODUCT_BY_ID_SUCCESS = 'FETCH_PRODUCT_BY_ID_SUCCESS';
+export const FETCH_PRODUCT_BY_ID_FAILURE = 'FETCH_PRODUCT_BY_ID_FAILURE';
 
 // Fetch  PRODUCTS By Filter Query
 export const FETCH_PRODUCTS_BY_FILTER_QUERY_START = 'FETCH_PRODUCTS_BY_FILTER_QUERY_START';
@@ -48,17 +48,17 @@ export const getProductById = id => {
   return async dispatch => {
     try {
       dispatch({
-        type: FETCH_PRODUCTBYID_START,
+        type: FETCH_PRODUCT_BY_ID_START,
         payload: { loading: false }
       });
       const product = await API.product.fetchProductById(id);
       dispatch({
-        type: FETCH_PRODUCTBYID_SUCCESS,
+        type: FETCH_PRODUCT_BY_ID_SUCCESS,
         payload: { product, loading: true }
       });
     } catch (err) {
       dispatch({
-        type: FETCH_PRODUCTBYID_FAILURE,
+        type: FETCH_PRODUCT_BY_ID_FAILURE,
         payload: { error: err, loading: true }
       });
     }
