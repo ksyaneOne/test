@@ -44,13 +44,11 @@ const Header = props => {
           </GridColumn>
         </Grid.Row>
       </Grid>
-        <Transition visible={visible} animation="fade down" duration={300}>
       <Grid.Row color="black">
         <HeaderNav />
       </Grid.Row>
-        </Transition>
     </HeaderWrapper>
   );
-}
+};
 
-export default Header
+export default Header;
