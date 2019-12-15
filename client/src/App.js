@@ -21,9 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <Router history={history}>
-
         <Header />
-
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/cart" component={Cart} />

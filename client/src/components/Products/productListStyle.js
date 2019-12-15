@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const ImageConteiner = styled.div`
+export const ImageContainer = styled.div`
   position: relative;
   overflow: hiden;
   height: 240px;
@@ -8,11 +8,16 @@ const ImageConteiner = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200px;
     height: 200px;
     object-fit: cover;
     transform: translate(-50%, -50%);
   }
 `;
 
-export default ImageConteiner;
+export const BlackLine = styled.div`
+  display: inline-block;
+  height: 5px;
+  width: 240px;
+  border-radius:2px;
+  background-color: black;
+`;

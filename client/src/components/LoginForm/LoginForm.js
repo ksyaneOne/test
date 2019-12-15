@@ -57,7 +57,7 @@ const LoginForm = () => {
             <Checkbox ref={checkBoxRemember} id="check" />
             <Span>Keep me signed in</Span>
           </Label>
-          <Button type="submit"  content="LOG IN" />
+          <Button type="submit" content="LOG IN" />
         </Form>
       </Div>
     );
