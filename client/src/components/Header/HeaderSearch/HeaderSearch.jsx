@@ -87,7 +87,7 @@ const HeaderSearch = props => {
       <div className="results transition">
         <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
           <div className="image">
-            <Image src={image} />
+            <Image src={`../../${image}`} />
           </div>
           <div className="content">
             <div className="title" style={{ textTransform: 'capitalize' }}>
