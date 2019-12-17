@@ -22,7 +22,7 @@ const NewProduct = props => {
         <Card>
           <Link to={`/product/${product.itemNo}`}>
             <ImageWrapper>
-              <img alt={product.name} src={product.imageUrls[0]} />
+              <img alt={product.name} src={`../../${product.imageUrls[0]}`} />
               {isNew && (
                 <Label color="red" ribbon="right">
                   New
