@@ -9,12 +9,9 @@ const ProductDetails = props => {
   const { params } = match;
   const { id } = params;
 
-  console.log(props);
-
   useEffect(() => {
     onGetProductsByFilter(`categories=${id}`);
   }, [id]);
-  console.log(props, 'props');
 
   const productElements = products.map(item => (
     <div key={item._id}>
@@ -27,10 +24,14 @@ const ProductDetails = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>{`CATEGORIES ${id}`}</Header>
-        <Grid container columns={3} centered>
-          {productElements}
-        </Grid>
+        <Header as="h3" block>
+          {`CATEGORIES ${id}`.toUpperCase()}
+        </Header>
+        <Segment>
+          <Grid container columns={3} centered>
+            {productElements}
+          </Grid>
+        </Segment>
       </Segment>
     </div>
   );
