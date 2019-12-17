@@ -26,7 +26,7 @@ const API = {
 
     fetchProductsByFilterQuery: async query => {
       return axios
-        .get(`/products/filter?${query}/`)
+        .get(`/products/filter?${query}`)
         .then(products => {
           return products.data;
         })
