@@ -7,8 +7,6 @@ const ProductDetails = props => {
   const { params } = match;
   const { id } = params;
 
-  console.log(props);
-
   useEffect(() => {
     onGetProductById(id);
   }, [id]);
