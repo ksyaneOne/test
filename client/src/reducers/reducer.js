@@ -5,6 +5,7 @@ import catalog from './catalog';
 import products from './products';
 import product from './product';
 import productsBySearch from './productsBySearch';
+import productsByFilter from './productsByFilter';
 
 import { reducer as common } from '../modules/common';
 
@@ -15,5 +16,6 @@ export default combineReducers({
   catalog,
   products,
   product,
-  productsBySearch
+  productsBySearch,
+  productsByFilter
 });
