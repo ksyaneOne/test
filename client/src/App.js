@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from './utils/history';
@@ -29,6 +28,7 @@ export default class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/account" component={MyAccount} />
           <Route exact path="/product/:id" component={ProductDetails} />
+          <Route path="/categories/:id" component={ProductList} />
           <Route exact path="/products" component={ProductList} />
           <Route exact path="*" component={NotFound} />
           <LayoutDefault exact path={routes.HOME} component={Home} />
