@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import history from './utils/history';
 import LayoutDefault from './components/layouts/LayoutDefault';
@@ -16,8 +16,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollButton';
 
-export default class App extends Component {
-  render() {
+ const  App = () => {
     return (
       <Router history={history}>
         <Header />
@@ -40,5 +39,5 @@ export default class App extends Component {
         <Notice />
       </Router>
     );
-  }
-}
+};
+export default App;

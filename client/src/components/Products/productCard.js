@@ -1,31 +1,41 @@
 import React from "react";
-import { Card  , Button } from 'semantic-ui-react';
-import ImageConteiner from './productListStyle'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Card , Button } from 'semantic-ui-react';
+import {ImageContainer , BlackLine} from './productListStyle'
 
-const ProductCard = ( {props} ) => (
-  <Card>
-    <Card.Content>
-      <ImageConteiner>
-        <img alt={props.name} src={props.imageUrls[0]} />
-      </ImageConteiner>
-      <Card.Header>{props.name}</Card.Header>
-      <Card.Meta>
-price :
-        {props.currentPrice}
-        {' '}
-$
-      </Card.Meta>
-      <Card.Description>{props.someOtherFeature}</Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <div className="ui two buttons">
-        <Button basic color="black">
-					Add to Card
-        </Button>
-        <Button secondary>Buy</Button>
-      </div>
-    </Card.Content>
-  </Card>
-);
+const ProductCard = ({props}) => {
+
+  const product = props;
+  return (
+    <Card>
+      <Card.Content>
+        <Link to={{ pathname: `/product/${product.itemNo}`, product }}>
+          <ImageContainer>
+            <img alt={product.name} src={product.imageUrls[0]} />
+          </ImageContainer>
+        </Link>
+        <Card.Header textAlign='left'>{product.name}</Card.Header>
+        <Card.Header>{product.currentPrice}{' '}$</Card.Header>
+        <BlackLine/>
+      </Card.Content>
+      <Card.Content extra>
+        <div className="ui two buttons">
+          <Button basic color="black">
+            Add to Card
+          </Button>
+          <Button secondary>Buy</Button>
+        </div>
+      </Card.Content>
+    </Card>
+  )};
+
+ProductCard.propTypes = {
+  product: PropTypes.object
+};
+
+ProductCard.defaultProps = {
+  product: {}
+};
 
 export default ProductCard;
