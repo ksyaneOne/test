@@ -1,62 +1,128 @@
 import _ from 'lodash';
-import React, { Component } from 'react';
-import { Search, Grid } from 'semantic-ui-react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Search, Grid, Image } from 'semantic-ui-react';
 
 const initialState = { isLoading: false, results: [], value: '' };
-
 const source = [];
 
-axios.get('/products').then(res => {
-  const newData = res.data;
-  newData.map(product => {
+const HeaderSearch = props => {
+
+const {products} = props;
+
+
+if(source.length === 0){
+  products.map(product => {
     source.push({
+      id: product._id,
       title: product.name,
       description: product.itemNo,
+      size: product.size,
+      color: product.color,
       image: product.imageUrls[0],
-      price: `${product.currentPrice} $`
+      price: `${product.currentPrice}$`,
+      prevprice: product.previousPrice,
+      images: product.imageUrls,
+      desc: product.description,
+      brand: product.brand
     });
   });
-});
+}
+  const [state, setState] = useState(initialState);
 
-export default class SearchExampleStandard extends Component {
-  state = initialState;
+  const handleResultSelect = () => setState({ value: '' });
 
-  handleResultSelect = (e, { result }) => (window.location = `/products/${result.description}`);
-
-  handleSearchChange = (e, { value }) => {
-    this.setState({ isLoading: true, value });
+  const handleSearchChange = (event, { value }) => {
+    setState({ isLoading: true, value });
 
     setTimeout(() => {
-      if (this.state.value.length < 1) return this.setState(initialState);
+      if (value.length < 1) return setState(initialState);
 
-      const re = new RegExp(_.escapeRegExp(this.state.value), 'i');
+      const re = new RegExp(_.escapeRegExp(value), 'i');
       const isMatch = result => re.test(result.title);
 
-      this.setState({
+      setState({
         isLoading: false,
         results: _.filter(source, isMatch)
       });
     }, 300);
   };
 
-  render() {
-    const { isLoading, value, results } = this.state;
-    return (
-      <Grid>
-        <Grid.Row centered>
-          <Search
-            loading={isLoading}
-            onResultSelect={this.handleResultSelect}
-            onSearchChange={_.debounce(this.handleSearchChange, 500, {
-              leading: true
-            })}
-            results={results}
-            value={value}
-            {...this.props}
-          />
-        </Grid.Row>
-      </Grid>
-    );
-  }
-}
+  const { isLoading, results, value } = state;
+
+  const resultRenderer = ({
+    title,
+    image,
+    description,
+    price,
+    color,
+    images,
+    brand,
+    desc,
+    prevprice,
+    size
+  }) => (
+    <Link
+      to={{
+        pathname: `/product/${description}`,
+        product: {
+          name: title,
+          brand,
+          description: desc,
+          previousPrice: prevprice,
+          currentPrice: price,
+          itemNo: description,
+          color,
+          image,
+          size,
+          imageUrls: images
+        }
+      }}
+    >
+      <div className="results transition">
+        <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
+          <div className="image">
+            <Image src={window.location.href.includes('product') ? '../' + image  : image} />
+          </div>
+          <div className="content">
+            <div className="title" style={{ textTransform: 'capitalize' }}>
+              {title} <span className="price">{price}</span>
+            </div>
+            <div className="title">{color}</div>
+            <div className="description">{description}</div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+ 
+  return (
+    <Grid >
+      <Grid.Row centered>
+        <Search
+          resultRenderer={resultRenderer}
+          loading={isLoading}
+          onResultSelect={handleResultSelect}
+          onSearchChange={_.debounce(handleSearchChange, 500, {
+            leading: true
+          })}
+          results={results}
+          {...props}
+          value={value}
+        />
+      </Grid.Row>
+    </Grid>
+  );
+};
+
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeaderSearch);
