@@ -6,34 +6,34 @@ import ProductCard from '../../components/Products';
 import Container from './ProductListStyle'
 import getProducts from '../../actions/products';
 
- const ProductList = props => {
- const { loading, products, onGetProducts } = props;
- 
- useEffect(onGetProducts, [onGetProducts]);
+const ProductList = props => {
+  const { loading, products, onGetProducts } = props;
+
+  useEffect(onGetProducts, [onGetProducts]);
 
   const ProductItems = products.map(item =>(
 
-  <div key={item._id}>
-    <ProductCard props={item} />
-  </div>
+      <div key={item._id}>
+        <ProductCard props={item} />
+      </div>
     )
-  )
+  );
   if (loading)
     return (
-  <Dimmer active>
-    <Loader />
-  </Dimmer>
+      <Dimmer active>
+        <Loader />
+      </Dimmer>
     );
-  return (  
-      <Container>
-        <Card.Group 
-        itemsPerRow={3} 
-        centered={true} 
+  return (
+    <Container>
+      <Card.Group
+        itemsPerRow={3}
+        centered={true}
         stackable={true}>
-          {ProductItems}
-        </Card.Group>
-      </Container>
-    )
+        {ProductItems}
+      </Card.Group>
+    </Container>
+  )
 };
 
 ProductList.propTypes = {

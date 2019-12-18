@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const Customer = mongoose.model("customers");
 const keys = require("../config/keys");
 const Strategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 
 
 const opts = {};
@@ -11,6 +13,19 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 
 module.exports = passport => {
+
+
+  passport.use(new GoogleStrategy({
+      clientID: "online-shop-261808",
+      clientSecret: "479723769648",
+      callbackURL: "http://localhost:5000/auth/google/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return cb(err, user);
+      });
+    }
+  ));
 
   passport.use(new Strategy({
       clientID: '2541112962624188',

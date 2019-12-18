@@ -43,24 +43,27 @@ app.use(passport.initialize());
 // Passport Config
 require("./config/passport")(passport);
 
-
-
-
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-
 // Use Routes
 
-app.use("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/login' }),
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
   });
-app.use("/auth/facebook", passport.authenticate('facebook'));
+
+
+app.get("/auth/facebook", passport.authenticate('facebook'));
+
+app.get("/auth/facebook/callback", passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
 app.use("/customers", customers);
 app.use("/catalog", catalog);
 app.use("/products", products);
