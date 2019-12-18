@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-
-import { getProductById } from '../../actions/products';
-
 import { Grid, Image, Divider } from 'semantic-ui-react';
-
+import { getProductById } from '../../actions/products';
+import Slider from '../../components/Carousel';
 import {
   ProductHeaderName,
   ProductArticle,
@@ -24,54 +22,27 @@ import {
   Images,
   ProductButtons
 } from './style';
+import Carousel from 'react-multi-carousel';
 
 // import { maxHeaderSize } from "http";
 
 const ProductDetails = props => {
-  const [oneProduct, setOneProduct] = useState(props.location.product);
-
-  const { name, description, size, currentPrice, color, imageUrls, itemNo } = oneProduct;
-  const [mainImg, setMainImg] = useState('../' + imageUrls[0]);
-  const [imgUrl, setImgUrl] = useState({ imageSrc: mainImg });
-
-  const { imageSrc } = imgUrl;
-
-  const { onGetProductById, match, product } = props;
+  const { onGetProductById, match, product, loading } = props;
   const { params } = match;
   const { id } = params;
+  const [arrSrc, setArrSrc] = useState([]);
 
   useEffect(() => {
     onGetProductById(id);
+    setArrSrc(product.imageUrls);
   }, [id]);
   console.log(product);
-
+  if (!loading) return <div>loading</div>;
   return (
     <ProductDetailStyles>
       <Grid doubling columns={2}>
         <Grid.Row verticalAlign="middle">
-          <Grid.Column>
-            <Images>
-              <MainImageStyle>
-                <Image src={imageSrc} draggable="false" size="medium" />
-              </MainImageStyle>
-              <ImagesGroup>
-                <Image.Group size="tiny">
-                  {/* Product gallery */}
-                  {imageUrls.map(oneimg => {
-                    const newOneImg = '../' + oneimg;
-                    return (
-                      <Image
-                        draggable="false"
-                        src={newOneImg}
-                        key={newOneImg}
-                        onMouseEnter={() => setImgUrl({ imageSrc: newOneImg })}
-                      />
-                    );
-                  })}
-                </Image.Group>
-              </ImagesGroup>
-            </Images>
-          </Grid.Column>
+          <Grid.Column></Grid.Column>
           <Grid.Column>
             <Grid>
               <Grid.Row>
@@ -80,11 +51,11 @@ const ProductDetails = props => {
                   <Grid>
                     <Grid.Row columns={2}>
                       <Grid.Column>
-                        <ProductHeaderName>{name}</ProductHeaderName>
-                        <ProductArticle>Article: {itemNo}</ProductArticle>
+                        <ProductHeaderName>{product.name}</ProductHeaderName>
+                        <ProductArticle>Article: {product.itemNo}</ProductArticle>
                       </Grid.Column>
                       <Grid.Column>
-                        <ProductPrice>{currentPrice}</ProductPrice>
+                        <ProductPrice>{product.currentPrice}</ProductPrice>
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -96,9 +67,9 @@ const ProductDetails = props => {
                         <ProductColorHeader>Color</ProductColorHeader>
                         <ProductColor>
                           <ProductColorCircle
-                            style={{ backgroundColor: `${color}` }}
+                            style={{ backgroundColor: `${product.color}` }}
                           ></ProductColorCircle>
-                          <ProductColorName>{color}</ProductColorName>
+                          <ProductColorName>{product.color}</ProductColorName>
                         </ProductColor>
                       </Grid.Column>
                     </Grid.Row>
@@ -110,7 +81,7 @@ const ProductDetails = props => {
                   <Grid>
                     <Grid.Row>
                       <Grid.Column>
-                        {size.map(onesize => {
+                        {product.size.map(onesize => {
                           return <ProductOneSize key={onesize}>{onesize}</ProductOneSize>;
                         })}
                       </Grid.Column>
@@ -122,7 +93,7 @@ const ProductDetails = props => {
                     <ProductDetailsHeader>Details</ProductDetailsHeader>
                   </Grid.Row>
                   <Grid.Column>
-                    <ProductDetailsDesc>{description}</ProductDetailsDesc>
+                    <ProductDetailsDesc>{product.description}</ProductDetailsDesc>
                   </Grid.Column>
                 </Grid.Column>
                 {/* Product buttons */}
