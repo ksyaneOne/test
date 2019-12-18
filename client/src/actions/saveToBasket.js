@@ -9,19 +9,15 @@ export const addToBasket =  (id,count=1)=>{
     product: id,
     cartQuantity: count
   };
-  const newCart = {
-    products: [
-      {product: "5dbdd6a78b18973b08aad001", cartQuantity: 1}
-    ]
-  };
 
-  axios.get('/products/5dbdd57d8b18973b08aacfff')
-    .then(newCart => {
-      console.log(newCart);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+
+  // axios.get('/products/')
+  //   .then(newCart => {
+  //     console.log(newCart);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 
   let products = [];
   if(!Cookies.get('cartProducts')) {

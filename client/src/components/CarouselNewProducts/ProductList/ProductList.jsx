@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProductCart from '../ProductCard';
 import WithScroll from '../../CarouselWithScrollbar';
 import carouselSettings from './carouselSettings';
-import { getProducts } from '../../../actions/products';
+import getProducts from '../../../actions/products';
 
 const ProductList = props => {
   const { loading, products, onGetProducts } = props;
@@ -14,7 +14,7 @@ const ProductList = props => {
 
   const productElements = products.map(item => (
     <div key={item._id}>
-      <ProductCart product={item} isNew />
+      <ProductCart product={item} />
     </div>
   ));
   if (!loading)
@@ -26,7 +26,7 @@ const ProductList = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>NEW PRODUCTS</Header>
+        <Header>Горячие новинки и хиты продаж</Header>
         <WithScroll elements={productElements} carouselSettings={carouselSettings} />
       </Segment>
     </div>

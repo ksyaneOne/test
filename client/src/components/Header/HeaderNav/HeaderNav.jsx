@@ -15,7 +15,7 @@ const HeaderNav = props => {
       onClick={() => setMenuVisible(!menuVisible)}
       key={item._id}
       as={Link}
-      to={`/categories/${item.id}`}
+      to={`/products/${item.id}`}
     >
       <HeaderMenuItem>{item.name}</HeaderMenuItem>
     </Menu.Item>
@@ -46,6 +46,6 @@ const HeaderNav = props => {
       </HeaderNavStyle>
     </>
   );
-};
+}
 
-export default HeaderNav;
+export default HeaderNav

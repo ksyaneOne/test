@@ -1,53 +1,62 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProductsByFilterQuery } from '../../actions/products';
-import { Segment, Header, Grid } from 'semantic-ui-react';
-import ProductCart from '../../components/CarouselNewProducts/ProductCard';
+import PropTypes from 'prop-types';
+import { Dimmer, Loader, Card } from 'semantic-ui-react';
+import ProductCard from '../../components/Products';
+import Container from './ProductListStyle'
+import getProducts from '../../actions/products';
 
-const ProductDetails = props => {
-  const { onGetProductsByFilter, match, products = [], loading } = props;
-  const { params } = match;
-  const { id } = params;
+const ProductList = props => {
+  const { loading, products, onGetProducts } = props;
 
-  useEffect(() => {
-    onGetProductsByFilter(`categories=${id}`);
-  }, [id]);
+  useEffect(onGetProducts, [onGetProducts]);
 
-  const productElements = products.map(item => (
-    <div key={item._id}>
-      <Grid.Column>
-        <ProductCart product={item} />
-      </Grid.Column>
-    </div>
-  ));
-  if (!loading) return <div>loading</div>;
-  return (
-    <div className="container">
-      <Segment>
-        <Header as="h3" block>
-          {`CATEGORIES ${id}`.toUpperCase()}
-        </Header>
-        <Segment>
-          <Grid container columns={3} centered>
-            {productElements}
-          </Grid>
-        </Segment>
-      </Segment>
-    </div>
+  const ProductItems = products.map(item =>(
+
+      <div key={item._id}>
+        <ProductCard props={item} />
+      </div>
+    )
   );
+  if (loading)
+    return (
+      <Dimmer active>
+        <Loader />
+      </Dimmer>
+    );
+  return (
+    <Container>
+      <Card.Group
+        itemsPerRow={3}
+        centered={true}
+        stackable={true}>
+        {ProductItems}
+      </Card.Group>
+    </Container>
+  )
+};
+
+ProductList.propTypes = {
+  onGetProducts: PropTypes.func,
+  products: PropTypes.arrayOf(PropTypes.object)
+};
+
+ProductList.defaultProps = {
+  products: [],
+  onGetProducts: {}
 };
 
 const mapStateToProps = state => ({
-  products: state.productsByFilter.products.products,
-  loading: state.productsByFilter.loading
+  products: state.products.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetProductsByFilter: query => {
-    dispatch(getProductsByFilterQuery(query));
+  onGetProducts: () => {
+    dispatch(getProducts());
   }
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetails);
+)(ProductList);

@@ -1,20 +1,36 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React, { useState } from 'react';
 import LoginForm from '../../components/LoginForm';
+import { Div, LoginBtn, RegistrationBtn, WrapperBtn, WrapperForm } from './StyleLogin';
+import RegistrationForm from '../../components/RegistrationForm';
 
-const Div = styled.div`
-height:100vh;
-display: flex;
-  align-items: center;
-  justify-content: center;
-  
-`;
+const LogIn = () => {
+  const [state, setState] = useState({ isLoginForm: true });
+  const { isLoginForm } = state;
 
+  const handleBtn = event => {
+    event.preventDefault();
+    if (event.target.getAttribute('data-name') === 'login') {
+      setState({ ...state, isLoginForm: true });
+    } else {
+      setState({ ...state, isLoginForm: false });
+    }
+  };
 
-export default function Login() {
   return (
     <Div>
-      <LoginForm />
+      <WrapperForm>
+        <WrapperBtn>
+          <LoginBtn data-name="login" isLoginForm={isLoginForm} onClick={handleBtn}>
+            Login
+          </LoginBtn>
+          <RegistrationBtn isLoginForm={isLoginForm} onClick={handleBtn}>
+            Registration
+          </RegistrationBtn>
+        </WrapperBtn>
+        {isLoginForm ? <LoginForm /> : <RegistrationForm />}
+      </WrapperForm>
     </Div>
   );
-}
+};
+
+export default LogIn;
