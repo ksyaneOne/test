@@ -42,7 +42,6 @@ export default function LoginForm() {
     // })
   };
 
-<<<<<<< HEAD
     return (
       <Div>
         <Form onSubmit={handleSubmit(onAuth)}>
@@ -78,29 +77,3 @@ export default function LoginForm() {
     );
 };
 export default LoginForm;
-=======
-  return (
-
-    <Form onSubmit={onAuth} className="input-form">
-      <Form.Field>
-        <label>Login:</label>
-        <input ref={inputLoginRef} placeholder="Login" />
-      </Form.Field>
-      <Form.Field>
-        <label>Password:</label>
-        <input ref={inputPasswordRef} placeholder="Password" />
-      </Form.Field>
-      <Form.Field>
-        <Checkbox ref={checkBoxRemember} label="Remember me" />
-      </Form.Field>
-      <Button color="olive" type="submit">Sign In</Button>
-    </Form>
-
-  );
-}
-
-
-
-
-          
->>>>>>> redux
