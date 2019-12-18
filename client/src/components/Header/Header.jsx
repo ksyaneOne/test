@@ -49,6 +49,6 @@ const Header = props => {
       </Grid.Row>
     </HeaderWrapper>
   );
-}
+};
 
-export default Header
+export default Header;

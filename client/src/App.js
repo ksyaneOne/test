@@ -27,6 +27,7 @@ import ScrollToTop from './components/ScrollButton';
           <Route exact path="/login" component={Login} />
           <Route exact path="/account" component={MyAccount} />
           <Route exact path="/product/:id" component={ProductDetails} />
+          <Route path="/categories/:id" component={ProductList} />
           <Route exact path="/products" component={ProductList} />
           <Route exact path="*" component={NotFound} />
           <LayoutDefault exact path={routes.HOME} component={Home} />

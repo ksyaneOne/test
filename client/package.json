@@ -10,6 +10,7 @@
     "history": "^4.9.0",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
+    "mb": "^1.0.0",
     "object-fit-images": "^3.2.4",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -29,6 +30,7 @@
     "redux-thunk": "^2.3.0",
     "reset-css": "^5.0.1",
     "semantic-ui-carousel-react": "^1.0.3",
+    "reset-css": "^5.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
     "throttle-debounce": "^2.1.0"
