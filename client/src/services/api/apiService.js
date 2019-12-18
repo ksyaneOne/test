@@ -2,7 +2,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 import jwtDecode from 'jwt-decode';
 
-const BASE_URL =  "http://localhost:5000";
 
 const apiService = () => {
   let authorizationToken = null;
@@ -12,7 +11,6 @@ const apiService = () => {
   }
   console.log(authorizationToken);
   return  axios.create({
-    baseURL: BASE_URL,
     headers: { 'Authorization': authorizationToken }
   });
 };
