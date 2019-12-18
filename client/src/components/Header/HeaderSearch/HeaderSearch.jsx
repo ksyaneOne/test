@@ -54,7 +54,6 @@ const HeaderSearch = props => {
     setPhrase(value);
 
     if (value.length < 1) return setState(initialState);
->>>>>>> redux
   };
 
   const { isLoading, results, value } = state;
