@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import { Icon } from 'semantic-ui-react';
@@ -12,5 +13,5 @@ const HeaderCategories = props => {
       <HeaderCategoriesTitle>Products</HeaderCategoriesTitle>
     </Link>
   );
-}
-export default HeaderCategories
+};
+export default HeaderCategories;

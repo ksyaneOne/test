@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { useState } from 'react';
 
 // import { Grid, Image, Button} from 'semantic-ui-react';
@@ -80,3 +81,27 @@
 // };
 
 // export default ProductDetails
+=======
+import React, { useState } from 'react';
+import style from './style';
+
+// const initialState = {
+//   color: 'red',
+//   size: 40,
+//   count: 1,
+//   name: '',
+//   ID: '',
+//   desctiption: '',
+//   price: 25,
+//   category: 'category where product is shown',
+//   images: [],
+// };
+// const [state, setState] = useState(initialState);
+
+
+const ProductDetail = props => {
+return( <div>{props.name}{props.description}</div>)
+};
+
+export default ProductDetail
+>>>>>>> redux

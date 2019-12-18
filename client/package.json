@@ -31,6 +31,7 @@
     "redux-thunk": "^2.3.0",
     "reset-css": "^5.0.1",
     "semantic-ui-carousel-react": "^1.0.3",
+    "reset-css": "^5.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
     "throttle-debounce": "^2.1.0"

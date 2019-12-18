@@ -1,33 +1,48 @@
-import React, {useState, useRef} from 'react';
-import {Button, Checkbox} from 'semantic-ui-react';
-import useForm from 'react-hook-form';
-import onRegistered from '../../actions/onAuthorization';
 
+import React, { useEffect, useState, useRef } from 'react';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
-import {Input} from '../CustomComponents/Input';
+import { setCookie } from '../../utils/setCookies';
+// import {apiService} from '../../services/api/apiService';
 
-import {setCookie} from '../../utils/setCookies';
+export default function LoginForm() {
+  const initialState = {
+    login: '',
+    password: '',
+    isRemember: false,
+  };
 
-import {Form, Div, Label, Span,Err} from './StyleLoginForm';
+  const [state, setState] = useState(initialState);
+  const inputLoginRef = useRef(null);
+  const inputPasswordRef = useRef(null);
+  const checkBoxRemember = useRef(null);
+  const { login, password } = state;
 
-const LoginForm = () => {
-    const {register, handleSubmit, errors} = useForm();
-    const checkBoxRemember = useRef(null);
+  useEffect(() => {
+    if (checkBoxRemember.current.state.checked) {
+      setCookie('login', login.toString(), { expires: 1 });
+      setCookie('password', password.toString(), { expires: 1 });
+    }
+  }, [login, password]);
 
-    const initialState = {
-        login: '',
-        password: '',
-        isRemember: false
-    };
-    const [state, setState] = useState(initialState);
+  const onAuth = () => {
+    setState({ ...state, login: inputLoginRef.current.value, password: inputPasswordRef.current.value });
 
-    const onAuth = data => {
-        setState(data);
-        const dataForDispatch = {...data};
-        delete dataForDispatch.isRemember;
-        onRegistered(dataForDispatch);
-    };
+    // apiService()({
+    //     method: 'post',
+    //     url: '/customers/login',
+    //     data: {
+    //         loginOrEmail: inputLoginRef.current.value,
+    //         password: +inputPasswordRef.current.value
+    //     }.then(loginResult => {
+    //     })
+    //         .catch(err => {
+    //         })
+    // })
+  };
 
+<<<<<<< HEAD
     return (
       <Div>
         <Form onSubmit={handleSubmit(onAuth)}>
@@ -63,3 +78,29 @@ const LoginForm = () => {
     );
 };
 export default LoginForm;
+=======
+  return (
+
+    <Form onSubmit={onAuth} className="input-form">
+      <Form.Field>
+        <label>Login:</label>
+        <input ref={inputLoginRef} placeholder="Login" />
+      </Form.Field>
+      <Form.Field>
+        <label>Password:</label>
+        <input ref={inputPasswordRef} placeholder="Password" />
+      </Form.Field>
+      <Form.Field>
+        <Checkbox ref={checkBoxRemember} label="Remember me" />
+      </Form.Field>
+      <Button color="olive" type="submit">Sign In</Button>
+    </Form>
+
+  );
+}
+
+
+
+
+          
+>>>>>>> redux
