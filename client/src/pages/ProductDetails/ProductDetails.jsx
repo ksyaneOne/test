@@ -10,12 +10,12 @@ const ProductDetails = props => {
   useEffect(() => {
     onGetProductById(id);
   }, [id]);
-
+  console.log(product);
   return (
-    <>
+    <div className="container">
       <h1>{product.name}</h1>
       <h2>brand: {product.brand}</h2>
-    </>
+    </div>
   );
 };
 
