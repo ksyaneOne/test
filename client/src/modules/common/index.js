@@ -1,6 +1,6 @@
 import { debounce } from 'throttle-debounce';
 import objectFitImages from 'object-fit-images';
-import { store } from '../../store';
+import  store  from '../../store';
 
 const WINDOW_RESIZE = 'COMMON/WINDOW_RESIZE';
 const WINDOW_SCROLL = 'COMMON/WINDOW_SCROLL';

@@ -1,11 +1,17 @@
-
-
 import axios from 'axios';
-import initialConfig, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
+import Cookies from 'js-cookie'
+import jwtDecode from 'jwt-decode';
 
-const apiService = axios.create({ ...initialConfig, baseURL: process.env.REACT_APP_API });
-apiService.interceptors.response.use(
-  handleInterceptorsResponse,
-  handleInterceptorsError,
-);
+
+const apiService = () => {
+  let authorizationToken = null;
+  if (Cookies.get('token') && jwtDecode(Cookies.get('token')).exp) {
+    authorizationToken = Cookies.get('token');
+
+  }
+  console.log(authorizationToken);
+  return  axios.create({
+    headers: { 'Authorization': authorizationToken }
+  });
+};
 export default apiService;

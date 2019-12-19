@@ -4,6 +4,7 @@ import { reducer as notifications } from 'react-notification-system-redux';
 import catalog from './catalog';
 import products from './products';
 import product from './product';
+import cart from './cart'
 import productsBySearch from './productsBySearch';
 import productsByFilter from './productsByFilter';
 
@@ -16,6 +17,7 @@ export default combineReducers({
   catalog,
   products,
   product,
+  cart,
   productsBySearch,
   productsByFilter
 });

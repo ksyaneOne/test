@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+<<<<<<< HEAD
+const Cart = props => {
+  return <h1>cart</h1>;
+};
+=======
 
 const Cart = () => {
   return (<div > </div>);
@@ -42,4 +47,6 @@ export default connect(mapStateToProps)(Cart);
 
 
 
+>>>>>>> de2160723f256a32492f906c93527857ef6f3717
 
+export default Cart;
