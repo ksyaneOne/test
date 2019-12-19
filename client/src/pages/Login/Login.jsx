@@ -3,7 +3,7 @@ import LoginForm from '../../components/LoginForm';
 import { Div, LoginBtn, RegistrationBtn, WrapperBtn, WrapperForm } from './StyleLogin';
 import RegistrationForm from '../../components/RegistrationForm';
 
-const LogIn = () => {
+const Login = () => {
   const [state, setState] = useState({ isLoginForm: true });
   const { isLoginForm } = state;
 
@@ -33,4 +33,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Login;
