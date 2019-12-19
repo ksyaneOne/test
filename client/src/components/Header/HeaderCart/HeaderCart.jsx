@@ -7,7 +7,7 @@ import { Icon } from 'semantic-ui-react';
 import { HeaderCartCount, HeaderCartTitle } from './style';
 
 const HeaderCart = props => {
-  const [count] = useState(1);
+  const count = 1;
 
   return (
     <Link to="cart">
