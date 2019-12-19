@@ -6,25 +6,28 @@ import {
   UserTitleWrapper,
   UserInfoWrapper,
   ViewedProductsWrapper,
-  OrdersWrapper
+  OrdersWrapper,
+  Container,
+  HeaderTitle,
+  MediumTitle,
+  TextLink,
+  Span
 } from './MyAccountStyle';
 
 export default function MyAccount() {
   return (
-    <React.Fragment>
+    <Container>
       <UserTitleWrapper>
         <Divider horizontal>
           <Header as="h1">
-            <Icon name="user outline" />
-            My Account
+            <HeaderTitle>My Account</HeaderTitle>
           </Header>
         </Divider>
       </UserTitleWrapper>
 
       <Divider horizontal>
         <Header as="h4">
-          <Icon name="info circle" />
-          User Information
+          <MediumTitle>User Information</MediumTitle>
         </Header>
       </Divider>
 
@@ -61,8 +64,7 @@ export default function MyAccount() {
 
       <Divider horizontal>
         <Header as="h4">
-          <Icon name="eye" />
-          Last Viewed Products
+          <MediumTitle>Last Viewed Products</MediumTitle>
         </Header>
       </Divider>
       <ViewedProductsWrapper>
@@ -87,8 +89,7 @@ export default function MyAccount() {
 
       <Divider horizontal>
         <Header as="h4">
-          <Icon name="dolly" />
-          Your orders
+          <MediumTitle>Your orders</MediumTitle>
         </Header>
       </Divider>
       <OrdersWrapper>
@@ -97,9 +98,13 @@ export default function MyAccount() {
             <Item.Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
 
             <Item.Content>
-              <Item.Header as="a">MotoHelmet</Item.Header>
+              <Item.Header as="a">
+                <TextLink>MotoHelmet</TextLink>
+              </Item.Header>
               <Item.Meta>
-                <span className="cinema">moto</span>
+                <Span>
+                  <span className="cinema">moto</span>
+                </Span>
               </Item.Meta>
               <Item.Description>
                 <Image src="https://react.semantic-ui.com/images/wireframe/short-paragraph.png" />
@@ -114,6 +119,6 @@ export default function MyAccount() {
           </Item>
         </Item.Group>
       </OrdersWrapper>
-    </React.Fragment>
+    </Container>
   );
 }
