@@ -18,7 +18,24 @@ export const ViewedProductsWrapper = styled.div`
   max-width: 90%;
 `;
 export const OrdersWrapper = styled.div`
-  margin: 2em auto;
+  margin: 2em auto 0;
   padding: 2em auto;
   max-width: 90%;
+`;
+export const Container = styled.div`
+  background-color: #1b1c1d;
+  color: white;
+`;
+export const HeaderTitle = styled.h1`
+  color: white;
+`;
+export const MediumTitle = styled.h4`
+  color: white;
+`;
+export const TextLink = styled.a`
+  color: white;
+  text-decoration: none;
+`;
+export const Span = styled.span`
+  color: white;
 `;
