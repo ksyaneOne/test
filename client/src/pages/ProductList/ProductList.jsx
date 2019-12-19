@@ -7,56 +7,56 @@ import Container from './ProductListStyle'
 import getProducts from '../../actions/products';
 
 const ProductList = props => {
-  const { loading, products, onGetProducts } = props;
+    const { loading, products, onGetProducts } = props;
 
-  useEffect(onGetProducts, [onGetProducts]);
+    useEffect(onGetProducts, [onGetProducts]);
 
-  const ProductItems = products.map(item =>(
+    const ProductItems = products.map(item =>(
 
-      <div key={item._id}>
-        <ProductCard props={item} />
-      </div>
+            <div key={item._id}>
+                <ProductCard props={item} />
+            </div>
+        )
     )
-  );
-  if (loading)
+    if (loading)
+        return (
+            <Dimmer active>
+                <Loader />
+            </Dimmer>
+        );
     return (
-      <Dimmer active>
-        <Loader />
-      </Dimmer>
-    );
-  return (
-    <Container>
-      <Card.Group
-        itemsPerRow={3}
-        centered={true}
-        stackable={true}>
-        {ProductItems}
-      </Card.Group>
-    </Container>
-  )
+        <Container>
+            <Card.Group
+                itemsPerRow={3}
+                centered={true}
+                stackable={true}>
+                {ProductItems}
+            </Card.Group>
+        </Container>
+    )
 };
 
 ProductList.propTypes = {
-  onGetProducts: PropTypes.func,
-  products: PropTypes.arrayOf(PropTypes.object)
+    onGetProducts: PropTypes.func,
+    products: PropTypes.arrayOf(PropTypes.object)
 };
 
 ProductList.defaultProps = {
-  products: [],
-  onGetProducts: {}
+    products: [],
+    onGetProducts: {}
 };
 
 const mapStateToProps = state => ({
-  products: state.products.products
+    products: state.products.products
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGetProducts: () => {
-    dispatch(getProducts());
-  }
+    onGetProducts: () => {
+        dispatch(getProducts());
+    }
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ProductList);
