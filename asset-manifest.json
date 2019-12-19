@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.8e823fb1.chunk.css",
-    "main.js": "/static/js/main.1307ea06.chunk.js",
-    "main.js.map": "/static/js/main.1307ea06.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.621d06a2.js",
-    "runtime-main.js.map": "/static/js/runtime-main.621d06a2.js.map",
-    "static/css/2.0e12cf79.chunk.css": "/static/css/2.0e12cf79.chunk.css",
-    "static/js/2.6338b675.chunk.js": "/static/js/2.6338b675.chunk.js",
-    "static/js/2.6338b675.chunk.js.map": "/static/js/2.6338b675.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.ffbe1cd9de339f8f4534a22a55228c6d.js": "/precache-manifest.ffbe1cd9de339f8f4534a22a55228c6d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.0e12cf79.chunk.css.map": "/static/css/2.0e12cf79.chunk.css.map",
-    "static/css/main.8e823fb1.chunk.css.map": "/static/css/main.8e823fb1.chunk.css.map",
-    "static/js/2.6338b675.chunk.js.LICENSE": "/static/js/2.6338b675.chunk.js.LICENSE",
-    "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff",
-    "static/media/styles.css": "/static/media/revicons.2feb69cc.eot"
+    "main.css": "/Online_Shop/static/css/main.8e823fb1.chunk.css",
+    "main.js": "/Online_Shop/static/js/main.0fba0a36.chunk.js",
+    "main.js.map": "/Online_Shop/static/js/main.0fba0a36.chunk.js.map",
+    "runtime-main.js": "/Online_Shop/static/js/runtime-main.e13e1a70.js",
+    "runtime-main.js.map": "/Online_Shop/static/js/runtime-main.e13e1a70.js.map",
+    "static/css/2.8105d35c.chunk.css": "/Online_Shop/static/css/2.8105d35c.chunk.css",
+    "static/js/2.4e7dd2e1.chunk.js": "/Online_Shop/static/js/2.4e7dd2e1.chunk.js",
+    "static/js/2.4e7dd2e1.chunk.js.map": "/Online_Shop/static/js/2.4e7dd2e1.chunk.js.map",
+    "index.html": "/Online_Shop/index.html",
+    "precache-manifest.80b2e10a8f520808e8aa41aca6a7f315.js": "/Online_Shop/precache-manifest.80b2e10a8f520808e8aa41aca6a7f315.js",
+    "service-worker.js": "/Online_Shop/service-worker.js",
+    "static/css/2.8105d35c.chunk.css.map": "/Online_Shop/static/css/2.8105d35c.chunk.css.map",
+    "static/css/main.8e823fb1.chunk.css.map": "/Online_Shop/static/css/main.8e823fb1.chunk.css.map",
+    "static/js/2.4e7dd2e1.chunk.js.LICENSE": "/Online_Shop/static/js/2.4e7dd2e1.chunk.js.LICENSE",
+    "static/media/semantic.min.css": "/Online_Shop/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/styles.css": "/Online_Shop/static/media/revicons.2feb69cc.eot"
   },
   "entrypoints": [
-    "static/js/runtime-main.621d06a2.js",
-    "static/css/2.0e12cf79.chunk.css",
-    "static/js/2.6338b675.chunk.js",
+    "static/js/runtime-main.e13e1a70.js",
+    "static/css/2.8105d35c.chunk.css",
+    "static/js/2.4e7dd2e1.chunk.js",
     "static/css/main.8e823fb1.chunk.css",
-    "static/js/main.1307ea06.chunk.js"
+    "static/js/main.0fba0a36.chunk.js"
   ]
 }
