@@ -14,7 +14,7 @@ const CategoryList = props => {
 
   const categoryElements = categories.map(item => (
     <div key={item._id}>
-      <Link to={`/catalog/${item.name}`}>
+      <Link to={`/categories/${item.id}`}>
         <CategoryCard category={item} />
       </Link>
     </div>
@@ -28,7 +28,7 @@ const CategoryList = props => {
   return (
     <div className="container">
       <Segment>
-        <Header>Категории</Header>
+        <Header>CATEGORIES</Header>
         <WithScroll elements={categoryElements} carouselSettings={carouselSettings} />
       </Segment>
     </div>

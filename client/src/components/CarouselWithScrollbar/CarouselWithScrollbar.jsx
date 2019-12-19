@@ -52,9 +52,7 @@ class WithScrollbar extends React.Component {
             type="range"
             value={Math.round(Math.abs(transform) / value)}
             max={
-              (carouselItemWidth * (carouselState.totalItems - carouselState.slidesToShow) +
-                (this.state.additionalTransfrom === 150 ? 0 : 150)) /
-              value
+              (carouselItemWidth * (carouselState.totalItems - carouselState.slidesToShow)) / value
             }
             onChange={e => {
               if (this.Carousel.isAnimationAllowed) {

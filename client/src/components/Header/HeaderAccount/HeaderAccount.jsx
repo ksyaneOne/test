@@ -7,10 +7,10 @@ import HeaderAccountTitle from './style';
 
 const HeaderAccount = props => {
   return (
-    <Link to="login">
+    <Link to="/login">
       <Icon name="user" size="large" title="Account" />
       <HeaderAccountTitle>Login</HeaderAccountTitle>
     </Link>
   );
-}
-export default HeaderAccount
+};
+export default HeaderAccount;
