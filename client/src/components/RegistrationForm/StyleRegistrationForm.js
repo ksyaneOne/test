@@ -12,7 +12,7 @@ export const Label = styled.label`
 export const Div = styled.div`
   text-align: center;
 `;
-export const Err = styled.p`
+export const Err = styled.span`
   color: red;
   visibility: ${ props => !props.error ?  "hidden" : "visible" };
 `;

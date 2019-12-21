@@ -22,8 +22,9 @@ export const Label = styled.label`
    width:100%
 }
 `;
-export const Err = styled.p`
+export const Err = styled.span`
 width:100%;
 color:red;
 align-text:left;
+  visibility: ${ props => !props.error ?  "hidden" : "visible" };
 `;
