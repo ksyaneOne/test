@@ -1,17 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getProductsByFilterQuery } from '../../actions/products';
+import { getProductsByFilterQuery, getProducts } from '../../actions/products';
 import { Segment, Header, Grid } from 'semantic-ui-react';
 import ProductCart from '../../components/CarouselNewProducts/ProductCard';
 
 const ProductDetails = props => {
-  const { onGetProductsByFilter, match, products = [], loading } = props;
-  const { params } = match;
+  const {
+    onGetProductsByFilter,
+    onGetAllProducts,
+    match,
+    allProducts,
+    productsByQuery,
+    loading
+  } = props;
+  const { params, path } = match;
   const { id } = params;
+  const initialState = [];
+  const [products, setProducts] = useState(initialState);
+  console.log(products, 'products');
+
+  console.log(match, 'match');
+  useEffect(() => {
+    switch (path) {
+      case '/products':
+        onGetAllProducts();
+        break;
+      case '/categories/:id':
+        onGetProductsByFilter(`categories=${id}`);
+        break;
+      default:
+        setProducts(initialState);
+    }
+  }, [path]);
 
   useEffect(() => {
-    onGetProductsByFilter(`categories=${id}`);
-  }, [id]);
+    console.log(allProducts);
+    if (allProducts !== undefined) {
+      setProducts();
+    }
+  }, [allProducts]);
+
+  useEffect(() => {
+    console.log(productsByQuery);
+    if (productsByQuery !== undefined) {
+      setProducts(productsByQuery);
+    }
+  }, [productsByQuery]);
 
   const productElements = products.map(item => (
     <div key={item._id}>
@@ -38,13 +72,17 @@ const ProductDetails = props => {
 };
 
 const mapStateToProps = state => ({
-  products: state.productsByFilter.products.products,
+  productsByQuery: state.productsByFilter.products.products,
+  allProducts: state.products.products,
   loading: state.productsByFilter.loading
 });
 
 const mapDispatchToProps = dispatch => ({
   onGetProductsByFilter: query => {
     dispatch(getProductsByFilterQuery(query));
+  },
+  onGetAllProducts: () => {
+    dispatch(getProducts());
   }
 });
 export default connect(
