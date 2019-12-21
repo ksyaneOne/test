@@ -40,6 +40,7 @@ const LoginForm = () => {
           name="loginOrEmail"
           ref={register({
             required: true, minlength: 3,
+            minlength: 3,
             pattern: /^(?=[a-z0-9.]{3,20}$)[a-z0-9]+\.?[a-z0-9]+$|^.*@\w+\.[\w.]+$/i
           })}
           type="text"
