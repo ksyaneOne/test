@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Dimmer, Loader } from 'semantic-ui-react';
 import { getProductsByFilterQuery, getProducts } from '../../actions/products';
 import { Segment, Header, Grid } from 'semantic-ui-react';
 import ProductCart from '../../components/CarouselNewProducts/ProductCard';
@@ -11,41 +12,52 @@ const ProductDetails = props => {
     match,
     allProducts,
     productsByQuery,
-    loading
+    loadingByFilter,
+    loadingAllProducts
   } = props;
-  const { params, path } = match;
+
+  const { params, path, url } = match;
   const { id } = params;
   const initialState = [];
-  const [products, setProducts] = useState(initialState);
-  console.log(products, 'products');
 
-  console.log(match, 'match');
+  const [products, setProducts] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [typeOfProducts, setTypeOfProducts] = useState('');
+
   useEffect(() => {
     switch (path) {
       case '/products':
+        setTypeOfProducts('All products');
         onGetAllProducts();
         break;
       case '/categories/:id':
+        setTypeOfProducts(`CATEGORIES ${id}`);
         onGetProductsByFilter(`categories=${id}`);
         break;
       default:
         setProducts(initialState);
     }
-  }, [path]);
+  }, [url]);
 
   useEffect(() => {
-    console.log(allProducts);
-    if (allProducts !== undefined) {
-      setProducts();
+    if (allProducts && path === '/products') {
+      setProducts(allProducts);
     }
   }, [allProducts]);
 
   useEffect(() => {
-    console.log(productsByQuery);
-    if (productsByQuery !== undefined) {
+    if (productsByQuery !== undefined && path === '/categories/:id') {
       setProducts(productsByQuery);
     }
   }, [productsByQuery]);
+
+  useEffect(() => {
+    setLoading(loadingByFilter);
+  }, [loadingByFilter]);
+
+  useEffect(() => {
+    setLoading(loadingAllProducts);
+  }, [loadingAllProducts]);
 
   const productElements = products.map(item => (
     <div key={item._id}>
@@ -54,12 +66,17 @@ const ProductDetails = props => {
       </Grid.Column>
     </div>
   ));
-  if (!loading) return <div>loading</div>;
+  if (!loading)
+    return (
+      <Dimmer active>
+        <Loader />
+      </Dimmer>
+    );
   return (
     <div className="container">
       <Segment>
         <Header as="h3" block>
-          {`CATEGORIES ${id}`.toUpperCase()}
+          {typeOfProducts.toUpperCase()}
         </Header>
         <Segment>
           <Grid container columns={3} centered>
@@ -74,7 +91,8 @@ const ProductDetails = props => {
 const mapStateToProps = state => ({
   productsByQuery: state.productsByFilter.products.products,
   allProducts: state.products.products,
-  loading: state.productsByFilter.loading
+  loadingByFilter: state.productsByFilter.loading,
+  loadingAllProducts: state.products.loading
 });
 
 const mapDispatchToProps = dispatch => ({
