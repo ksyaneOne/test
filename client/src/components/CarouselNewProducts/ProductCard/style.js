@@ -118,8 +118,8 @@ export const ImageWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     object-fit: cover;
     transform: translate(-50%, -50%);
   }
