@@ -19,7 +19,6 @@ const ProductDetails = props => {
   const { params, path, url } = match;
   const { id } = params;
   const initialState = [];
-
   const [products, setProducts] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [typeOfProducts, setTypeOfProducts] = useState('');
@@ -35,21 +34,21 @@ const ProductDetails = props => {
         onGetProductsByFilter(`categories=${id}`);
         break;
       default:
-        setProducts(initialState);
+        setProducts([]);
     }
-  }, [url]);
+  }, [url, onGetAllProducts, onGetProductsByFilter, id, path]);
 
   useEffect(() => {
     if (allProducts && path === '/products') {
       setProducts(allProducts);
     }
-  }, [allProducts]);
+  }, [allProducts, path]);
 
   useEffect(() => {
     if (productsByQuery !== undefined && path === '/categories/:id') {
       setProducts(productsByQuery);
     }
-  }, [productsByQuery]);
+  }, [productsByQuery, path]);
 
   useEffect(() => {
     setLoading(loadingByFilter);
@@ -103,7 +102,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getProducts());
   }
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
