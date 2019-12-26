@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Button } from 'semantic-ui-react';
+import styled from "@emotion/styled";
+import { Button } from "semantic-ui-react";
 
 export const ButtonIn = styled(Button)`
   margin: 0 auto;
@@ -14,5 +14,5 @@ export const Div = styled.div`
 `;
 export const Err = styled.span`
   color: red;
-  visibility: ${ props => !props.error ?  "hidden" : "visible" };
+  visibility: ${props => (!props.error ? "hidden" : "visible")};
 `;

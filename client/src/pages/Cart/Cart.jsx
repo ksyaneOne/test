@@ -1,45 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
+import React from "react";
+import { connect } from "react-redux";
 
 const Cart = () => {
-  return (<div > </div>);
-
+  return <div> </div>;
 };
 
-const mapStateToProps = state =>{
-  return{
-  };
+const mapStateToProps = state => {
+  return {};
 };
 
 export default connect(mapStateToProps)(Cart);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

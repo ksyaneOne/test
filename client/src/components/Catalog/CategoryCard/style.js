@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const CardWrapper = styled.div`
   margin: 10px;
@@ -11,7 +11,7 @@ export const CardWrapper = styled.div`
 
 export const CardHeader = styled.div`
    {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;

@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API = {
   product: {
     fetchProductsAll: async () => {
       return axios
-        .get('/products')
+        .get("/products")
         .then(products => {
           return products.data;
         })
@@ -37,31 +37,32 @@ const API = {
 
     fetchProductsBySearchPhrases: async phrases => {
       const searchPhrases = {
-        query: phrases
+        query: phrases,
       };
+
       return axios
-        .post('/products/search', searchPhrases)
+        .post("/products/search", searchPhrases)
         .then(products => {
           return products.data;
         })
         .catch(err => {
           return err;
         });
-    }
+    },
   },
 
   category: {
     fetchCategoriesApi: async () => {
       return axios
-        .get('/catalog')
+        .get("/catalog")
         .then(catalog => {
           return catalog.data;
         })
         .catch(err => {
           return err;
         });
-    }
-  }
+    },
+  },
 };
 
 export default API;

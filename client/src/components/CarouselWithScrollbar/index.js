@@ -1,1 +1,1 @@
-export { default } from './CarouselWithScrollbar';
+export { default } from "./CarouselWithScrollbar";

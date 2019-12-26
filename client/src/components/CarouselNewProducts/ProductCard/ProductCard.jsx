@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Card, Label, Segment, Icon } from 'semantic-ui-react';
-import 'react-multi-carousel/lib/styles.css';
-import { CardWrapper, ProductName, ProductPrices, ButtonsGrop, ImageWrapper } from './style';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Card, Label, Segment, Icon } from "semantic-ui-react";
+import "react-multi-carousel/lib/styles.css";
+import {
+  CardWrapper,
+  ProductName,
+  ProductPrices,
+  ButtonsGrop,
+  ImageWrapper,
+} from "./style";
 
 const getSale = (old, current) => {
   const diff = old - current;
+
   return Math.ceil((diff / old) * 100);
 };
 
@@ -67,10 +74,10 @@ const NewProduct = props => {
 };
 
 NewProduct.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 NewProduct.defaultProps = {
-  product: {}
+  product: {},
 };
 export default NewProduct;

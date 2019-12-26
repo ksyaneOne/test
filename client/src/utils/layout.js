@@ -1,12 +1,14 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
 const layout = Layout => ({ component, middleware, ...rest }) => (
   <Route
     {...rest}
     render={props => {
       for (const key in rest) {
-        key !== 'computedMatch' && key !== 'location' && (props[key] = rest[key]);
+        key !== "computedMatch" &&
+          key !== "location" &&
+          (props[key] = rest[key]);
       }
 
       const to = processMidlewares(middleware, props);
@@ -28,7 +30,7 @@ function processMidlewares(middlewares, props) {
   };
 
   if (middlewares) {
-    if (typeof middlewares === 'function') {
+    if (typeof middlewares === "function") {
       middlewares(props, replace);
 
       return location;

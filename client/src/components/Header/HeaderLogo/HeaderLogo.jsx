@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Logo from './header_logo.png';
-import HeaderLogoStyle from './style.js';
+import Logo from "./header_logo.png";
+import HeaderLogoStyle from "./style.js";
 
 const HeaderLogo = props => {
   return (
@@ -10,6 +10,6 @@ const HeaderLogo = props => {
       <HeaderLogoStyle src={Logo} alt="Header logo" />
     </Link>
   );
-}
+};
 
-export default HeaderLogo
+export default HeaderLogo;

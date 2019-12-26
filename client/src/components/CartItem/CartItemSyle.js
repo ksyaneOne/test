@@ -1,8 +1,6 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Div = styled.div`
-display:flex;
+  display: flex;
 `;
-export const Img = styled.img`
-
-`;
+export const Img = styled.img``;

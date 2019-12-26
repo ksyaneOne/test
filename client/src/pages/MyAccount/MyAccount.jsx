@@ -1,6 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import { Grid, Divider, Header, Icon, Table, Button, Image, Item } from 'semantic-ui-react';
+import {
+  Grid,
+  Divider,
+  Header,
+  Icon,
+  Table,
+  Button,
+  Image,
+  Item,
+} from "semantic-ui-react";
 
 import {
   UserTitleWrapper,
@@ -11,8 +20,8 @@ import {
   HeaderTitle,
   MediumTitle,
   TextLink,
-  Span
-} from './MyAccountStyle';
+  Span,
+} from "./MyAccountStyle";
 
 export default function MyAccount() {
   return (

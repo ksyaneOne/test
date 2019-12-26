@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const ProductDetailStyles = styled.div`
   margin: 4em 2em;
@@ -129,13 +129,13 @@ export const carouselSettings = {
   arrows: true,
   autoPlaySpeed: 3000,
   centerMode: false,
-  className: '',
-  containerClass: '',
-  dotListClass: '',
+  className: "",
+  containerClass: "",
+  dotListClass: "",
   draggable: true,
   focusOnSelect: false,
   infinite: true,
-  itemClass: '',
+  itemClass: "",
   keyBoardControl: true,
   minimumTouchDrag: 80,
   renderButtonGroupOutside: false,
@@ -144,27 +144,27 @@ export const carouselSettings = {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1024
+        min: 1024,
       },
-      items: 1
+      items: 1,
     },
     mobile: {
       breakpoint: {
         max: 464,
-        min: 0
+        min: 0,
       },
-      items: 1
+      items: 1,
     },
     tablet: {
       breakpoint: {
         max: 1024,
-        min: 464
+        min: 464,
       },
-      items: 1
-    }
+      items: 1,
+    },
   },
   showDots: true,
-  sliderClass: '',
+  sliderClass: "",
   slidesToSlide: 1,
-  swipeable: true
+  swipeable: true,
 };

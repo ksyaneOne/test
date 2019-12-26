@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { Icon } from 'semantic-ui-react';
+import { Icon } from "semantic-ui-react";
 
-import HeaderAccountTitle from './style';
+import HeaderAccountTitle from "./style";
 
 const HeaderAccount = props => {
   return (

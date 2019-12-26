@@ -1,7 +1,4 @@
-import apiService from './apiService';
-import apiServiceCreator from './apiServiceCreator';
+import apiService from "./apiService";
+import apiServiceCreator from "./apiServiceCreator";
 
-export {
-  apiService as default,
-  apiServiceCreator,
-};
+export { apiService as default, apiServiceCreator };

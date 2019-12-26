@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import { Icon } from 'semantic-ui-react';
+import { Icon } from "semantic-ui-react";
 
-import { HeaderCartCount, HeaderCartTitle } from './style';
+import { HeaderCartCount, HeaderCartTitle } from "./style";
 
 const HeaderCart = props => {
   const [count] = useState(1);

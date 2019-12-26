@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useFetch from '../../../utils/useFetch';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, Responsive, Icon } from "semantic-ui-react";
+import useFetch from "../../../utils/useFetch";
 
-import { Menu, Responsive, Icon } from 'semantic-ui-react';
-import { HeaderNavStyle, HeaderMenuItem } from './style';
+import { HeaderNavStyle, HeaderMenuItem } from "./style";
 
 const HeaderNav = props => {
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const { data } = useFetch('/catalog', []);
+  const { data } = useFetch("/catalog", []);
 
   const NavElements = data.map(item => (
     <Menu.Item
@@ -29,7 +29,7 @@ const HeaderNav = props => {
             <HeaderMenuItem>
               <Icon
                 name="bars"
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
                 size="large"
                 onClick={() => setMenuVisible(!menuVisible)}
               />

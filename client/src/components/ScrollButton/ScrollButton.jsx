@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ScrollButton from 'react-scroll-button';
+import React, { Component } from "react";
+import ScrollButton from "react-scroll-button";
 
 export default class ScrollToTop extends Component {
   render() {
@@ -14,5 +14,3 @@ export default class ScrollToTop extends Component {
     );
   }
 }
-
-

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Span = styled.span`
   color: #fff;
@@ -10,7 +10,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 export const Div = styled.div`
   display: flex;
@@ -23,8 +22,8 @@ export const Label = styled.label`
 }
 `;
 export const Err = styled.span`
-width:100%;
-color:red;
-align-text:left;
-  visibility: ${ props => !props.error ?  "hidden" : "visible" };
+  width: 100%;
+  color: red;
+  align-text: left;
+  visibility: ${props => (!props.error ? "hidden" : "visible")};
 `;

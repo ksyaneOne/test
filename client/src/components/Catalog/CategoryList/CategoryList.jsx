@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Dimmer, Loader, Segment, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import CategoryCard from '../CategoryCard';
-import WithScroll from '../../CarouselWithScrollbar';
-import carouselSettings from './carouselSettings';
-import getCategory from '../../../actions/category';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Dimmer, Loader, Segment, Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import CategoryCard from "../CategoryCard";
+import WithScroll from "../../CarouselWithScrollbar";
+import carouselSettings from "./carouselSettings";
+import getCategory from "../../../actions/category";
 
 const CategoryList = props => {
   const { loading, categories, onGetCategory } = props;
@@ -29,7 +29,10 @@ const CategoryList = props => {
     <div className="container">
       <Segment>
         <Header>CATEGORIES</Header>
-        <WithScroll elements={categoryElements} carouselSettings={carouselSettings} />
+        <WithScroll
+          elements={categoryElements}
+          carouselSettings={carouselSettings}
+        />
       </Segment>
     </div>
   );
@@ -38,25 +41,22 @@ const CategoryList = props => {
 CategoryList.propTypes = {
   onGetCategory: PropTypes.func,
   loading: PropTypes.bool.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.object)
+  categories: PropTypes.arrayOf(PropTypes.object),
 };
 
 CategoryList.defaultProps = {
   categories: [],
-  onGetCategory: {}
+  onGetCategory: {},
 };
 
 const mapStateToProps = state => ({
   categories: state.catalog.categories,
-  loading: state.catalog.loading
+  loading: state.catalog.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
   onGetCategory: () => {
     dispatch(getCategory());
-  }
+  },
 });
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategoryList);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryList);

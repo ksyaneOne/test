@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-export  const Input = styled.input`
+export const Input = styled.input`
   background: rgba(0, 0, 0, 0);
   border: 0;
   border-bottom: 1px solid #fff;

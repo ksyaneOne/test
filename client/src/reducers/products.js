@@ -1,8 +1,8 @@
 import {
   FETCH_PRODUCTS_START,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE
-} from '../actions/products';
+  FETCH_PRODUCTS_FAILURE,
+} from "../actions/products";
 
 const initialState = { loading: false, products: [] };
 const products = (state = initialState, action) => {
@@ -13,7 +13,12 @@ const products = (state = initialState, action) => {
     case FETCH_PRODUCTS_SUCCESS:
       return { ...state, products: payload.products, loading: payload.loading };
     case FETCH_PRODUCTS_FAILURE:
-      return { ...state, error: payload.err, products: [], loading: payload.loading };
+      return {
+        ...state,
+        error: payload.err,
+        products: [],
+        loading: payload.loading,
+      };
     default:
       return { ...state };
   }

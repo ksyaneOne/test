@@ -1,15 +1,14 @@
-import Cookies from 'js-cookie'
-import apiService from '../services/api/apiService';
-import axios  from  'axios';
+import Cookies from "js-cookie";
+import axios from "axios";
+import apiService from "../services/api/apiService";
 
 export const ADD_TO_BASKET = "SAVE_TO_BASKET";
 
-export const addToBasket =  (id,count=1)=>{
-  const product ={
+export const addToBasket = (id, count = 1) => {
+  const product = {
     product: id,
-    cartQuantity: count
+    cartQuantity: count,
   };
-
 
   // axios.get('/products/')
   //   .then(newCart => {
@@ -20,14 +19,13 @@ export const addToBasket =  (id,count=1)=>{
   //   });
 
   let products = [];
-  if(!Cookies.get('cartProducts')) {
+  if (!Cookies.get("cartProducts")) {
     products.push(product);
-    Cookies.set('cartProducts',products ,{ expires: 1 })
-  }else {
-    products =  Cookies.getJSON('cartProducts');
+    Cookies.set("cartProducts", products, { expires: 1 });
+  } else {
+    products = Cookies.getJSON("cartProducts");
     products.push(product);
-    Cookies.set('cartProducts',products ,{ expires: 1 })
+    Cookies.set("cartProducts", products, { expires: 1 });
   }
-  return {type:ADD_TO_BASKET, payload:products};
+  return { type: ADD_TO_BASKET, payload: products };
 };
-
