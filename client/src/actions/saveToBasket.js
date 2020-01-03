@@ -1,31 +1,9 @@
-import Cookies from "js-cookie";
-import axios from "axios";
-import apiService from "../services/api/apiService";
+import saveToLocalStorage from "../utils/saveToLocalStorage";
 
-export const ADD_TO_BASKET = "SAVE_TO_BASKET";
+export const ADD_TO_BASKET = "ADD_TO_BASKET";
 
-export const addToBasket = (id, count = 1) => {
-  const product = {
-    product: id,
-    cartQuantity: count,
-  };
+export const addToBasket = product => (dispatch, getState) => {
+  saveToLocalStorage(product, getState);
 
-  // axios.get('/products/')
-  //   .then(newCart => {
-  //     console.log(newCart);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-
-  let products = [];
-  if (!Cookies.get("cartProducts")) {
-    products.push(product);
-    Cookies.set("cartProducts", products, { expires: 1 });
-  } else {
-    products = Cookies.getJSON("cartProducts");
-    products.push(product);
-    Cookies.set("cartProducts", products, { expires: 1 });
-  }
-  return { type: ADD_TO_BASKET, payload: products };
+  dispatch({ type: ADD_TO_BASKET, payload: product });
 };

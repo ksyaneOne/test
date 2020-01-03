@@ -27,5 +27,5 @@ Notice.propTypes = {
 };
 
 export default connect(state => ({ notifications: state.notifications }))(
-  Notice
+  Notice,
 );

@@ -29,8 +29,18 @@ import {
   carouselSettings,
 } from "./style";
 
+import { addToBasket } from "../../actions/saveToBasket";
+import saveToLocalStorage from "../../utils/saveToLocalStorage";
+
 const ProductDetails = props => {
-  const { onGetProductById, match, product, loading } = props;
+  const {
+    onGetProductById,
+    match,
+    product,
+    loading,
+    addToCart,
+    saveToLocalStorage,
+  } = props;
   const { params } = match;
   const { id } = params;
   const [arrSrc, setArrSrc] = useState([]);
@@ -147,7 +157,13 @@ const ProductDetails = props => {
                     </Grid.Row>
                     <Grid.Row>
                       <ProductButtons>
-                        <ProductButton>Add to cart</ProductButton>
+                        <ProductButton
+                          onClick={() => {
+                            addToCart(product);
+                          }}
+                        >
+                          Add to cart
+                        </ProductButton>
                         <ProductButton>Buy Now</ProductButton>
                       </ProductButtons>
                     </Grid.Row>
@@ -170,6 +186,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onGetProductById: id => {
     dispatch(getProductById(id));
+  },
+  addToCart: product => {
+    dispatch(addToBasket(product));
+    dispatch(saveToLocalStorage());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

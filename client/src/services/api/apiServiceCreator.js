@@ -13,7 +13,7 @@ const apiServiceCreator = url => {
 
   api.interceptors.response.use(
     handleInterceptorsResponse,
-    handleInterceptorsError
+    handleInterceptorsError,
   );
 
   return api;

@@ -15,6 +15,7 @@ import ProductList from "./pages/ProductList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollButton";
+import { Container } from "./StyleApp";
 
 const App = () => {
   return (
@@ -29,15 +30,15 @@ const App = () => {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route path="/categories/:id" component={ProductList} />
         <Route exact path="/products" component={ProductList} />
+
         <Route exact path="*" component={NotFound} />
         <LayoutDefault exact path={routes.HOME} component={Home} />
         <LayoutDefault component={NotFound} />
       </Switch>
-
       <ScrollToTop />
       <Footer />
       <Notice />
     </Router>
-);
+  );
 };
 export default App;
