@@ -47,6 +47,21 @@ const API = {
         .catch(err => {
           return err;
         });
+    },
+    fetchMoreProducts: async (limit, lastProduct) => {
+      const searchPhrases = {
+        limitValue: `${limit}`,
+        lastSeen: `${lastProduct}`
+      };
+      return axios
+        .post('/products/limited', searchPhrases)
+        .then(products => {
+          return products.data;
+        })
+        .catch(err => {
+          console.log(err);
+          return err;
+        });
     }
   },
 
