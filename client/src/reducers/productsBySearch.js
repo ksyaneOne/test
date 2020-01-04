@@ -1,8 +1,8 @@
 import {
   FETCH_PRODUCTS_BY_SEARCH_PHRASE_START,
   FETCH_PRODUCTS_BY_SEARCH_PHRASE_SUCCESS,
-  FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE
-} from '../actions/products';
+  FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE,
+} from "../actions/products";
 
 const initialState = { loading: false, products: [] };
 const productsBySearch = (state = initialState, action) => {
@@ -16,7 +16,7 @@ const productsBySearch = (state = initialState, action) => {
       return {
         ...state,
         error: payload.err,
-        loading: payload.loading
+        loading: payload.loading,
       };
     default:
       return { ...state };

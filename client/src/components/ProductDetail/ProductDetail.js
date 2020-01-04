@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import style from './style';
+import React, { useState } from "react";
+import style from "./style";
 
 // const initialState = {
 //   color: 'red',

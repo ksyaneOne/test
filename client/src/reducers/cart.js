@@ -1,16 +1,16 @@
-import {ADD_TO_BASKET} from '../actions/saveToBasket'
-const initialState = {
-  itemExist:false,
-  products:[]
-};
-const cart = (state= initialState, action) => {
+import { ADD_TO_BASKET } from "../actions/saveToBasket";
+
+const initialState = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+
+const cart = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
-      console.log(action.payload);
-      return {...state, product: action.payload};
-
+      if (state.every(item => item.itemNo !== action.payload.itemNo)) {
+        return [...state, action.payload];
+      }
   }
   return state;
-
 };
 export default cart;

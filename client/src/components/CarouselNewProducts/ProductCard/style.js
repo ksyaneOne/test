@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import { Card } from 'semantic-ui-react';
+import styled from "@emotion/styled";
+import { Card } from "semantic-ui-react";
 
 export const ProductName = styled(Card.Header)`
    {
     margin: 15px;
     color: #000;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-transform: capitalize;
     font-size: 16px;
     font-weight: bold;

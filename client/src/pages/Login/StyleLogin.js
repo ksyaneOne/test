@@ -1,15 +1,16 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const LoginBtn = styled.button`
   width: 200px;
   border: 1px solid rgba(0, 0, 0, 0);
-  border-bottom: ${props => (props.isLoginForm ? '1px solid #fff;' : '1px solid rgba(0, 0, 0, 0);')}
+  border-bottom: ${props =>
+    props.isLoginForm ? "1px solid #fff;" : "1px solid rgba(0, 0, 0, 0);"}
   color: white;
   background: rgba(0, 0, 0, 0);
 `;
 export const RegistrationBtn = styled(LoginBtn)`
   border-bottom: ${props =>
-  !props.isLoginForm ? '1px solid #fff;' : '1px solid rgba(0, 0, 0, 0);'};
+    !props.isLoginForm ? "1px solid #fff;" : "1px solid rgba(0, 0, 0, 0);"};
 `;
 export const WrapperBtn = styled.div`
   display: flex;

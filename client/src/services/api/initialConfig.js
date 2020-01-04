@@ -1,13 +1,16 @@
-import { success as noticeSuccess, error as noticeError } from 'react-notification-system-redux';
-import logger from 'utils/logger';
-import * as store from '../../store';
+import {
+  success as noticeSuccess,
+  error as noticeError,
+} from "react-notification-system-redux";
+import logger from "utils/logger";
+import * as store from "../../store";
 
-import history from '../../utils/history';
-import * as ROUTES from '../../config/routes';
+import history from "../../utils/history";
+import * as ROUTES from "../../config/routes";
 
 const initialConfig = {
   timeout: 10000,
-  validateStatus: status => status
+  validateStatus: status => status,
 };
 
 function handleInterceptorsResponse(response) {
@@ -32,4 +35,8 @@ const handleInterceptorsError = error => {
   ({ error, data: {} });
 };
 
-export { initialConfig as default, handleInterceptorsResponse, handleInterceptorsError };
+export {
+  initialConfig as default,
+  handleInterceptorsResponse,
+  handleInterceptorsError,
+};

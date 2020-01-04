@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Card } from 'semantic-ui-react';
-import 'react-multi-carousel/lib/styles.css';
-import { CardHeader, CardWrapper, ImageWrapper } from './style';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card } from "semantic-ui-react";
+import "react-multi-carousel/lib/styles.css";
+import { CardHeader, CardWrapper, ImageWrapper } from "./style";
 
 const CategoryCard = props => {
   const { category } = props;
+
   return (
     <CardWrapper>
       <Card>
@@ -21,10 +22,10 @@ const CategoryCard = props => {
 };
 
 CategoryCard.propTypes = {
-  category: PropTypes.object
+  category: PropTypes.object,
 };
 CategoryCard.defaultProps = {
-  category: {}
+  category: {},
 };
 
 export default CategoryCard;

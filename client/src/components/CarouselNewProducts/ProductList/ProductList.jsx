@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Dimmer, Loader, Segment, Header } from 'semantic-ui-react';
-import PropTypes from 'prop-types';
-import ProductCart from '../ProductCard';
-import WithScroll from '../../CarouselWithScrollbar';
-import carouselSettings from './carouselSettings';
-import { getProducts } from '../../../actions/products';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Dimmer, Loader, Segment, Header } from "semantic-ui-react";
+import PropTypes from "prop-types";
+import ProductCart from "../ProductCard";
+import WithScroll from "../../CarouselWithScrollbar";
+import carouselSettings from "./carouselSettings";
+import { getProducts } from "../../../actions/products";
 
 const ProductList = props => {
   const { loading, products, onGetProducts } = props;
@@ -27,7 +27,10 @@ const ProductList = props => {
     <div className="container">
       <Segment>
         <Header>NEW PRODUCTS</Header>
-        <WithScroll elements={productElements} carouselSettings={carouselSettings} />
+        <WithScroll
+          elements={productElements}
+          carouselSettings={carouselSettings}
+        />
       </Segment>
     </div>
   );
@@ -35,25 +38,22 @@ const ProductList = props => {
 ProductList.propTypes = {
   onGetProducts: PropTypes.func,
   loading: PropTypes.bool.isRequired,
-  products: PropTypes.arrayOf(PropTypes.object)
+  products: PropTypes.arrayOf(PropTypes.object),
 };
 
 ProductList.defaultProps = {
   products: [],
-  onGetProducts: {}
+  onGetProducts: {},
 };
 const mapStateToProps = state => ({
   products: state.products.products,
-  loading: state.products.loading
+  loading: state.products.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
   onGetProducts: () => {
     dispatch(getProducts());
-  }
+  },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductList);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

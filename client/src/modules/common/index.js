@@ -1,9 +1,10 @@
-import { debounce } from 'throttle-debounce';
-import objectFitImages from 'object-fit-images';
-import  store  from '../../store';
+import { debounce } from "throttle-debounce";
+import objectFitImages from "object-fit-images";
+import store from "../../store";
 
-const WINDOW_RESIZE = 'COMMON/WINDOW_RESIZE';
-const WINDOW_SCROLL = 'COMMON/WINDOW_SCROLL';
+
+const WINDOW_RESIZE = "COMMON/WINDOW_RESIZE";
+const WINDOW_SCROLL = "COMMON/WINDOW_SCROLL";
 
 const initialState = {
   windowWidth: window.innerWidth,
@@ -32,7 +33,7 @@ const windowResize = (windowWidth, windowHeight) => ({
   payload: { windowWidth, windowHeight },
 });
 
-const windowScroll = (scrollTop) => ({
+const windowScroll = scrollTop => ({
   type: WINDOW_SCROLL,
   payload: { scrollTop },
 });
@@ -51,8 +52,8 @@ function handleDOMLoaded(event) {
   objectFitImages();
 }
 
-window.addEventListener('resize', debounce(100, handleWindowResize));
-window.addEventListener('scroll', debounce(100, handleWindowScroll));
-window.addEventListener('DOMContentLoaded', handleDOMLoaded);
+window.addEventListener("resize", debounce(100, handleWindowResize));
+window.addEventListener("scroll", debounce(100, handleWindowScroll));
+window.addEventListener("DOMContentLoaded", handleDOMLoaded);
 
 export { reducer };

@@ -1,15 +1,16 @@
-import Cookies from 'js-cookie';
-import apiService from '../services/api/apiService';
+import Cookies from "js-cookie";
+import apiService from "../services/api/apiService";
 
 const onAuthorization = async data => {
   await apiService()({
-    method: 'post',
-    url: '/customers/login',
-    data
+    method: "post",
+    url: "/customers/login",
+    data,
   })
     .then(res => {
-      if (!Cookies.get('token')) Cookies.set('token', res.data.token, { expires: 1 });
-      console.log('Authorization successful!')
+      if (!Cookies.get("token"))
+        Cookies.set("token", res.data.token, { expires: 1 });
+      console.log("Authorization successful!");
     })
     .catch(err => console.log(err));
 };

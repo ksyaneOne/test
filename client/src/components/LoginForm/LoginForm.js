@@ -1,33 +1,30 @@
-import React, {useState, useRef} from 'react';
-import {Button, Checkbox} from 'semantic-ui-react';
-import useForm from 'react-hook-form';
-import onRegistered from '../../actions/onAuthorization';
+import React, { useState, useRef } from "react";
+import { Button, Checkbox } from "semantic-ui-react";
+import useForm from "react-hook-form";
+import onRegistered from "../../actions/onAuthorization";
 
+import { Input } from "../CustomComponents/Input";
 
-import {Input} from '../CustomComponents/Input';
-
-
-import {Form, Div, Label, Span,Err} from './StyleLoginForm';
+import { Form, Div, Label, Span, Err } from "./StyleLoginForm";
 
 const LoginForm = () => {
-  const {register, handleSubmit, errors} = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const checkBoxRemember = useRef(null);
 
   const initialState = {
-    login: '',
-    password: '',
+    login: "",
+    password: "",
     isRemember: false,
-    error : false
+    error: false,
   };
   const [state, setState] = useState(initialState);
 
-
- const { error } = state;
+  const { error } = state;
 
   const onAuth = data => {
     setState(data);
 
-    const dataForDispatch = {...data};
+    const dataForDispatch = { ...data };
     delete dataForDispatch.isRemember;
     onRegistered(dataForDispatch);
   };
@@ -39,20 +36,20 @@ const LoginForm = () => {
           errors={errors}
           name="loginOrEmail"
           ref={register({
-            required: true, minlength: 3,
+            required: true,
             minlength: 3,
-            pattern: /^(?=[a-z0-9.]{3,20}$)[a-z0-9]+\.?[a-z0-9]+$|^.*@\w+\.[\w.]+$/i
+            pattern: /^(?=[a-z0-9.]{3,20}$)[a-z0-9]+\.?[a-z0-9]+$|^.*@\w+\.[\w.]+$/i,
           })}
           type="text"
           placeholder="Login or Email"
         />
-       <Err error={errors.loginOrEmail}>This field is invalid</Err>
+        <Err error={errors.loginOrEmail}>This field is invalid</Err>
         <Input
           errors={errors}
           name="password"
           ref={register({
             required: true,
-            minlength: 8
+            minlength: 8,
           })}
           type="password"
           placeholder="Password"

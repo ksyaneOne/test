@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
-import LoginForm from '../../components/LoginForm';
-import { Div, LoginBtn, RegistrationBtn, WrapperBtn, WrapperForm } from './StyleLogin';
-import RegistrationForm from '../../components/RegistrationForm';
+import React, { useState } from "react";
+import LoginForm from "../../components/LoginForm";
+import {
+  Div,
+  LoginBtn,
+  RegistrationBtn,
+  WrapperBtn,
+  WrapperForm,
+} from "./StyleLogin";
+import RegistrationForm from "../../components/RegistrationForm";
 
 const Login = () => {
   const [state, setState] = useState({ isLoginForm: true });
@@ -9,7 +15,7 @@ const Login = () => {
 
   const handleBtn = event => {
     event.preventDefault();
-    if (event.target.getAttribute('data-name') === 'login') {
+    if (event.target.getAttribute("data-name") === "login") {
       setState({ ...state, isLoginForm: true });
     } else {
       setState({ ...state, isLoginForm: false });
@@ -20,7 +26,11 @@ const Login = () => {
     <Div>
       <WrapperForm>
         <WrapperBtn>
-          <LoginBtn data-name="login" isLoginForm={isLoginForm} onClick={handleBtn}>
+          <LoginBtn
+            data-name="login"
+            isLoginForm={isLoginForm}
+            onClick={handleBtn}
+          >
             Login
           </LoginBtn>
           <RegistrationBtn isLoginForm={isLoginForm} onClick={handleBtn}>

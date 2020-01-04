@@ -1,19 +1,19 @@
-import _ from 'lodash';
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Search, Grid, Image } from 'semantic-ui-react';
-import { getProductsBySearchPhrases } from '../../../actions/products';
+import _ from "lodash";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Search, Grid, Image } from "semantic-ui-react";
+import { getProductsBySearchPhrases } from "../../../actions/products";
 
 const HeaderSearch = props => {
   const { onSearch, products } = props;
 
-  const initialState = { isLoading: false, results: [], value: '' };
+  const initialState = { isLoading: false, results: [], value: "" };
   const [state, setState] = useState(initialState);
   const [source, setSource] = useState([]);
-  const [phrase, setPhrase] = useState('');
+  const [phrase, setPhrase] = useState("");
   const arrSearcher = () => {
-    const re = new RegExp(_.escapeRegExp(phrase), 'i');
+    const re = new RegExp(_.escapeRegExp(phrase), "i");
     const isMatch = result => re.test(result.title);
     setState({ isLoading: false, results: _.filter(source, isMatch) });
   };
@@ -37,7 +37,7 @@ const HeaderSearch = props => {
         prevprice: product.previousPrice,
         images: product.imageUrls,
         desc: product.description,
-        brand: product.brand
+        brand: product.brand,
       });
     });
     setSource(newData);
@@ -45,8 +45,8 @@ const HeaderSearch = props => {
   }, [products]);
 
   const handleResultSelect = () => {
-    setState({ value: '' });
-    setPhrase('');
+    setState({ value: "" });
+    setPhrase("");
   };
 
   const handleSearchChange = (event, { value }) => {
@@ -67,7 +67,7 @@ const HeaderSearch = props => {
     images,
     brand,
     desc,
-    prevprice
+    prevprice,
   }) => (
     <Link
       to={{
@@ -80,17 +80,21 @@ const HeaderSearch = props => {
           currentPrice: price,
           color,
           image,
-          images
-        }
+          images,
+        },
       }}
     >
       <div className="results transition">
-        <div className="result" color="black" style={{ textTransform: 'capitalize' }}>
+        <div
+          className="result"
+          color="black"
+          style={{ textTransform: "capitalize" }}
+        >
           <div className="image">
             <Image src={`../../${image}`} />
           </div>
           <div className="content">
-            <div className="title" style={{ textTransform: 'capitalize' }}>
+            <div className="title" style={{ textTransform: "capitalize" }}>
               {title} <span className="price">{price}</span>
             </div>
             <div className="title">{color}</div>
@@ -109,7 +113,7 @@ const HeaderSearch = props => {
           loading={isLoading}
           onResultSelect={handleResultSelect}
           onSearchChange={_.debounce(handleSearchChange, 500, {
-            leading: true
+            leading: true,
           })}
           results={results}
           // {...props}
@@ -121,16 +125,13 @@ const HeaderSearch = props => {
 };
 
 const mapStateToProps = state => ({
-  products: state.productsBySearch.products
+  products: state.productsBySearch.products,
 });
 
 const mapDispatchToProps = dispatch => ({
   onSearch: phrases => {
     dispatch(getProductsBySearchPhrases(phrases));
-  }
+  },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HeaderSearch);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderSearch);

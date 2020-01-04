@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import { Icon } from 'semantic-ui-react';
+import { Icon } from "semantic-ui-react";
 
-import HeaderCategoriesTitle from './style';
+import HeaderCategoriesTitle from "./style";
 
 const HeaderCategories = props => {
   return (

@@ -1,8 +1,10 @@
-import axios from 'axios';
-import config, { handleInterceptorsResponse, handleInterceptorsError } from './initialConfig';
+import axios from "axios";
+import config, {
+  handleInterceptorsResponse,
+  handleInterceptorsError,
+} from "./initialConfig";
 
-
-const apiServiceCreator = (url) => {
+const apiServiceCreator = url => {
   const api = axios.create({
     ...config,
     timeout: false,
@@ -16,6 +18,5 @@ const apiServiceCreator = (url) => {
 
   return api;
 };
-
 
 export default apiServiceCreator;

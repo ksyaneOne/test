@@ -1,7 +1,7 @@
 export function setCookie(name, value, props = {}) {
   let exp = props.expires;
 
-  if (typeof exp === 'number' && exp) {
+  if (typeof exp === "number" && exp) {
     const d = new Date();
 
     d.setTime(d.getTime() + exp * 1000 * 3600);
@@ -17,7 +17,7 @@ export function setCookie(name, value, props = {}) {
 
   let updatedCookie = `${name}=${value}`;
 
-  for (const propName in props){
+  for (const propName in props) {
     updatedCookie += `; ${propName}`;
 
     const propValue = props[propName];
@@ -29,4 +29,3 @@ export function setCookie(name, value, props = {}) {
 
   document.cookie = updatedCookie;
 }
-

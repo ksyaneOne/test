@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const ImageContainer = styled.div`
   position: relative;
@@ -18,6 +18,6 @@ export const BlackLine = styled.div`
   display: inline-block;
   height: 5px;
   width: 240px;
-  border-radius:2px;
+  border-radius: 2px;
   background-color: black;
 `;

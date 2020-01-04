@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const UserInfoWrapper = styled.div`
   margin: 2em auto;

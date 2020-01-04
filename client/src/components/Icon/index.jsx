@@ -1,14 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import './style.scss';
-import * as iconsNames from './iconsNames';
+import "./style.scss";
+import * as iconsNames from "./iconsNames";
 
-
-const IconTemplate = (props) => {
-  const {
-    children, width, height, className, strictSize,
-  } = props;
+const IconTemplate = props => {
+  const { children, width, height, className, strictSize } = props;
 
   return (
     <svg
@@ -17,7 +14,7 @@ const IconTemplate = (props) => {
       viewBox={`0 0 ${width} ${height}`}
       className={`icon ${className}`}
       style={{
-        width: strictSize ? `${width}px` : '1em',
+        width: strictSize ? `${width}px` : "1em",
         height: strictSize ? `${height}px` : `${height / width}em`,
       }}
     >
@@ -27,10 +24,10 @@ const IconTemplate = (props) => {
 };
 
 IconTemplate.defaultProps = {
-  className: '',
+  className: "",
 };
 
-const Icon = (props) => {
+const Icon = props => {
   const { name } = props;
 
   switch (name) {
@@ -62,14 +59,9 @@ const Icon = (props) => {
   }
 };
 
-
 Icon.propTypes = {
   name: PropTypes.string,
   strictSize: PropTypes.bool,
 };
 
-
-export {
-  Icon as default,
-  iconsNames,
-};
+export { Icon as default, iconsNames };

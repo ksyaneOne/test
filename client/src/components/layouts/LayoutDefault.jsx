@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import layout from '../../utils/layout';
-import Header from '../Header';
-import Footer from '../Footer';
+import layout from "../../utils/layout";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const LayoutDefault = ({ component: Component, ...props }) => (
   <div className="page-wrapper">

@@ -2,11 +2,11 @@ export default {
   additionalTransfrom: -15,
   autoPlaySpeed: 4000,
   centerMode: false,
-  className: '',
-  containerClass: 'container',
-  dotListClass: '',
+  className: "",
+  containerClass: "container",
+  dotListClass: "",
   focusOnSelect: false,
-  itemClass: '',
+  itemClass: "",
   minimumTouchDrag: 80,
   renderButtonGroupOutside: false,
   renderDotsOutside: false,
@@ -14,26 +14,26 @@ export default {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1024
+        min: 1024,
       },
-      items: 1
+      items: 1,
     },
     mobile: {
       breakpoint: {
         max: 464,
-        min: 0
+        min: 0,
       },
-      items: 1
+      items: 1,
     },
     tablet: {
       breakpoint: {
         max: 1024,
-        min: 464
+        min: 464,
       },
-      items: 1
-    }
+      items: 1,
+    },
   },
-  sliderClass: '',
+  sliderClass: "",
   slidesToSlide: 1,
   showDots: true,
   arrows: false,
@@ -41,5 +41,5 @@ export default {
   infinite: true,
   keyBoardControl: false,
   swipeable: true,
-  autoPlay: true
+  autoPlay: true,
 };
