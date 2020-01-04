@@ -14,12 +14,12 @@ import {
   ProductOneSize,
   ProductDetailsHeader,
   ProductDetailsDesc,
-  ProductPrice,
   ProductButton,
   ProductDetailStyles,
   ProductButtons,
   ImageWrapper,
-  carouselSettings
+  carouselSettings,
+  ProductPrices
 } from './style';
 
 const ProductDetails = props => {
@@ -75,7 +75,17 @@ const ProductDetails = props => {
                               <ProductArticle>Article: {product.itemNo}</ProductArticle>
                             </Grid.Column>
                             <Grid.Column>
-                              <ProductPrice>${product.currentPrice}</ProductPrice>
+                              <ProductPrices>
+                                <div className="prices">
+                                  <div className="prices-old">
+                                    <span className="price">{product.previousPrice}</span>
+                                  </div>
+                                  <div className="prices-current">
+                                    <span className="price">{product.currentPrice}</span>
+                                    <span className="curency">$</span>
+                                  </div>
+                                </div>
+                              </ProductPrices>
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>

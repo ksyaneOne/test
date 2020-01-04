@@ -25,14 +25,60 @@ export const ProductArticle = styled.div`
     padding: 0 0 0 1em;
   }
 `;
-export const ProductPrice = styled.h2`
-  font-weight: bold;
-  text-align: right;
-  color: #21ba45;
-  @media (max-width: 1024px) {
-    padding: 0 1em 0 0;
+
+export const ProductPrices = styled.div`
+   {
+     margin-bottom:15px;
+    & .sale span {  
+      margin: 0 15px;
+      box-sizing: border-box;
+      font-family: Roboto,Helvetica,Arial,sans-serif;
+      background-color: red;
+      position: relative;
+      padding: 1px 4px 2px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: red;
+    }
+
+    .prices {
+      margin: 0 15px 0 0;
+      display: flex;
+      font-family: 'Roboto', sans-serif;
+      }
+      & .prices-old {
+        margin: 0 10px;
+        position: relative;
+        & .price {
+          font-size: 16px;
+          font-weight: 400;
+          color: rgba(0, 0, 0, 0.54);
+          &:after {
+            content: '';
+            position: absolute;
+            left: -6%;
+            top: 45%;
+            width: 115%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.22);
+          }
+        }
+      }
+
+      & .prices-current {
+        position: relative;
+        & .price,
+        & .curency {
+          font-size: 21px;
+          font-weight: 500;
+          color: rgba(0, 0, 0, 0.87);
+        }
+      }
+    }
   }
 `;
+
 export const ProductColorHeader = styled.h2`
   text-transform: capitalize;
   margin: 0 !important;
