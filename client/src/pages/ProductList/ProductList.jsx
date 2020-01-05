@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader, Container } from 'semantic-ui-react';
 import { getProductsByFilterQuery, getProducts, getMoreProducts } from '../../actions/products';
 import { Segment, Header, Grid, Button } from 'semantic-ui-react';
 import { BtnWrapper } from './style';
@@ -110,7 +110,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <div className="container">
+    <Container>
       <Segment>
         <Header as="h3" block>
           {typeOfProducts.toUpperCase()}
@@ -130,7 +130,7 @@ const ProductDetails = props => {
           </Grid>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 

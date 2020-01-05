@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Segment, Header, Grid, Divider, Dimmer, Loader } from 'semantic-ui-react';
+import { Segment, Header, Grid, Divider, Dimmer, Loader, Container } from 'semantic-ui-react';
 import Carousel from '../../components/Carousel';
 import { getProductById } from '../../actions/products';
 import {
@@ -51,7 +51,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <div className="container">
+    <Container>
       <Segment>
         <Header as="h3" block>
           {`${product.categories} ${product.name}`.toUpperCase()}
@@ -141,7 +141,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 
