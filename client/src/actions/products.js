@@ -26,6 +26,11 @@ export const FETCH_PRODUCTS_BY_SEARCH_PHRASE_SUCCESS =
 export const FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE =
   "FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE";
 
+// Fetch More PRODUCTS
+export const FETCH_MORE_PRODUCTS_START = 'FETCH_MORE_PRODUCTS_START';
+export const FETCH_MORE_PRODUCTS_SUCCESS = 'FETCH_MORE_PRODUCTS_SUCCESS';
+export const FETCH_MORE_PRODUCTS_FAILURE = 'FETCH_MORE_PRODUCTS_FAILURE';
+
 export const getProducts = () => {
   return async dispatch => {
     try {
@@ -111,6 +116,27 @@ export const getProductsBySearchPhrases = phrases => {
       dispatch({
         type: FETCH_PRODUCTS_BY_SEARCH_PHRASE_FAILURE,
         payload: { error: err, loading: true },
+      });
+    }
+  };
+};
+
+export const getMoreProducts = (limit, lastProduct) => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: FETCH_MORE_PRODUCTS_START,
+        payload: { loading: false }
+      });
+      const products = await API.product.fetchMoreProducts(limit, lastProduct);
+      dispatch({
+        type: FETCH_MORE_PRODUCTS_SUCCESS,
+        payload: { products, loading: true }
+      });
+    } catch (err) {
+      dispatch({
+        type: FETCH_MORE_PRODUCTS_FAILURE,
+        payload: { error: err, loading: true }
       });
     }
   };

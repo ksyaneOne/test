@@ -1,21 +1,20 @@
-const Product = require("../models/Product");
+const Product = require('../models/Product');
 
-const uniqueRandom = require("unique-random");
+const uniqueRandom = require('unique-random');
 const rand = uniqueRandom(0, 999999);
 
-const queryCreator = require("../commonHelpers/queryCreator");
-const filterParser = require("../commonHelpers/filterParser");
-const _ = require("lodash");
+const queryCreator = require('../commonHelpers/queryCreator');
+const filterParser = require('../commonHelpers/filterParser');
+const _ = require('lodash');
 
 exports.addImages = (req, res, next) => {
   if (req.files.length > 0) {
     res.json({
-      message: "Photos are received"
+      message: 'Photos are received'
     });
   } else {
     res.json({
-      message:
-        "Something wrong with receiving photos at server. Please, check the path folder"
+      message: 'Something wrong with receiving photos at server. Please, check the path folder'
     });
   }
 };
@@ -29,7 +28,7 @@ exports.addProduct = (req, res, next) => {
     productFields.name = productFields.name
       .toLowerCase()
       .trim()
-      .replace(/\s\s+/g, " ");
+      .replace(/\s\s+/g, ' ');
 
     // const imageUrls = req.body.previewImages.map(img => {
     //   return `/img/products/${productFields.itemNo}/${img.name}`;
@@ -70,7 +69,7 @@ exports.updateProduct = (req, res, next) => {
           productFields.name = productFields.name
             .toLowerCase()
             .trim()
-            .replace(/\s\s+/g, " ");
+            .replace(/\s\s+/g, ' ');
         } catch (err) {
           res.status(400).json({
             message: `Error happened on server: "${err}" `
@@ -79,11 +78,7 @@ exports.updateProduct = (req, res, next) => {
 
         const updatedProduct = queryCreator(productFields);
 
-        Product.findOneAndUpdate(
-          { _id: req.params.id },
-          { $set: updatedProduct },
-          { new: true }
-        )
+        Product.findOneAndUpdate({ _id: req.params.id }, { $set: updatedProduct }, { new: true })
           .then(product => res.json(product))
           .catch(err =>
             res.status(400).json({
@@ -107,6 +102,24 @@ exports.getProducts = (req, res, next) => {
         message: `Error happened on server: "${err}" `
       })
     );
+};
+
+exports.getLimitedProducts = async (req, res, next) => {
+  if (!req.body.limitValue) {
+    res.status(400).json({ message: 'Limit value is empty' });
+  }
+
+  let query = {};
+
+  if (req.body.lastSeen) {
+    query = { _id: { $lt: req.body.lastSeen } };
+  }
+
+  let matchedProducts = await Product.find(query)
+    .sort({ _id: -1 })
+    .limit(Number(req.body.limitValue));
+
+  res.send(matchedProducts);
 };
 
 exports.getProductById = (req, res, next) => {
@@ -151,17 +164,17 @@ exports.getProductsFilterParams = async (req, res, next) => {
 
 exports.searchProducts = async (req, res, next) => {
   if (!req.body.query) {
-    res.status(400).json({ message: "Query string is empty" });
+    res.status(400).json({ message: 'Query string is empty' });
   }
 
   //Taking the entered value from client in lower-case and trimed
   let query = req.body.query
     .toLowerCase()
     .trim()
-    .replace(/\s\s+/g, " ");
+    .replace(/\s\s+/g, ' ');
 
   // Creating the array of key-words from taken string
-  let queryArr = query.split(" ");
+  let queryArr = query.split(' ');
 
   // Finding ALL products, that have at least one match
   let matchedProducts = await Product.find({
