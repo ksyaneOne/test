@@ -10,12 +10,25 @@ const ModalFilter = props => {
     setOpen(true);
   };
 
+  const getQueryString = filterObj => {
+    let str = "";
+
+    for (const property in filterObj) {
+      str += property + "=";
+      filterObj[property].map(elem => {
+        str += elem + ",";
+      });
+      str = str.slice(0, -1) + "&";
+    }
+    return str.slice(0, -1);
+  };
+
   const close = () => {
     setOpen(false);
   };
   const ok = () => {
     setOpen(false);
-    onGetProductsByFilter(filterQuery);
+    onGetProductsByFilter(getQueryString(filterQuery));
   };
   return (
     <Modal

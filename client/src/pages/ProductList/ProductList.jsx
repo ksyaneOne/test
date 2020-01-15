@@ -28,6 +28,7 @@ const ProductDetails = props => {
     loadingByFilter,
     loadingMoreProducts,
     onChangeFilterQuery,
+    filterQuery,
   } = props;
 
   const { params, path } = match;
@@ -41,11 +42,18 @@ const ProductDetails = props => {
   const [lastItem, setLastItem] = useState("");
   const [isShownBtn, setIsShownBtn] = useState(false);
   const [quantityProducts, setQuantityProducts] = useState(3);
-
+  const checkCategoriesQuery = categoryName => {
+    if (filterQuery.categories != undefined) {
+      filterQuery.categories = categoryName;
+    } else {
+      onChangeFilterQuery({ categories: id });
+    }
+  };
   useEffect(() => {
     switch (path) {
       case "/products":
         setTypeOfProducts("All products");
+        onChangeFilterQuery({});
         setPrevProducts([]);
         setProducts([]);
         onGetMoreProducts(quantityProducts, "");
@@ -53,7 +61,8 @@ const ProductDetails = props => {
       case "/categories/:id":
         setTypeOfProducts(`CATEGORIES ${id}`);
         setIsShownBtn(false);
-        onChangeFilterQuery(`categories=${id}&`);
+        checkCategoriesQuery(id);
+        onChangeFilterQuery({ categories: [id] });
         onGetProductsByFilter(`categories=${id}`);
         break;
       default:
@@ -168,6 +177,7 @@ const mapStateToProps = state => ({
   loadingByFilter: state.productsByFilter.loading,
   loadingAllProducts: state.products.loading,
   loadingMoreProducts: state.productsMore.loading,
+  filterQuery: state.changeFilterQuery.query,
 });
 
 const mapDispatchToProps = dispatch => ({

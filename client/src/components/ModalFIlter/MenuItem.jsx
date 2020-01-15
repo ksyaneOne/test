@@ -7,7 +7,6 @@ import filter from "./filter";
 const MenuItem = props => {
   const { onChangeFilterQuery, filterQuery } = props;
   const [activeIndex, setActiveIndex] = useState(0);
-  const [filterParams, setFilterParams] = useState({});
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
@@ -28,25 +27,23 @@ const MenuItem = props => {
   };
 
   const handleChange = (e, data) => {
-    console.log(data);
+    console.log(filterQuery, "1");
+    const param = data.className;
+    const value = data.label;
     if (data.checked) {
-      const param = data.className;
-      const value = data.label;
-      if (filterParams[param] === undefined) {
-        filterParams[param] = [value];
+      if (filterQuery[param] === undefined) {
+        filterQuery[param] = [value];
       } else {
-        const isEqual = element => element === value;
-        let index = filterParams[param].findIndex(isEqual);
-        if (index > -1) {
-          filterParams[param].splice(index, 1);
-        } else {
-          filterParams[param].push(value);
-        }
+        filterQuery[param].push(value);
       }
     } else {
+      const index = filterQuery[param].indexOf(value);
+      if (index > -1) {
+        filterQuery[param].splice(index, 1);
+      }
     }
-    onChangeFilterQuery(getQueryString(filterParams));
-    console.log(filterParams);
+    onChangeFilterQuery(filterQuery);
+    console.log(filterQuery, "2");
   };
 
   return (
@@ -71,7 +68,11 @@ const MenuItem = props => {
                   <Item.Content verticalAlign="middle">
                     <Checkbox
                       toggle
-                      defaultChecked={filterQuery.includes(i) || false}
+                      defaultChecked={
+                        filterQuery[key] != undefined
+                          ? filterQuery[key].indexOf(i) != -1
+                          : false
+                      }
                       className={key}
                       label={i}
                       onChange={handleChange}
