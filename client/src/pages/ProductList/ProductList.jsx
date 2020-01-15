@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { changeFilterQuery } from "../../actions/filterProducts";
 import {
   getProductsByFilterQuery,
   getProducts,
@@ -26,6 +27,7 @@ const ProductDetails = props => {
     moreProducts,
     loadingByFilter,
     loadingMoreProducts,
+    onChangeFilterQuery,
   } = props;
 
   const { params, path } = match;
@@ -51,6 +53,7 @@ const ProductDetails = props => {
       case "/categories/:id":
         setTypeOfProducts(`CATEGORIES ${id}`);
         setIsShownBtn(false);
+        onChangeFilterQuery(`categories=${id}&`);
         onGetProductsByFilter(`categories=${id}`);
         break;
       default:
@@ -177,5 +180,6 @@ const mapDispatchToProps = dispatch => ({
   onGetMoreProducts: (limit, lastProduct) => {
     dispatch(getMoreProducts(limit, lastProduct));
   },
+  onChangeFilterQuery: queryString => dispatch(changeFilterQuery(queryString)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
