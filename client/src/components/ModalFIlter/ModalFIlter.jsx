@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Button, Modal, Accordion, Icon } from "semantic-ui-react";
+import {
+  Button,
+  Modal,
+  Accordion,
+  Icon,
+  Header,
+  Container,
+} from "semantic-ui-react";
 import { getProductsByFilterQuery } from "../../actions/products";
 import MenuItem from "./MenuItem";
+import PriceInput from "./PriceRange";
 const ModalFilter = props => {
   const { filterQuery, onGetProductsByFilter } = props;
   const [open, setOpen] = useState(false);
@@ -14,11 +22,13 @@ const ModalFilter = props => {
     let str = "";
 
     for (const property in filterObj) {
-      str += property + "=";
-      filterObj[property].map(elem => {
-        str += elem + ",";
-      });
-      str = str.slice(0, -1) + "&";
+      if (!filterObj[property].length == 0) {
+        str += property + "=";
+        filterObj[property].map(elem => {
+          str += elem + ",";
+        });
+        str = str.slice(0, -1) + "&";
+      }
     }
     return str.slice(0, -1);
   };
@@ -39,6 +49,20 @@ const ModalFilter = props => {
       <Modal.Header>Filter products</Modal.Header>
       <Modal.Content scrolling>
         <Modal.Description>
+          {/* <Accordion>
+            <Accordion.Title active={true}>
+              <Header as="h3" block>
+                <Icon name="dropdown" />
+                PRICE
+              </Header>
+            </Accordion.Title>
+
+            <Accordion.Content active={true}>
+              <Container>
+                <PriceInput />
+              </Container>
+            </Accordion.Content>
+          </Accordion> */}
           <Accordion>
             <MenuItem />
           </Accordion>

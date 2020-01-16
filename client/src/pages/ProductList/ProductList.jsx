@@ -41,7 +41,7 @@ const ProductDetails = props => {
   const [scrollTop, setScrollTop] = useState(0);
   const [lastItem, setLastItem] = useState("");
   const [isShownBtn, setIsShownBtn] = useState(false);
-  const [quantityProducts, setQuantityProducts] = useState(3);
+  const [quantityProducts, setQuantityProducts] = useState(4);
   const checkCategoriesQuery = categoryName => {
     if (filterQuery.categories != undefined) {
       filterQuery.categories = categoryName;
