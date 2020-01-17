@@ -9,7 +9,7 @@ import {
   Button,
 } from "./StyleCartSummary";
 
-const CartSummary = () => {
+const CartSummary = ({ totalPrice }) => {
   return (
     <>
       <Container>
@@ -17,15 +17,14 @@ const CartSummary = () => {
         <Content>
           <OrderValue>
             ORDER VALUE:
-            <span>30.99$</span>
+            <span>{totalPrice}$</span>
           </OrderValue>
           <Delivery>
             DELIVERY
             <span>FREE</span>
           </Delivery>
           <Total>
-            TOTAL
-            <span>100$</span>
+            TOTAL <span>{totalPrice}$</span>
           </Total>
           <Button>CHECKOUT</Button>
         </Content>

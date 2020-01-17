@@ -29,7 +29,7 @@ import {
   carouselSettings,
 } from "./style";
 
-import { addToBasket } from "../../actions/saveToBasket";
+import { addToBasket } from "../../actions/cart/saveToBasket";
 import saveToLocalStorage from "../../utils/saveToLocalStorage";
 
 const ProductDetails = props => {
