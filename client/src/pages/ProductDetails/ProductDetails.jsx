@@ -58,7 +58,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <div className="container">
+    <Container>
       <Segment>
         <Header as="h3" block>
           {`${product.categories} ${product.name}`.toUpperCase()}
@@ -171,7 +171,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 

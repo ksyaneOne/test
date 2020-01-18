@@ -1,5 +1,5 @@
 export default {
-  additionalTransfrom: -15,
+  additionalTransfrom: 0,
   autoPlaySpeed: 4000,
   centerMode: false,
   className: "",
