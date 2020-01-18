@@ -7,6 +7,7 @@ import {
   Divider,
   Dimmer,
   Loader,
+  Container
 } from "semantic-ui-react";
 import Carousel from "../../components/Carousel";
 import { getProductById } from "../../actions/products";
