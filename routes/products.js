@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const passport = require("passport");
-const multer = require("multer"); // multer for parsing multipart form data (files)
-const fse = require("fs-extra");
+const passport = require('passport');
+const multer = require('multer'); // multer for parsing multipart form data (files)
+const fse = require('fs-extra');
 
 //Import controllers
 const {
@@ -10,10 +10,11 @@ const {
   addProduct,
   updateProduct,
   getProducts,
+  getLimitedProducts,
   getProductById,
   getProductsFilterParams,
   searchProducts
-} = require("../controllers/products");
+} = require('../controllers/products');
 
 // Configurations for multer
 const storage = multer.diskStorage({
@@ -32,9 +33,9 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   // Accept file (only jpeg/jpg/png)
   if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg"
+    file.mimetype === 'image/jpeg' ||
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg'
   ) {
     cb(null, true);
   } else {
@@ -55,44 +56,45 @@ const upload = multer({
 // @desc    Add images
 // @access  Private
 router.post(
-  "/images",
-  passport.authenticate("jwt", { session: false }),
-  upload.array("photos"),
+  '/images',
+  passport.authenticate('jwt', { session: false }),
+  upload.array('photos'),
   addImages
 );
 
 // @route   POST /products
 // @desc    Create new product
 // @access  Private
-router.post("/", passport.authenticate("jwt", { session: false }), addProduct);
+router.post('/', passport.authenticate('jwt', { session: false }), addProduct);
 
 // @route   PUT /products/:id
 // @desc    Update existing product
 // @access  Private
-router.put(
-  "/:id",
-  passport.authenticate("jwt", { session: false }),
-  updateProduct
-);
+router.put('/:id', passport.authenticate('jwt', { session: false }), updateProduct);
 
 // @route   GET /products
 // @desc    GET existing products
 // @access  Public
-router.get("/", getProducts);
-
-// @route   GET /products/filter
-// @desc    GET appropriate filtered products
-// @access  Public
-router.get("/filter", getProductsFilterParams);
+router.get('/', getProducts);
 
 // @route   POST /products/search
 // @desc    POST appropriate to search query products
 // @access  Public
-router.post("/search", searchProducts);
+router.post('/limited', getLimitedProducts);
+
+// @route   GET /products/filter
+// @desc    GET appropriate filtered products
+// @access  Public
+router.get('/filter', getProductsFilterParams);
+
+// @route   POST /products/search
+// @desc    POST appropriate to search query products
+// @access  Public
+router.post('/search', searchProducts);
 
 // @route   GET /products/:id
 // @desc    GET existing product by id
 // @access  Public
-router.get("/:itemNo", getProductById);
+router.get('/:itemNo', getProductById);
 
 module.exports = router;

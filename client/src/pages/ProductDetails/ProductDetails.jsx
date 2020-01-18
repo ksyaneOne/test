@@ -7,6 +7,7 @@ import {
   Divider,
   Dimmer,
   Loader,
+  Container
 } from "semantic-ui-react";
 import Carousel from "../../components/Carousel";
 import { getProductById } from "../../actions/products";
@@ -21,26 +22,16 @@ import {
   ProductOneSize,
   ProductDetailsHeader,
   ProductDetailsDesc,
-  ProductPrice,
   ProductButton,
   ProductDetailStyles,
   ProductButtons,
   ImageWrapper,
   carouselSettings,
+  ProductPrices,
 } from "./style";
 
-import { addToBasket } from "../../actions/saveToBasket";
-import saveToLocalStorage from "../../utils/saveToLocalStorage";
-
 const ProductDetails = props => {
-  const {
-    onGetProductById,
-    match,
-    product,
-    loading,
-    addToCart,
-    saveToLocalStorage,
-  } = props;
+  const { onGetProductById, match, product, loading } = props;
   const { params } = match;
   const { id } = params;
   const [arrSrc, setArrSrc] = useState([]);
@@ -68,7 +59,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <div className="container">
+    <Container>
       <Segment>
         <Header as="h3" block>
           {`${product.categories} ${product.name}`.toUpperCase()}
@@ -89,20 +80,39 @@ const ProductDetails = props => {
                       {/* Product name */}
                       <Grid.Column>
                         <Grid>
+                          <Grid.Row>
+                            <ProductButtons>
+                              <ProductButton secondary>
+                                Add to cart
+                              </ProductButton>
+                              <ProductButton secondary>Buy Now</ProductButton>
+                            </ProductButtons>
+                          </Grid.Row>
                           <Grid.Row columns={2}>
                             <Grid.Column>
                               <ProductHeaderName>
                                 {product.name}
                               </ProductHeaderName>
                               <ProductArticle>
-                                Article:
-                                {product.itemNo}
+                                Article: {product.itemNo}
                               </ProductArticle>
                             </Grid.Column>
                             <Grid.Column>
-                              <ProductPrice>
-                                ${product.currentPrice}
-                              </ProductPrice>
+                              <ProductPrices>
+                                <div className="prices">
+                                  <div className="prices-old">
+                                    <span className="price">
+                                      {product.previousPrice}
+                                    </span>
+                                  </div>
+                                  <div className="prices-current">
+                                    <span className="price">
+                                      {product.currentPrice}
+                                    </span>
+                                    <span className="curency">$</span>
+                                  </div>
+                                </div>
+                              </ProductPrices>
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>
@@ -117,7 +127,7 @@ const ProductDetails = props => {
                                   style={{
                                     backgroundColor: `${product.color}`,
                                   }}
-                                />
+                                ></ProductColorCircle>
                                 <ProductColorName>
                                   {product.color}
                                 </ProductColorName>
@@ -155,18 +165,6 @@ const ProductDetails = props => {
                       </Grid.Column>
                       {/* Product buttons */}
                     </Grid.Row>
-                    <Grid.Row>
-                      <ProductButtons>
-                        <ProductButton
-                          onClick={() => {
-                            addToCart(product);
-                          }}
-                        >
-                          Add to cart
-                        </ProductButton>
-                        <ProductButton>Buy Now</ProductButton>
-                      </ProductButtons>
-                    </Grid.Row>
                   </Grid>
                 </Grid.Column>
               </Grid.Row>
@@ -174,7 +172,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 
@@ -186,10 +184,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onGetProductById: id => {
     dispatch(getProductById(id));
-  },
-  addToCart: product => {
-    dispatch(addToBasket(product));
-    dispatch(saveToLocalStorage());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
