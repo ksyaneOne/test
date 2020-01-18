@@ -4,13 +4,10 @@ import {
   Button,
   Modal,
   Accordion,
-  Icon,
-  Header,
-  Container,
+  Icon
 } from "semantic-ui-react";
 import { getProductsByFilterQuery } from "../../actions/products";
 import MenuItem from "./MenuItem";
-import PriceInput from "./PriceRange";
 const ModalFilter = props => {
   const { filterQuery, onGetProductsByFilter } = props;
   const [open, setOpen] = useState(false);
@@ -49,20 +46,6 @@ const ModalFilter = props => {
       <Modal.Header>Filter products</Modal.Header>
       <Modal.Content scrolling>
         <Modal.Description>
-          {/* <Accordion>
-            <Accordion.Title active={true}>
-              <Header as="h3" block>
-                <Icon name="dropdown" />
-                PRICE
-              </Header>
-            </Accordion.Title>
-
-            <Accordion.Content active={true}>
-              <Container>
-                <PriceInput />
-              </Container>
-            </Accordion.Content>
-          </Accordion> */}
           <Accordion>
             <MenuItem />
           </Accordion>
