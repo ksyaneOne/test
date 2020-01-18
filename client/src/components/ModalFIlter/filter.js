@@ -1,5 +1,4 @@
 const filter = {
-  color: ["white", "red", "black", "blue"],
   brand: [
     "alpinestars",
     "GARETH",
@@ -11,6 +10,8 @@ const filter = {
     "KYT",
     "CABERG",
   ],
+  color: ["white", "red", "black", "blue"],
+ 
   size: [
     "S",
     "L",
