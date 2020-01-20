@@ -15,6 +15,9 @@ import ProductList from "./pages/ProductList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollButton";
+import AboutCompany from "./pages/AboutCompany";
+import Help from "./pages/Help";
+
 import { Container } from "./StyleApp";
 
 const App = () => {
@@ -30,6 +33,8 @@ const App = () => {
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route path="/categories/:id" component={ProductList} />
         <Route exact path="/products" component={ProductList} />
+        <Route exact path="/AboutCompany" component={AboutCompany} />
+        <Route exact path="/Help" component={Help} />
 
         <Route exact path="*" component={NotFound} />
         <LayoutDefault exact path={routes.HOME} component={Home} />
