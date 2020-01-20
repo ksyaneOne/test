@@ -3,6 +3,7 @@ import React from "react";
 import { Grid, List, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+
 import { FooterStyle, FooterTitle } from "./FooterStyle";
 
 const Footer = () => {
@@ -17,16 +18,16 @@ const Footer = () => {
               <Grid.Row>
                 <Grid.Column>
                   <List>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/Help">
                       FAQ
                     </List.Item>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/Help">
                       Contact
                     </List.Item>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/Help">
                       Payment
                     </List.Item>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/Cart">
                       Purchase
                     </List.Item>
                   </List>
@@ -62,13 +63,13 @@ const Footer = () => {
               <Grid.Row>
                 <Grid.Column>
                   <List>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/AboutCompany">
                       History
                     </List.Item>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/AboutCompany">
                       Policy
                     </List.Item>
-                    <List.Item as={Link} to="/">
+                    <List.Item as={Link} to="/AboutCompany">
                       Work with us
                     </List.Item>
                   </List>
