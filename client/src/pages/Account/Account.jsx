@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
+import { Redirect } from "react-router-dom";
 import onReg from "../../actions/onAuthorization";
 import UserInfo from "../../components/UserInfo";
 
-import { Grid, Divider, Header, Image } from "semantic-ui-react";
+import { Grid, Divider, Header, Image, Button } from "semantic-ui-react";
 
 import {
   UserTitleWrapper,
@@ -13,6 +14,7 @@ import {
   Container,
   HeaderTitle,
   MediumTitle,
+  ButtonWrapper,
 } from "./AccountStyle";
 
 export default function Account() {
@@ -25,6 +27,7 @@ export default function Account() {
     gender: "male",
     customerNo: "12313",
     error: false,
+    redirect: false,
   };
   const [state, setState] = useState(initialState);
   let info = 0;
@@ -32,15 +35,34 @@ export default function Account() {
   const { error } = state;
   const auth = Cookies.get("token");
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("customers/customer", {
-        params: {},
-        headers: { Authorization: auth },
-      });
-      setState(result.data);
-    };
-    fetchData();
+    if (auth) {
+      const fetchData = async () => {
+        const result = await axios("customers/customer", {
+          params: {},
+          headers: { Authorization: auth },
+        });
+        setState(result.data);
+      };
+      fetchData();
+    }
   }, []);
+  const setRedirect = () => {
+    setState({
+      redirect: true,
+    });
+  };
+  const renderRedirect = () => {
+    if (state.redirect) {
+      return <Redirect to="/" />;
+    }
+  };
+  const handleLogOut = () => {
+    Cookies.remove("token");
+    setRedirect();
+  };
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
   return (
     <Container>
       <UserTitleWrapper>
@@ -59,6 +81,12 @@ export default function Account() {
 
       <UserInfo props={state} />
 
+      <ButtonWrapper>
+        <Button inverted color="red" onClick={handleLogOut}>
+          LogOut
+        </Button>
+        {renderRedirect()}
+      </ButtonWrapper>
       <Divider horizontal>
         <Header as="h4">
           <MediumTitle>Last Viewed Products</MediumTitle>

@@ -7,7 +7,7 @@ const apiService = () => {
   if (Cookies.get("token") && jwtDecode(Cookies.get("token")).exp) {
     authorizationToken = Cookies.get("token");
   }
-  console.log(authorizationToken);
+  //console.log(authorizationToken);
   return axios.create({
     headers: { Authorization: authorizationToken },
   });

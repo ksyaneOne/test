@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 import { Grid, Segment, GridColumn, Menu, Responsive } from "semantic-ui-react";
 import HeaderLogo from "./HeaderLogo";
@@ -7,6 +8,7 @@ import HeaderCategories from "./HeaderCategories";
 import HeaderCart from "./HeaderCart";
 import HeaderAccount from "./HeaderAccount";
 import HeaderNav from "./HeaderNav";
+import HeaderUserPage from "./HeaderUserPage";
 
 import HeaderWrapper from "./style";
 
@@ -34,7 +36,11 @@ const Header = props => {
                   <HeaderCategories />
                 </Menu.Item>
                 <Menu.Item position="right">
-                  <HeaderAccount />
+                  {!Cookies.get("token") ? (
+                    <HeaderAccount />
+                  ) : (
+                    <HeaderUserPage />
+                  )}
                 </Menu.Item>
                 <Menu.Item position="right">
                   <HeaderCart />
