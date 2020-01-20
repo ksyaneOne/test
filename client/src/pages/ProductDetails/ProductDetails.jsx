@@ -7,6 +7,7 @@ import {
   Divider,
   Dimmer,
   Loader,
+  Container
 } from "semantic-ui-react";
 import Carousel from "../../components/Carousel";
 import { getProductById } from "../../actions/products";
@@ -58,7 +59,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <div className="container">
+    <Container>
       <Segment>
         <Header as="h3" block>
           {`${product.categories} ${product.name}`.toUpperCase()}
@@ -171,7 +172,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 
