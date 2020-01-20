@@ -32,3 +32,8 @@ export const TextLink = styled.a`
 export const Span = styled.span`
   color: white;
 `;
+export const ButtonWrapper = styled.div`
+  display: fles;
+  justify-content: center;
+`;
+
