@@ -10,7 +10,7 @@ const HeaderCart = props => {
   const [count] = useState(1);
 
   return (
-    <Link to="cart">
+    <Link to={"/cart"}>
       <Icon name="shopping basket" size="large" title="Cart" />
       <HeaderCartTitle>Cart</HeaderCartTitle>
       <HeaderCartCount>{count}</HeaderCartCount>
