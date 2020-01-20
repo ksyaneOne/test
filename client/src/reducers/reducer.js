@@ -7,8 +7,6 @@ import product from "./product";
 import cart from "./cart";
 import productsBySearch from "./productsBySearch";
 import productsByFilter from "./productsByFilter";
-import productsMore from "./productsMore";
-import changeFilterQuery from "./changeFIlterQuery";
 
 import { reducer as common } from "../modules/common";
 
@@ -22,6 +20,4 @@ export default combineReducers({
   cart,
   productsBySearch,
   productsByFilter,
-  productsMore,
-  changeFilterQuery,
 });

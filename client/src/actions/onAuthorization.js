@@ -12,7 +12,6 @@ const onAuthorization = async data => {
         Cookies.set("token", res.data.token, { expires: 1 });
 
       console.log("Authorization successful!", res.data.token);
-
     })
     .catch(err => console.log(err));
 };

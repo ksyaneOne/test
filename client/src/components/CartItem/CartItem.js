@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import Carousel from "../Carousel";
+import setTotalPrice from "../../actions/cart/setTotalPrice";
 
 import {
   Wrapper,
@@ -14,7 +16,15 @@ import {
 } from "./SyleCartItem";
 
 const CartItem = props => {
-  const { name, color, brand, size, currentPrice, itemNo } = props;
+  const {
+    name,
+    color,
+    brand,
+    size,
+    currentPrice,
+    itemNo,
+    setTotalPriceInState,
+  } = props;
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(currentPrice);
   const incQuantity = () => {
@@ -23,6 +33,9 @@ const CartItem = props => {
   const decQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
+  useEffect(() => {
+    setTotalPriceInState(quantity, itemNo);
+  }, [quantity]);
 
   return (
     <Wrapper>
@@ -43,15 +56,26 @@ const CartItem = props => {
           {size}
         </Param>
         <Param>
-          Quantity: <Operator onClick={decQuantity}>-</Operator> {quantity}
-{" "}
+          Quantity: <Operator onClick={decQuantity}>-</Operator> {quantity}{" "}
           <Operator onClick={incQuantity}>+</Operator>
         </Param>
-        <Param>Price:{price}$</Param>
-        <TotalPrice>Total:{quantity * price}$</TotalPrice>
+        <Param>
+          Price:
+          {price}$
+        </Param>
+        <TotalPrice>
+          Total:
+          {quantity * price}$
+        </TotalPrice>
       </ItemParams>
       <DeleteItem>Remove from basket</DeleteItem>
     </Wrapper>
   );
 };
-export default CartItem;
+const mapDispatchToProps = dispatch => {
+  return {
+    setTotalPriceInState: (quantity, itemNo) =>
+      dispatch(setTotalPrice(quantity, itemNo)),
+  };
+};
+export default connect(null, mapDispatchToProps)(CartItem);

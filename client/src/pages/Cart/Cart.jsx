@@ -4,7 +4,8 @@ import CartItem from "../../components/CartItem";
 import { CartItemsWraper, Container } from "./CartStyle";
 import CartSummery from "../../components/CartSummary";
 
-const Cart = ({ products }) => {
+const Cart = ({ products, totalPrice }) => {
+  console.log(products);
   const cartItems = products.map(product => (
     <CartItem {...product} key={product.id} />
   ));
@@ -12,14 +13,15 @@ const Cart = ({ products }) => {
   return (
     <Container>
       <CartItemsWraper>{cartItems}</CartItemsWraper>
-      <CartSummery />
+      <CartSummery totalPrice={totalPrice} />
     </Container>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    products: state.cart,
+    products: state.cart.products,
+    totalPrice: state.cart.totalPrice,
   };
 };
 
