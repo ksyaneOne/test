@@ -27,10 +27,8 @@ import {
   ProductButtons,
   ImageWrapper,
   carouselSettings,
+  ProductPrices,
 } from "./style";
-
-import { addToBasket } from "../../actions/cart/saveToBasket";
-import saveToLocalStorage from "../../utils/saveToLocalStorage";
 
 const ProductDetails = props => {
   const {
@@ -68,7 +66,7 @@ const ProductDetails = props => {
       </Dimmer>
     );
   return (
-    <Container>
+    <div className="container">
       <Segment>
         <Header as="h3" block>
           {`${product.categories} ${product.name}`.toUpperCase()}
@@ -95,7 +93,8 @@ const ProductDetails = props => {
                                 {product.name}
                               </ProductHeaderName>
                               <ProductArticle>
-                                Article: {product.itemNo}
+                                Article:
+                                {product.itemNo}
                               </ProductArticle>
                             </Grid.Column>
                             <Grid.Column>
@@ -173,7 +172,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </div>
+    </Container>
   );
 };
 

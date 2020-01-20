@@ -25,9 +25,7 @@ const API = {
     },
 
     fetchProductsByFilterQuery: async query => {
-      console.log(query, "axios query");
       return axios
-
         .get(`/products/filter?${query}`)
         .then(products => {
           return products.data;
@@ -41,27 +39,13 @@ const API = {
       const searchPhrases = {
         query: phrases,
       };
+
       return axios
         .post("/products/search", searchPhrases)
         .then(products => {
           return products.data;
         })
         .catch(err => {
-          return err;
-        });
-    },
-    fetchMoreProducts: async (limit, lastProduct) => {
-      const searchPhrases = {
-        limitValue: `${limit}`,
-        lastSeen: `${lastProduct}`,
-      };
-      return axios
-        .post("/products/limited", searchPhrases)
-        .then(products => {
-          return products.data;
-        })
-        .catch(err => {
-          console.log(err);
           return err;
         });
     },
