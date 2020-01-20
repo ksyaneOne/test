@@ -36,3 +36,4 @@ export const ButtonWrapper = styled.div`
   display: fles;
   justify-content: center;
 `;
+

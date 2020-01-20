@@ -63,6 +63,7 @@ export default function Account() {
   const refreshPage = () => {
     window.location.reload(false);
   };
+
   return (
     <Container>
       <UserTitleWrapper>
@@ -81,12 +82,14 @@ export default function Account() {
 
       <UserInfo props={state} />
 
+
       <ButtonWrapper>
         <Button inverted color="red" onClick={handleLogOut}>
           LogOut
         </Button>
         {renderRedirect()}
       </ButtonWrapper>
+
       <Divider horizontal>
         <Header as="h4">
           <MediumTitle>Last Viewed Products</MediumTitle>
