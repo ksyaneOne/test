@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
-import MyAccount from "./pages/MyAccount";
+import Account from "./pages/Account";
 import ProductDetails from "./pages/ProductDetails";
 import ProductList from "./pages/ProductList";
 import Footer from "./components/Footer";
@@ -26,7 +26,7 @@ const App = () => {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/account" component={MyAccount} />
+        <Route exact path="/account" component={Account} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route path="/categories/:id" component={ProductList} />
         <Route exact path="/products" component={ProductList} />
