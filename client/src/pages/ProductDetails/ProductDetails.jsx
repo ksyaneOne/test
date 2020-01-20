@@ -21,14 +21,14 @@ import {
   ProductOneSize,
   ProductDetailsHeader,
   ProductDetailsDesc,
-  ProductPrice,
   ProductButton,
   ProductDetailStyles,
   ProductButtons,
   ImageWrapper,
   carouselSettings,
-  ProductPrices,
 } from "./style";
+import { addToBasket } from "../../actions/cart/saveToBasket";
+import saveToLocalStorage from "../../utils/saveToLocalStorage";
 
 const ProductDetails = props => {
   const {
@@ -98,9 +98,10 @@ const ProductDetails = props => {
                               </ProductArticle>
                             </Grid.Column>
                             <Grid.Column>
-                              <ProductPrice>
-                                ${product.currentPrice}
-                              </ProductPrice>
+                              <div>
+$
+{product.currentPrice}
+                              </div>
                             </Grid.Column>
                           </Grid.Row>
                         </Grid>
@@ -172,7 +173,7 @@ const ProductDetails = props => {
           </ProductDetailStyles>
         </Segment>
       </Segment>
-    </Container>
+    </div>
   );
 };
 
