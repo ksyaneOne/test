@@ -1,13 +1,5 @@
 import styled from "@emotion/styled";
 
-export const UserInfoWrapper = styled.div`
-  margin: 2em auto;
-  max-width: 40%;
-  @media (max-width: 768px) {
-    margin: 2em auto;
-    max-width: 90%;
-  }
-`;
 export const UserTitleWrapper = styled.div`
   padding: 2em 0;
   max-width: 100%;
@@ -25,6 +17,7 @@ export const OrdersWrapper = styled.div`
 export const Container = styled.div`
   background-color: #1b1c1d;
   color: white;
+  padding-bottom: 50px;
 `;
 export const HeaderTitle = styled.h1`
   color: white;
@@ -39,3 +32,8 @@ export const TextLink = styled.a`
 export const Span = styled.span`
   color: white;
 `;
+export const ButtonWrapper = styled.div`
+  display: fles;
+  justify-content: center;
+`;
+

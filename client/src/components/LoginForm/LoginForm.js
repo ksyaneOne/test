@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Button, Checkbox } from "semantic-ui-react";
 import useForm from "react-hook-form";
+import { Redirect } from "react-router-dom";
 import onRegistered from "../../actions/onAuthorization";
 
 import { Input } from "../CustomComponents/Input";
@@ -16,22 +17,34 @@ const LoginForm = () => {
     password: "",
     isRemember: false,
     error: false,
+    redirect: false,
   };
   const [state, setState] = useState(initialState);
 
   const { error } = state;
-
   const onAuth = data => {
     setState(data);
 
     const dataForDispatch = { ...data };
     delete dataForDispatch.isRemember;
     onRegistered(dataForDispatch);
+    setRedirect();
+  };
+  const setRedirect = () => {
+    setState({
+      redirect: true,
+    });
+  };
+  const renderRedirect = () => {
+    if (state.redirect) {
+      return <Redirect to="/" />;
+    }
   };
 
   return (
     <Div>
       <Form onSubmit={handleSubmit(onAuth)}>
+        {renderRedirect()}
         <Input
           errors={errors}
           name="loginOrEmail"

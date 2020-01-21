@@ -21,14 +21,12 @@ import {
   ProductOneSize,
   ProductDetailsHeader,
   ProductDetailsDesc,
-  ProductPrice,
   ProductButton,
   ProductDetailStyles,
   ProductButtons,
   ImageWrapper,
   carouselSettings,
 } from "./style";
-
 import { addToBasket } from "../../actions/cart/saveToBasket";
 import saveToLocalStorage from "../../utils/saveToLocalStorage";
 
@@ -103,6 +101,7 @@ const ProductDetails = props => {
                               <div>
                                 $
                                 {product.currentPrice}
+
                               </div>
                             </Grid.Column>
                           </Grid.Row>
