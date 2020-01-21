@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  padding: 10px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,6 +37,20 @@ export const Operator = styled.span`
   cursor: pointer;
   color: #000000;
   font-size: 18px;
+`;
+export const ImageWrapper = styled.div`
+  position: relative;
+  overflow: hiden;
+  height: 500px;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 300px;
+    max-height: 500px;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+  }
 `;
 export const carouselSettings = {
   additionalTransfrom: 0,

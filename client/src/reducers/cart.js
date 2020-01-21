@@ -1,12 +1,8 @@
-import { ADD_TO_BASKET } from "../actions/cart/saveToBasket";
-import { SET_TOTAL_PRICE } from "../actions/cart/setTotalPrice";
+import { ADD_TO_BASKET, SET_TOTAL_PRICE, REMOVE_FROM_CART } from "../actions/cart/actionNames";
 
-const products = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
-  : [];
+const products = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 
 const initialState = { products, totalPrice: 0 };
-console.log(initialState);
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
@@ -15,6 +11,12 @@ const cart = (state = initialState, action) => {
         return { ...state, products: [...state.products, action.payload] };
       }
       break;
+    case REMOVE_FROM_CART: {
+      console.log(action.payload);
+      const newProducts = state.products.filter(item => item.itemNo !== action.payload);
+
+      return { ...state, products: newProducts };
+    }
     case SET_TOTAL_PRICE: {
       const productsUpdated = state.products.map(item => {
         if (item.itemNo === action.payload.itemNo) item.quantity = action.payload.quantity;
