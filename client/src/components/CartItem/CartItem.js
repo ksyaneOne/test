@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import Carousel from "../Carousel";
+import { Select } from "semantic-ui-react";
 import setTotalPrice from "../../actions/cart/setTotalPrice";
+import removeFromBasket from "../../actions/cart/removeFromBasket";
 
 import {
   Wrapper,
@@ -11,9 +12,8 @@ import {
   TitelItem,
   DeleteItem,
   TotalPrice,
-  carouselSettings,
   Operator,
-} from "./SyleCartItem";
+} from "./styleCartItem";
 
 const CartItem = props => {
   const {
@@ -24,6 +24,8 @@ const CartItem = props => {
     currentPrice,
     itemNo,
     setTotalPriceInState,
+    imageUrls,
+    removeFromCart,
   } = props;
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(currentPrice);
@@ -33,14 +35,24 @@ const CartItem = props => {
   const decQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
+  const [arrSrc, setArrSrc] = useState([]);
+  useEffect(() => {
+    if (imageUrls !== undefined) {
+      setArrSrc(imageUrls);
+    }
+  }, [imageUrls]);
   useEffect(() => {
     setTotalPriceInState(quantity, itemNo);
   }, [quantity]);
 
+  const totalPrice = +(quantity * currentPrice).toFixed(2);
+
+  const sizeList = size.map(item => ({ key: item, value: item, text: item }));
+  const SelectExample = () => <Select placeholder="Select size" options={sizeList} />;
+
   return (
     <Wrapper>
-      {/* <Carousel elements={elements} carouselSettings={carouselSettings} /> */}
-      <Img src="static/img/products/helmets/AIROH_Aviator_2.2/001.png" />
+      <Img src={`../../${imageUrls[0]}`} />
       <ItemParams>
         <TitelItem>{name.toUpperCase()}</TitelItem>
         <Param>
@@ -53,10 +65,11 @@ const CartItem = props => {
         </Param>
         <Param>
           Size:
-          {size}
+          {SelectExample()}
         </Param>
         <Param>
-          Quantity: <Operator onClick={decQuantity}>-</Operator> {quantity}{" "}
+          Quantity: <Operator onClick={decQuantity}>-</Operator> {quantity}
+{" "}
           <Operator onClick={incQuantity}>+</Operator>
         </Param>
         <Param>
@@ -65,17 +78,17 @@ const CartItem = props => {
         </Param>
         <TotalPrice>
           Total:
-          {quantity * price}$
+          {totalPrice}$
         </TotalPrice>
       </ItemParams>
-      <DeleteItem>Remove from basket</DeleteItem>
+      <DeleteItem onClick={() => removeFromCart(itemNo)}>Remove from basket</DeleteItem>
     </Wrapper>
   );
 };
 const mapDispatchToProps = dispatch => {
   return {
-    setTotalPriceInState: (quantity, itemNo) =>
-      dispatch(setTotalPrice(quantity, itemNo)),
+    removeFromCart: itemNo => dispatch(removeFromBasket(itemNo)),
+    setTotalPriceInState: (quantity, itemNo) => dispatch(setTotalPrice(quantity, itemNo)),
   };
 };
 export default connect(null, mapDispatchToProps)(CartItem);

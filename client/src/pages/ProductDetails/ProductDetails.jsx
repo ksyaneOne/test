@@ -99,8 +99,9 @@ const ProductDetails = props => {
                             </Grid.Column>
                             <Grid.Column>
                               <div>
-$
-{product.currentPrice}
+                                $
+                                {product.currentPrice}
+
                               </div>
                             </Grid.Column>
                           </Grid.Row>

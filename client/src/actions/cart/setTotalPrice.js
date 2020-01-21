@@ -1,4 +1,5 @@
-export const SET_TOTAL_PRICE = "SET_TOTAL_PRICE";
+import { SET_TOTAL_PRICE } from "./actionNames";
+
 const setTotalPrice = (quantity, itemNo) => {
   return { type: SET_TOTAL_PRICE, payload: { quantity, itemNo } };
 };
